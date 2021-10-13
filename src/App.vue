@@ -1,30 +1,36 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </div>
-  <router-view/>
+  <header>
+    <router-link to="/" class="header-button"><h1>Antikk Web</h1></router-link>
+    <input placeholder="Søk">
+    <nav>
+    <router-link to="/bruker" class="header-button"><span>Bruker</span></router-link>
+    <router-link to="/cart" class="header-button"><span>Handlevogn</span></router-link>
+    <router-link to="/logg-inn" class="header-button"><span>Logg inn</span></router-link>
+    </nav>
+  </header>
+  <hr/>
 </template>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+header {
+  font-family: Arial,serif;
+  text-decoration: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
 }
-
-#nav {
-  padding: 30px;
+header h1 {
+  margin-right: 20px;
 }
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
+nav {
+  margin-left: 20px;
 }
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+nav span {
+  margin-left: 5px;
+}
+.header-button {
+  text-decoration: none;
+  color: black;
 }
 </style>

@@ -1,0 +1,20 @@
+<template>
+  <div>
+    <div class="card-img">
+      <img src="../assets/logo.png" alt="Bilde av produkt">
+    </div>
+    <div class="card-info">
+      <h2>Produkt navn</h2>
+      <p>Info om produkt</p>
+      <button>
+        Legg til
+      </button>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'ProductCard'
+}
+</script>
