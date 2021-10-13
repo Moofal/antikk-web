@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="card">
     <div class="card-img">
       <img src="../assets/logo.png" alt="Bilde av produkt">
     </div>
@@ -15,6 +15,10 @@
 
 <script>
 export default {
-  name: 'ProductCard'
+  name: 'Product'
 }
 </script>
+
+<style scoped>
+
+</style>

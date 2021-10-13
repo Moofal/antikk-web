@@ -9,6 +9,7 @@
     </nav>
   </header>
   <hr/>
+  <router-view />
 </template>
 
 <style>

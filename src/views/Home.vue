@@ -1,16 +1,18 @@
 <template>
-  <div>
-  <ProductCard />
-  </div>
+  <main>
+    <div>
+      <Product />
+    </div>
+  </main>
 </template>
 
 <script>
-import ProductCard from '@/components/ProductCard'
+import Product from '@/components/Product'
 
 export default {
   name: 'Home',
   components: {
-    ProductCard
+    Product
   }
 }
 </script>
