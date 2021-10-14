@@ -13,6 +13,11 @@
   </div>
 </template>
 
+<!--
+When i call this file product card i vue does
+not want to import it for some reason
+-->
+
 <script>
 export default {
   name: 'Product'
