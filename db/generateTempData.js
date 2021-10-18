@@ -1,9 +1,9 @@
 // This generates temp data to use with json-server
 // to test api functions before the real api is finished
-const faker = require('faker')
+require('faker')
 module.exports = function () {
-  let faker = require('faker')
-  let _ = require('lodash')
+  const faker = require('faker')
+  const _ = require('lodash')
   return {
     product: _.times(10, function (n) {
       return {
