@@ -4,13 +4,17 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
+    "generate": "json-server ./db/generateTempData.js",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
     "core-js": "^3.6.5",
+    "faker": "^5.5.3",
     "json-server": "^0.17.0",
+    "lodash": "^4.17.21",
     "vue": "^3.0.0",
+    "vue-lodash": "^2.1.2",
     "vue-router": "^4.0.0-0"
   },
   "devDependencies": {

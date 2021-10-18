@@ -4,8 +4,9 @@
       <img src="../assets/logo.png" alt="Bilde av produkt">
     </div>
     <div class="card-info">
-      <h2>Produkt navn</h2>
-      <p>Info om produkt</p>
+      <h2>{{ product.prodName }}</h2>
+      <p class="description">{{product.prodDescription}}</p>
+      <p class="price">{{product.pris}}</p>
       <button>
         Legg til
       </button>
@@ -20,10 +21,21 @@ not want to import it for some reason
 
 <script>
 export default {
-  name: 'Product'
+  name: 'Product',
+  props: ['product'],
+  data () {
+    return {
+      products: []
+    }
+  }
 }
 </script>
 
 <style scoped>
-
+h2 {
+  margin: auto;
+}
+.description {
+  margin: auto;
+}
 </style>

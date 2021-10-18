@@ -10,7 +10,19 @@
   </header>
   <hr/>
   <router-view />
+  <Footer />
 </template>
+
+<script>
+import Footer from '@/components/Footer'
+
+export default {
+  name: 'Home',
+  components: {
+    Footer
+  }
+}
+</script>
 
 <style>
 header {
@@ -33,5 +45,12 @@ nav span {
 .header-button {
   text-decoration: none;
   color: black;
+}
+footer {
+  background-color: black;
+  color: white;
+}
+footer p {
+  text-align: center;
 }
 </style>

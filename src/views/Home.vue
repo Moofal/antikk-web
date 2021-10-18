@@ -1,10 +1,11 @@
 <template>
   <main>
-    <div class="product-cards">
+    <div class="products">
       <Product
-        v-for="(product, i) in 6"
-        :key="i"
+        v-for="product in products.slice(0,6)"
+        :key="product.prodId"
         :product="product"
+        class="product-cards"
       />
     </div>
   </main>
@@ -17,16 +18,40 @@ export default {
   name: 'Home',
   components: {
     Product
+  },
+  data () {
+    return {
+      products: []
+    }
+  },
+  created () {
+    fetch('http://localhost:3000/products')
+      .then(response => {
+        return response.json()
+      })
+      .then(data => {
+        this.products = data
+      })
   }
 }
 </script>
 <style>
-.product-cards {
+.products {
   display: flex;
+  flex-wrap: wrap;
+  max-width: 630px;
+  justify-content: center;
+  margin: 0 auto;
+}
+.product-cards {
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
-  max-width: 600px;
-  margin: 0 auto;
+  max-width: 200px;
+  max-height: 450px;
+  margin: 5px;
+}
+.product-cards:hover {
+  border: 1px solid gray;
+  margin: 4px;
 }
 </style>
