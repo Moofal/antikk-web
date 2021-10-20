@@ -1,6 +1,6 @@
 <template>
 <footer>
-  <p>Dette er en footer</p>
+  <p>Dette er en footer.</p>
 </footer>
 </template>
 

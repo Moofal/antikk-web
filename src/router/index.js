@@ -3,6 +3,7 @@ import Home from '../views/Home.vue'
 import Bruker from '../views/Bruker.vue'
 import Cart from '../views/Cart.vue'
 import LoggInn from '../views/LoggInn.vue'
+import Product1 from '../views/Product1.vue'
 
 const routes = [
   {
@@ -24,6 +25,11 @@ const routes = [
     path: '/logg-inn',
     name: 'LoggInn',
     component: LoggInn
+  },
+  {
+    path: '/product1',
+    name: 'Product1',
+    component: Product1
   }
 ]
 
