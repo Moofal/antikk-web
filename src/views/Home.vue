@@ -1,4 +1,7 @@
 <template>
+  <aside>
+    <CategorieSideBar />
+  </aside>
   <main>
     <div class="products">
       <Product
@@ -13,10 +16,12 @@
 
 <script>
 import Product from '@/components/Product'
+import CategorieSideBar from '@/components/CategorieSideBar'
 
 export default {
   name: 'Home',
   components: {
+    CategorieSideBar,
     Product
   },
   data () {
