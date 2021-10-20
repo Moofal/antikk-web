@@ -1,7 +1,7 @@
 <template>
   <div class="card">
     <div class="card-img">
-      <router-link to="/{{product.prodId}}">
+      <router-link :to="productUrl">
         <img src="../assets/logo.png" alt="Bilde av produkt">
       </router-link>
     </div>
@@ -16,18 +16,13 @@
   </div>
 </template>
 
-<!--
-When i call this file product card i vue does
-not want to import it for some reason
--->
-
 <script>
 export default {
   name: 'Product',
-  props: ['product'],
-  data () {
-    return {
-      products: []
+  props: ['product', 'url'],
+  computed: {
+    productUrl () {
+      return '/product/' + this.product.prodId
     }
   }
 }
