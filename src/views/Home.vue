@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import Product from '@/components/Product'
+import Product from '@/components/ProductCard'
 import CategorieSideBar from '@/components/CategorieSideBar'
 
 export default {
