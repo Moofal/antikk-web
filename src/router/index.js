@@ -3,7 +3,7 @@ import Home from '../views/Home.vue'
 import Bruker from '../views/Bruker.vue'
 import Cart from '../views/Cart.vue'
 import LoggInn from '../views/LoggInn.vue'
-import Product1 from '../views/Product1.vue'
+import Product1 from '../views/ProductPage.vue'
 
 const routes = [
   {
