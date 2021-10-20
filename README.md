@@ -22,9 +22,9 @@ npm run lint
 
 ### json-server
 ```
-json-server --watch db/products.json
+json-server --watch db/tempdb.json
 for windows
-PowerShell.exe -ExecutionPolicy Bypass json-server --watch db/products.json
+PowerShell.exe -ExecutionPolicy Bypass json-server --watch db/tempdb.json
 ```
 
 ### generate temp data

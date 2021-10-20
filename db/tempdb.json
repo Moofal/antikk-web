@@ -1,0 +1,126 @@
+{
+  "products": [
+    {
+      "storeId": "2",
+      "prodId": "1",
+      "storeName": "Thiel, Douglas and Spencer",
+      "name": "Rustic Granite Cheese",
+      "description": "Ergonomic executive chair upholstered in bonded black leather and PVC padded seat and back for all-day comfort and support",
+      "image": "http://placeimg.com/640/480/food",
+      "pris": "581.00",
+      "type": "sale"
+    },
+    {
+      "storeId": "1",
+      "prodId": "2",
+      "storeName": "Homenick, Quitzon and Lowe",
+      "name": "Gorgeous Steel Fish",
+      "description": "The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients",
+      "image": "http://placeimg.com/640/480/food",
+      "pris": "234.00",
+      "type": "action"
+    },
+    {
+      "storeId": "1",
+      "prodId": "3",
+      "storeName": "Renner LLC",
+      "name": "Intelligent Wooden Ball",
+      "description": "The slim & simple Maple Gaming Keyboard from Dev Byte comes with a sleek body and 7- Color RGB LED Back-lighting for smart functionality",
+      "image": "http://placeimg.com/640/480/food",
+      "pris": "307.00",
+      "type": "action"
+    },
+    {
+      "storeId": "1",
+      "prodId": "4",
+      "storeName": "Boyer - Wiegand",
+      "name": "Handcrafted Steel Towels",
+      "description": "The slim & simple Maple Gaming Keyboard from Dev Byte comes with a sleek body and 7- Color RGB LED Back-lighting for smart functionality",
+      "image": "http://placeimg.com/640/480/food",
+      "pris": "850.00",
+      "type": "action"
+    },
+    {
+      "storeId": "2",
+      "prodId": "5",
+      "storeName": "Stehr Group",
+      "name": "Generic Steel Bike",
+      "description": "Ergonomic executive chair upholstered in bonded black leather and PVC padded seat and back for all-day comfort and support",
+      "image": "http://placeimg.com/640/480/food",
+      "pris": "96.00",
+      "type": "action"
+    },
+    {
+      "storeId": "2",
+      "prodId": "6",
+      "storeName": "Champlin, Gislason and Denesik",
+      "name": "Generic Concrete Sausages",
+      "description": "The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients",
+      "image": "http://placeimg.com/640/480/food",
+      "pris": "468.00",
+      "type": "sale"
+    },
+    {
+      "storeId": "2",
+      "prodId": "7",
+      "storeName": "Dibbert - Cronin",
+      "name": "Incredible Plastic Car",
+      "description": "New ABC 13 9370, 13.3, 5th Gen CoreA5-8250U, 8GB RAM, 256GB SSD, power UHD Graphics, OS 10 Home, OS Office A & J 2016",
+      "image": "http://placeimg.com/640/480/food",
+      "pris": "27.00",
+      "type": "sale"
+    },
+    {
+      "storeId": "1",
+      "prodId": "8",
+      "storeName": "Toy Group",
+      "name": "Intelligent Concrete Shoes",
+      "description": "New range of formal shirts are designed keeping you in mind. With fits and styling that will make you stand apart",
+      "image": "http://placeimg.com/640/480/food",
+      "pris": "697.00",
+      "type": "action"
+    },
+    {
+      "storeId": "2",
+      "prodId": "9",
+      "storeName": "Bahringer Inc",
+      "name": "Fantastic Fresh Cheese",
+      "description": "The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients",
+      "image": "http://placeimg.com/640/480/food",
+      "pris": "886.00",
+      "type": "action"
+    },
+    {
+      "storeId": "1",
+      "prodId": "10",
+      "storeName": "Schultz - Wisozk",
+      "name": "Generic Cotton Keyboard",
+      "description": "Carbonite web goalkeeper gloves are ergonomically designed to give easy fit",
+      "image": "http://placeimg.com/640/480/food",
+      "pris": "391.00",
+      "type": "action"
+    }
+  ],
+  "store": [
+    {
+      "storeId": "1",
+      "storeName": "Upton Group",
+      "description": "Total zero administration framework",
+      "phone": "569-674-3312",
+      "address": {
+        "streetAddress": "5472 Thompson Bridge",
+        "postalCode": "1820"
+      }
+    },
+    {
+      "storeId": "2",
+      "storeName": "Larson and Sons",
+      "description": "Synergized mission-critical migration",
+      "phone": "281-230-7375",
+      "address": {
+        "streetAddress": "33266 Pouros Forks",
+        "postalCode": "1818"
+      }
+    }
+  ]
+}

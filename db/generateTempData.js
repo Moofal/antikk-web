@@ -8,14 +8,26 @@ module.exports = function () {
   return {
     product: _.times(10, function (n) {
       return {
-        storeId: _.sample([1, 2]),
-        prodId: n + 1,
-        storeName: _.sample([1, 2]),
+        storeId: _.sample(['1', '2']),
+        prodId: (n + 1).toString(),
+        storeName: faker.company.companyName(),
         name: faker.commerce.productName(),
         description: faker.commerce.productDescription(),
         image: faker.image.food(),
         pris: faker.commerce.price(),
         type: _.sample(['action', 'sale'])
+      }
+    }),
+    store: _.times(2, function (n) {
+      return {
+        storeId: _.sample(['1', '2']),
+        storeName: faker.company.companyName(),
+        description: faker.company.catchPhrase(),
+        phone: faker.phone.phoneNumberFormat(),
+        address: {
+          streetAddress: faker.address.streetAddress(),
+          postalCode: _.sample(['1820', '1818'])
+        }
       }
     })
   }

@@ -1,7 +1,7 @@
 <template>
   <div class="card">
     <div class="card-img">
-      <router-link to="/client/store/{{product.storeId}}/product/{{product.prodId}}">
+      <router-link to="/{{product.prodId}}">
         <img src="../assets/logo.png" alt="Bilde av produkt">
       </router-link>
     </div>
