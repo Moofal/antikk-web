@@ -20,5 +20,17 @@ npm run build
 npm run lint
 ```
 
+### json-server
+```
+json-server --watch db/products.json
+for windows
+PowerShell.exe -ExecutionPolicy Bypass json-server --watch db/products.json
+```
+
+### generate temp data
+```
+npm run generate
+```
+
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).

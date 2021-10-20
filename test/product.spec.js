@@ -20,7 +20,6 @@ describe('Product API', () => {
         .end((err, response) => {
           response.should.have.status(200)
           response.body.should.be.a('array')
-          response.body.length.should.be.eq(10)
           done()
         })
     })
