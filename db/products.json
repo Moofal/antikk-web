@@ -1,84 +1,104 @@
 {
   "products": [
     {
+      "storeId": 2,
       "prodId": 1,
-      "businessId": 2,
-      "prodName": "Rustic Steel Mouse",
-      "prodDescription": "Ergonomic executive chair upholstered in bonded black leather and PVC padded seat and back for all-day comfort and support",
+      "storeName": 1,
+      "name": "Handcrafted Rubber Fish",
+      "description": "Boston's most advanced compression wear technology increases muscle oxygenation, stabilizes active muscles",
       "image": "http://placeimg.com/640/480/food",
-      "pris": "399.00"
+      "pris": "999.00",
+      "type": "action"
     },
     {
+      "storeId": 1,
       "prodId": 2,
-      "businessId": 1,
-      "prodName": "Incredible Cotton Cheese",
-      "prodDescription": "The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive",
+      "storeName": 2,
+      "name": "Awesome Rubber Soap",
+      "description": "Andy shoes are designed to keeping in mind durability as well as trends, the most stylish range of shoes & sandals",
       "image": "http://placeimg.com/640/480/food",
-      "pris": "919.00"
+      "pris": "683.00",
+      "type": "sale"
     },
     {
+      "storeId": 2,
       "prodId": 3,
-      "businessId": 1,
-      "prodName": "Unbranded Steel Car",
-      "prodDescription": "The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive",
+      "storeName": 2,
+      "name": "Sleek Metal Salad",
+      "description": "Boston's most advanced compression wear technology increases muscle oxygenation, stabilizes active muscles",
       "image": "http://placeimg.com/640/480/food",
-      "pris": "944.00"
+      "pris": "43.00",
+      "type": "sale"
     },
     {
+      "storeId": 2,
       "prodId": 4,
-      "businessId": 2,
-      "prodName": "Licensed Frozen Sausages",
-      "prodDescription": "The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive",
+      "storeName": 2,
+      "name": "Rustic Plastic Soap",
+      "description": "The slim & simple Maple Gaming Keyboard from Dev Byte comes with a sleek body and 7- Color RGB LED Back-lighting for smart functionality",
       "image": "http://placeimg.com/640/480/food",
-      "pris": "218.00"
+      "pris": "761.00",
+      "type": "sale"
     },
     {
+      "storeId": 2,
       "prodId": 5,
-      "businessId": 2,
-      "prodName": "Rustic Metal Cheese",
-      "prodDescription": "New range of formal shirts are designed keeping you in mind. With fits and styling that will make you stand apart",
+      "storeName": 2,
+      "name": "Fantastic Metal Chair",
+      "description": "Carbonite web goalkeeper gloves are ergonomically designed to give easy fit",
       "image": "http://placeimg.com/640/480/food",
-      "pris": "63.00"
+      "pris": "201.00",
+      "type": "sale"
     },
     {
+      "storeId": 1,
       "prodId": 6,
-      "businessId": 1,
-      "prodName": "Intelligent Frozen Bike",
-      "prodDescription": "The Football Is Good For Training And Recreational Purposes",
+      "storeName": 1,
+      "name": "Handmade Plastic Hat",
+      "description": "Andy shoes are designed to keeping in mind durability as well as trends, the most stylish range of shoes & sandals",
       "image": "http://placeimg.com/640/480/food",
-      "pris": "543.00"
+      "pris": "278.00",
+      "type": "sale"
     },
     {
+      "storeId": 2,
       "prodId": 7,
-      "businessId": 1,
-      "prodName": "Incredible Fresh Bike",
-      "prodDescription": "The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients",
+      "storeName": 1,
+      "name": "Handmade Steel Pizza",
+      "description": "Carbonite web goalkeeper gloves are ergonomically designed to give easy fit",
       "image": "http://placeimg.com/640/480/food",
-      "pris": "929.00"
+      "pris": "241.00",
+      "type": "sale"
     },
     {
+      "storeId": 1,
       "prodId": 8,
-      "businessId": 1,
-      "prodName": "Gorgeous Fresh Soap",
-      "prodDescription": "Carbonite web goalkeeper gloves are ergonomically designed to give easy fit",
+      "storeName": 1,
+      "name": "Sleek Frozen Chicken",
+      "description": "The slim & simple Maple Gaming Keyboard from Dev Byte comes with a sleek body and 7- Color RGB LED Back-lighting for smart functionality",
       "image": "http://placeimg.com/640/480/food",
-      "pris": "574.00"
+      "pris": "76.00",
+      "type": "sale"
     },
     {
+      "storeId": 1,
       "prodId": 9,
-      "businessId": 1,
-      "prodName": "Tasty Metal Bike",
-      "prodDescription": "New range of formal shirts are designed keeping you in mind. With fits and styling that will make you stand apart",
+      "storeName": 1,
+      "name": "Gorgeous Plastic Salad",
+      "description": "Ergonomic executive chair upholstered in bonded black leather and PVC padded seat and back for all-day comfort and support",
       "image": "http://placeimg.com/640/480/food",
-      "pris": "899.00"
+      "pris": "222.00",
+      "type": "action"
     },
     {
+      "storeId": 1,
       "prodId": 10,
-      "businessId": 1,
-      "prodName": "Small Granite Chair",
-      "prodDescription": "The Nagasaki Lander is the trademarked name of several series of Nagasaki sport bikes, that started with the 1984 ABC800J",
+      "storeName": 2,
+      "name": "Practical Metal Keyboard",
+      "description": "New ABC 13 9370, 13.3, 5th Gen CoreA5-8250U, 8GB RAM, 256GB SSD, power UHD Graphics, OS 10 Home, OS Office A & J 2016",
       "image": "http://placeimg.com/640/480/food",
-      "pris": "990.00"
+      "pris": "429.00",
+      "type": "sale"
     }
   ]
 }

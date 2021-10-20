@@ -1,17 +1,19 @@
 <template>
-  <div class="card">
-    <div class="card-img">
-      <img src="../assets/logo.png" alt="Bilde av produkt">
+    <div class="card">
+      <div class="card-img">
+        <router-link to="/client/store/{{ product.storeId }}/product/{{product.prodId}}">
+          <img src="../assets/logo.png" alt="Bilde av produkt">
+        </router-link>
+      </div>
+      <div class="card-info">
+        <h2>{{ product.name }}</h2>
+        <p class="description">{{product.description}}</p>
+        <p class="price">{{product.pris}}</p>
+        <button>
+          Legg til
+        </button>
+      </div>
     </div>
-    <div class="card-info">
-      <h2>{{ product.prodName }}</h2>
-      <p class="description">{{product.prodDescription}}</p>
-      <p class="price">{{product.pris}}</p>
-      <button>
-        Legg til
-      </button>
-    </div>
-  </div>
 </template>
 
 <!--
