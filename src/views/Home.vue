@@ -1,42 +1,32 @@
 <template>
+  <div v-bind="$attrs">
   <aside>
     <CategorieSideBar />
   </aside>
   <main>
     <div class="products">
-      <Product
+      <ProductCard
         v-for="product in products.slice(0,6)"
         :key="product.prodId"
         :product="product"
         class="product-cards"
+        :addToCart="addToCart"
       />
     </div>
   </main>
+  </div>
 </template>
 
 <script>
-import Product from '@/components/ProductCard'
+import ProductCard from '@/components/ProductCard'
 import CategorieSideBar from '@/components/CategorieSideBar'
 
 export default {
   name: 'Home',
+  props: ['products', 'addToCart'],
   components: {
     CategorieSideBar,
-    Product
-  },
-  data () {
-    return {
-      products: []
-    }
-  },
-  created () {
-    fetch('http://localhost:3000/products')
-      .then(response => {
-        return response.json()
-      })
-      .then(data => {
-        this.products = data
-      })
+    ProductCard
   }
 }
 </script>

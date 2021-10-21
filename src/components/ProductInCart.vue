@@ -9,20 +9,14 @@
       <h2>{{ product.name }}</h2>
       <p class="description">{{product.description}}</p>
       <p class="price">{{product.pris}} kr</p>
-      <AddToCart :addToCart="addToCart" :product="product"/>
     </div>
   </div>
 </template>
 
 <script>
-import AddToCart from '@/components/AddToCart'
-
 export default {
-  name: 'ProductCard',
-  props: ['product', 'addToCart'],
-  components: {
-    AddToCart
-  },
+  name: 'ProductInCart',
+  props: ['product'],
   computed: {
     productUrl () {
       return '/product/' + this.product.prodId
@@ -32,10 +26,5 @@ export default {
 </script>
 
 <style scoped>
-h2 {
-  margin: auto;
-}
-.description {
-  margin: auto;
-}
+
 </style>

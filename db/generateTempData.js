@@ -10,7 +10,7 @@ module.exports = function () {
       return {
         storeId: _.sample(['1', '2']),
         prodId: (n + 1).toString(),
-        storeName: faker.company.companyName(),
+        storeName: _.sample(['Halden Antikvitet', 'Fredrikkstad Antikvitet']),
         name: faker.commerce.productName(),
         description: faker.commerce.productDescription(),
         image: faker.image.food(),
@@ -21,7 +21,7 @@ module.exports = function () {
     store: _.times(2, function (n) {
       return {
         storeId: _.sample(['1', '2']),
-        storeName: faker.company.companyName(),
+        storeName: _.sample(['Halden Antikvitet', 'Fredrikkstad Antikvitet']),
         description: faker.company.catchPhrase(),
         phone: faker.phone.phoneNumberFormat(),
         address: {

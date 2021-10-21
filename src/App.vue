@@ -4,12 +4,12 @@
     <input placeholder="Søk">
     <nav>
     <router-link to="/bruker" class="header-button"><span>Bruker</span></router-link>
-    <router-link to="/cart" class="header-button"><span>Handlevogn</span></router-link>
+    <router-link to="/cart" class="header-button"><span>Handlevogn({{numProdInCart}})</span></router-link>
     <router-link to="/logg-inn" class="header-button"><span>Logg inn</span></router-link>
     </nav>
   </header>
   <hr/>
-  <router-view />
+  <router-view :products="products" :addToCart="addToCart" :cart="cart"/>
   <Footer />
 </template>
 
@@ -20,6 +20,34 @@ export default {
   name: 'Home',
   components: {
     Footer
+  },
+  data () {
+    return {
+      products: [],
+      cart: [],
+      numProdInCart: 0
+    }
+  },
+  created () {
+    fetch('http://localhost:3000/products')
+      .then(response => {
+        return response.json()
+      })
+      .then(data => {
+        this.products = data
+      })
+  },
+  methods: {
+    addToCart (id) {
+      fetch('http://localhost:3000/products?prodId=' + id)
+        .then(response => {
+          return response.json()
+        })
+        .then(data => {
+          this.cart.push(data)
+        })
+      this.numProdInCart++
+    }
   }
 }
 </script>

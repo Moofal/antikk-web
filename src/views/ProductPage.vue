@@ -10,7 +10,7 @@
 
 <script>
 export default {
-  name: 'Product1',
+  name: 'ProductPage',
   data () {
     return {
       id: this.$route.params.id
