@@ -9,7 +9,7 @@
     </nav>
   </header>
   <hr/>
-  <router-view :products="products" :addToCart="addToCart" :cart="cart"/>
+  <router-view :products="products" :addToCart="addToCart" :cart="cart" :removeItem="removeItem"/>
   <Footer />
 </template>
 
@@ -47,6 +47,10 @@ export default {
           this.cart.push(data)
         })
       this.numProdInCart++
+    },
+    removeItem (index) {
+      this.cart.splice(index, 1)
+      this.numProdInCart--
     }
   }
 }

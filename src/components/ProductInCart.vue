@@ -9,7 +9,7 @@
       <h2>{{ product.name }}</h2>
       <p class="description">{{product.description}}</p>
       <p class="price">{{product.pris}} kr</p>
-      <button @click="removeItem">
+      <button @click="removeItem(index)">
         Fjern produkt
       </button>
     </div>
@@ -19,7 +19,7 @@
 <script>
 export default {
   name: 'ProductInCart',
-  props: ['product', 'removeItem'],
+  props: ['product', 'removeItem', 'index'],
   computed: {
     productUrl () {
       return '/product/' + this.product.prodId

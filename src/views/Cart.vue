@@ -1,10 +1,11 @@
 <template>
   <div class="products">
     <ProductInCart
-      v-for="product in cart"
+      v-for="(product, index) in cart"
       :key="product.prodId"
       :product="product[0]"
       class="product-cards"
+      :index="index"
       :removeItem="removeItem"
     />
   </div>
@@ -18,11 +19,7 @@ export default {
   components: {
     ProductInCart
   },
-  props: ['cart'],
-  methods: {
-    removeItem () {
-    }
-  }
+  props: ['cart', 'removeItem']
 }
 </script>
 
