@@ -30,7 +30,7 @@ export default {
   }
 }
 </script>
-<style>
+<style scoped>
 .products {
   display: flex;
   flex-wrap: wrap;

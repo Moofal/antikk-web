@@ -9,6 +9,9 @@
       <h2>{{ product.name }}</h2>
       <p class="description">{{product.description}}</p>
       <p class="price">{{product.pris}} kr</p>
+      <button @click="removeItem">
+        Fjern produkt
+      </button>
     </div>
   </div>
 </template>
@@ -16,7 +19,7 @@
 <script>
 export default {
   name: 'ProductInCart',
-  props: ['product'],
+  props: ['product', 'removeItem'],
   computed: {
     productUrl () {
       return '/product/' + this.product.prodId
@@ -26,5 +29,13 @@ export default {
 </script>
 
 <style scoped>
-
+.card {
+  display: flex;
+}
+.card-img {
+  flex-direction: column;
+}
+.card-info {
+  flex-direction: column;
+}
 </style>
