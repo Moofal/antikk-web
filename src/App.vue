@@ -28,6 +28,17 @@ export default {
       numProdInCart: 0
     }
   },
+  mounted () {
+    if (localStorage.getItem('cart')) {
+      try {
+        this.cart = JSON.parse(localStorage.getItem('cart'))
+      } catch (e) {
+      }
+    }
+    if (localStorage.numProdInCart) {
+      this.numProdInCart = localStorage.numProdInCart
+    }
+  },
   created () {
     fetch('http://localhost:3000/products')
       .then(response => {
@@ -44,13 +55,20 @@ export default {
           return response.json()
         })
         .then(data => {
-          this.cart.push(data)
+          this.cart.push(data[0])
+          this.numProdInCart++
+          this.saveChart()
         })
-      this.numProdInCart++
     },
     removeItem (index) {
       this.cart.splice(index, 1)
       this.numProdInCart--
+      this.saveChart()
+    },
+    saveChart () {
+      const parsed = JSON.stringify(this.cart)
+      localStorage.setItem('cart', parsed)
+      localStorage.numProdInCart = this.numProdInCart
     }
   }
 }
