@@ -1,5 +1,5 @@
 <template>
-  <div class="products">
+  <div class="products" v-bind="$attrs">
     <ProductInCart
       v-for="(product, index) in cart"
       :key="product.prodId"
@@ -14,6 +14,7 @@
 <script>
 
 import ProductInCart from '@/components/ProductInCart'
+
 export default {
   name: 'Cart',
   components: {
