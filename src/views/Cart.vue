@@ -3,12 +3,13 @@
     <ProductInCart
       v-for="(product, index) in cart"
       :key="product.prodId"
-      :product="product[0]"
+      :product="product"
       class="product-cards"
       :index="index"
       :removeItem="removeItem"
     />
   </div>
+  {{cart}}
 </template>
 
 <script>
