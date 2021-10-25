@@ -31,6 +31,7 @@ export default {
 <style scoped>
 .card {
   display: flex;
+  flex-wrap: wrap;
 }
 .card-img {
   flex-direction: column;
