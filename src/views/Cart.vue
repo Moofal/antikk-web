@@ -1,6 +1,7 @@
 <template>
   <div class="cart">
     <h1>Handlevogn</h1>
+    <CartPopup v-if="proceedToPay" :togglePopup="togglePopup" :pay="pay"/>
       <div class="products" v-bind="$attrs">
         <ProductInCart
           v-for="(product, index) in cart"
@@ -21,7 +22,7 @@
         </ul>
       </div>
       <div class="btn-proceed">
-        <button>
+        <button @click="proceed">
           GÅ TIL KASSEN
         </button>
       </div>
@@ -30,15 +31,21 @@
 </template>
 
 <script>
-
+import CartPopup from '@/components/CartPopup'
 import ProductInCart from '@/components/ProductInCart'
 
 export default {
   name: 'Cart',
   components: {
-    ProductInCart
+    ProductInCart,
+    CartPopup
   },
-  props: ['cart', 'removeItem'],
+  props: ['cart', 'removeItem', 'clearCart'],
+  data () {
+    return {
+      proceedToPay: false
+    }
+  },
   methods: {
     getTotalPrice () {
       let sum = 0
@@ -51,6 +58,16 @@ export default {
       if (this.cart.length > 0) {
         return true
       }
+    },
+    proceed () {
+      this.togglePopup()
+    },
+    togglePopup () {
+      this.proceedToPay = !this.proceedToPay
+    },
+    pay () {
+      this.clearCart()
+      this.togglePopup()
     }
   }
 }

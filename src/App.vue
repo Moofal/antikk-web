@@ -9,7 +9,13 @@
     </nav>
   </header>
   <hr/>
-  <router-view :products="products" :addToCart="addToCart" :cart="cart" :removeItem="removeItem"/>
+  <router-view
+    :products="products"
+    :addToCart="addToCart"
+    :cart="cart"
+    :removeItem="removeItem"
+    :clearCart="clearCart"
+  />
   <Footer />
 </template>
 
@@ -69,6 +75,11 @@ export default {
       const parsed = JSON.stringify(this.cart)
       localStorage.setItem('cart', parsed)
       localStorage.numProdInCart = this.numProdInCart
+    },
+    clearCart () {
+      this.cart.length = 0
+      this.numProdInCart = 0
+      this.saveChart()
     }
   }
 }
