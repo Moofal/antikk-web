@@ -1,9 +1,11 @@
 <template>
   <div class="popup">
     <div class="popup-items">
-      <button @click="togglePopup" class="exit-proceed">
-        x
+      <h3>Exit</h3>
+      <button @click="togglePaymentPopup" class="exit-proceed">
+        X
       </button>
+      <h3>Bestil handlevogn</h3>
       <button @click="pay" class="pay">
         Betal
       </button>
@@ -14,7 +16,7 @@
 <script>
 export default {
   name: 'CartPopup',
-  props: ['togglePopup', 'pay']
+  props: ['togglePaymentPopup', 'pay']
 }
 </script>
 
@@ -35,6 +37,10 @@ export default {
     padding: 30px;
     display: flex;
     flex-flow: column nowrap;
+  }
+  .popup-items h3 {
+    margin: 0;
+    text-align: center;
   }
 }
 </style>

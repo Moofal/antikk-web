@@ -32,6 +32,7 @@ export default {
 .card {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
 }
 .card-img {
   flex-direction: column;

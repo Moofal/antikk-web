@@ -1,7 +1,7 @@
 <template>
   <div class="cart">
     <h1>Handlevogn</h1>
-    <CartPopup v-if="proceedToPay" :togglePopup="togglePopup" :pay="pay"/>
+    <CartPopup v-if="proceedToPay" :togglePaymentPopup="togglePaymentPopup" :pay="pay"/>
       <div class="products" v-bind="$attrs">
         <ProductInCart
           v-for="(product, index) in cart"
@@ -60,14 +60,14 @@ export default {
       }
     },
     proceed () {
-      this.togglePopup()
+      this.togglePaymentPopup()
     },
-    togglePopup () {
+    togglePaymentPopup () {
       this.proceedToPay = !this.proceedToPay
     },
     pay () {
       this.clearCart()
-      this.togglePopup()
+      this.togglePaymentPopup()
     }
   }
 }
