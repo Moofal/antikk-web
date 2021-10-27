@@ -12,7 +12,7 @@
           :removeItem="removeItem"
         />
       </div>
-    <div v-if="show()" class="cart-footer">
+    <div v-if="showCartFooter()" class="cart-footer">
       <div class="total-price">
         <ul class="price-left">
           <li>Sum:</li>
@@ -21,6 +21,7 @@
           <li>{{getTotalPrice()}}</li>
         </ul>
       </div>
+      <p v-if="!endUser">Du må være en bruker for å kunne handle</p>
       <div class="btn-proceed">
         <button @click="proceed">
           GÅ TIL KASSEN
@@ -40,7 +41,7 @@ export default {
     ProductInCart,
     CartPopup
   },
-  props: ['cart', 'removeItem', 'clearCart'],
+  props: ['cart', 'removeItem', 'clearCart', 'endUser'],
   data () {
     return {
       proceedToPay: false
@@ -54,13 +55,15 @@ export default {
       }
       return sum.toFixed(2)
     },
-    show () {
+    showCartFooter () {
       if (this.cart.length > 0) {
         return true
       }
     },
     proceed () {
-      this.togglePaymentPopup()
+      if (this.endUser) {
+        this.togglePaymentPopup()
+      }
     },
     togglePaymentPopup () {
       this.proceedToPay = !this.proceedToPay

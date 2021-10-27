@@ -4,6 +4,8 @@ import Bruker from '../views/Bruker.vue'
 import Cart from '../views/Cart.vue'
 import LoggInn from '../views/LoggInn.vue'
 import ProductPage from '../views/ProductPage.vue'
+import Business from '../views/Business.vue'
+import RegisterProduct from '../views/RegisterProduct.vue'
 
 const routes = [
   {
@@ -15,6 +17,11 @@ const routes = [
     path: '/bruker',
     name: 'Bruker',
     component: Bruker
+  },
+  {
+    path: '/business',
+    name: 'Business',
+    component: Business
   },
   {
     path: '/cart',
@@ -30,6 +37,11 @@ const routes = [
     path: '/product/:id',
     name: 'ProductPage',
     component: ProductPage
+  },
+  {
+    path: '/register-product',
+    name: 'RegisterProduct',
+    component: RegisterProduct
   }
 ]
 
