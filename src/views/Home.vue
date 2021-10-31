@@ -1,7 +1,22 @@
 <template>
-  <div v-bind="$attrs">
+  <div class="home-page" v-bind="$attrs">
   <aside>
-    <CategorieSideBar />
+    <div class="side-bard">
+      <form>
+        <fieldset>
+          <legend>Kategorier</legend>
+          <div class="options">
+            <input type="radio" name="category" @click="getProducts()">
+            <label>Alle Kategorier</label>
+            <div v-for="(selected, i) in categories" :key="i">
+              <input type="radio" name="category" v-bind:value="selected"
+                     v-model="category">
+              <label>{{ selected }}</label>
+            </div>
+          </div>
+        </fieldset>
+      </form>
+    </div>
   </aside>
   <main>
     <div class="products">
@@ -19,18 +34,72 @@
 
 <script>
 import ProductCard from '@/components/ProductCard'
-import CategorieSideBar from '@/components/CategorieSideBar'
 
 export default {
   name: 'Home',
-  props: ['products', 'addToCart'],
+  props: ['addToCart'],
   components: {
-    CategorieSideBar,
     ProductCard
+  },
+  data () {
+    return {
+      products: [],
+      categories: [],
+      category: ''
+    }
+  },
+  mounted () {
+    fetch('http://localhost:3000/categories')
+      .then(response => {
+        return response.json()
+      })
+      .then(data => {
+        this.categories = data
+      })
+  },
+  created () {
+    this.getProducts()
+  },
+  methods: {
+    getProducts () {
+      fetch('http://localhost:3000/products?_limit=6')
+        .then(response => {
+          return response.json()
+        })
+        .then(data => {
+          this.products = data
+        })
+    },
+    changeCategory () {
+      fetch('http://localhost:3000/products?_limit=6&category=' + this.category)
+        .then(response => {
+          return response.json()
+        })
+        .then(data => {
+          this.products = data
+        })
+    }
+  },
+  watch: {
+    category: function () {
+      fetch('http://localhost:3000/products?_limit=6&category=' + this.category)
+        .then(response => {
+          return response.json()
+        })
+        .then(data => {
+          this.products = data
+        })
+    }
   }
 }
 </script>
 <style scoped>
+.home-page {
+  display: flex;
+}
+.side-bard {
+  display: flex;
+}
 .products {
   display: flex;
   flex-wrap: wrap;

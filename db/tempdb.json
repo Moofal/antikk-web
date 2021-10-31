@@ -3,124 +3,135 @@
     {
       "storeId": "2",
       "prodId": "1",
-      "storeName": "Thiel, Douglas and Spencer",
-      "name": "Rustic Granite Cheese",
-      "description": "Ergonomic executive chair upholstered in bonded black leather and PVC padded seat and back for all-day comfort and support",
+      "storeName": "Halden Antikvitet",
+      "name": "Unbranded Wooden Computer",
+      "description": "The Apollotech B340 is an affordable wireless mouse with reliable connectivity, 12 months battery life and modern design",
       "image": "http://placeimg.com/640/480/food",
-      "pris": "581.00",
-      "type": "sale"
+      "pris": "627.00",
+      "type": "sale",
+      "category": "Kjøkken"
     },
     {
-      "storeId": "1",
+      "storeId": "2",
       "prodId": "2",
-      "storeName": "Homenick, Quitzon and Lowe",
-      "name": "Gorgeous Steel Fish",
-      "description": "The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients",
+      "storeName": "Halden Antikvitet",
+      "name": "Tasty Plastic Hat",
+      "description": "New range of formal shirts are designed keeping you in mind. With fits and styling that will make you stand apart",
       "image": "http://placeimg.com/640/480/food",
-      "pris": "234.00",
-      "type": "action"
+      "pris": "516.00",
+      "type": "auction",
+      "category": "Bøker"
     },
     {
-      "storeId": "1",
+      "storeId": "2",
       "prodId": "3",
-      "storeName": "Renner LLC",
-      "name": "Intelligent Wooden Ball",
-      "description": "The slim & simple Maple Gaming Keyboard from Dev Byte comes with a sleek body and 7- Color RGB LED Back-lighting for smart functionality",
+      "storeName": "Halden Antikvitet",
+      "name": "Fantastic Metal Sausages",
+      "description": "The Apollotech B340 is an affordable wireless mouse with reliable connectivity, 12 months battery life and modern design",
       "image": "http://placeimg.com/640/480/food",
-      "pris": "307.00",
-      "type": "action"
+      "pris": "361.00",
+      "type": "sale",
+      "category": "Kjøkken"
     },
     {
       "storeId": "1",
       "prodId": "4",
-      "storeName": "Boyer - Wiegand",
-      "name": "Handcrafted Steel Towels",
-      "description": "The slim & simple Maple Gaming Keyboard from Dev Byte comes with a sleek body and 7- Color RGB LED Back-lighting for smart functionality",
+      "storeName": "Fredrikkstad Antikvitet",
+      "name": "Fantastic Concrete Bacon",
+      "description": "Boston's most advanced compression wear technology increases muscle oxygenation, stabilizes active muscles",
       "image": "http://placeimg.com/640/480/food",
-      "pris": "850.00",
-      "type": "action"
+      "pris": "723.00",
+      "type": "auction",
+      "category": "Hobby"
     },
     {
       "storeId": "2",
       "prodId": "5",
-      "storeName": "Stehr Group",
-      "name": "Generic Steel Bike",
+      "storeName": "Halden Antikvitet",
+      "name": "Gorgeous Frozen Keyboard",
       "description": "Ergonomic executive chair upholstered in bonded black leather and PVC padded seat and back for all-day comfort and support",
       "image": "http://placeimg.com/640/480/food",
-      "pris": "96.00",
-      "type": "action"
+      "pris": "544.00",
+      "type": "sale",
+      "category": "Kjøkken"
     },
     {
       "storeId": "2",
       "prodId": "6",
-      "storeName": "Champlin, Gislason and Denesik",
-      "name": "Generic Concrete Sausages",
-      "description": "The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients",
+      "storeName": "Halden Antikvitet",
+      "name": "Handcrafted Rubber Bacon",
+      "description": "Andy shoes are designed to keeping in mind durability as well as trends, the most stylish range of shoes & sandals",
       "image": "http://placeimg.com/640/480/food",
-      "pris": "468.00",
-      "type": "sale"
+      "pris": "547.00",
+      "type": "auction",
+      "category": "Møbler"
     },
     {
       "storeId": "2",
       "prodId": "7",
-      "storeName": "Dibbert - Cronin",
-      "name": "Incredible Plastic Car",
-      "description": "New ABC 13 9370, 13.3, 5th Gen CoreA5-8250U, 8GB RAM, 256GB SSD, power UHD Graphics, OS 10 Home, OS Office A & J 2016",
+      "storeName": "Halden Antikvitet",
+      "name": "Handmade Wooden Towels",
+      "description": "The slim & simple Maple Gaming Keyboard from Dev Byte comes with a sleek body and 7- Color RGB LED Back-lighting for smart functionality",
       "image": "http://placeimg.com/640/480/food",
-      "pris": "27.00",
-      "type": "sale"
+      "pris": "886.00",
+      "type": "sale",
+      "category": "Møbler"
     },
     {
       "storeId": "1",
       "prodId": "8",
-      "storeName": "Toy Group",
-      "name": "Intelligent Concrete Shoes",
-      "description": "New range of formal shirts are designed keeping you in mind. With fits and styling that will make you stand apart",
+      "storeName": "Fredrikkstad Antikvitet",
+      "name": "Gorgeous Rubber Shoes",
+      "description": "The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive",
       "image": "http://placeimg.com/640/480/food",
-      "pris": "697.00",
-      "type": "action"
-    },
-    {
-      "storeId": "2",
-      "prodId": "9",
-      "storeName": "Bahringer Inc",
-      "name": "Fantastic Fresh Cheese",
-      "description": "The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients",
-      "image": "http://placeimg.com/640/480/food",
-      "pris": "886.00",
-      "type": "action"
+      "pris": "589.00",
+      "type": "sale",
+      "category": "Kjøkken"
     },
     {
       "storeId": "1",
-      "prodId": "10",
-      "storeName": "Schultz - Wisozk",
-      "name": "Generic Cotton Keyboard",
-      "description": "Carbonite web goalkeeper gloves are ergonomically designed to give easy fit",
+      "prodId": "9",
+      "storeName": "Fredrikkstad Antikvitet",
+      "name": "Tasty Cotton Pizza",
+      "description": "The Apollotech B340 is an affordable wireless mouse with reliable connectivity, 12 months battery life and modern design",
       "image": "http://placeimg.com/640/480/food",
-      "pris": "391.00",
-      "type": "action"
+      "pris": "425.00",
+      "type": "sale",
+      "category": "Kjøkken"
+    },
+    {
+      "storeId": "2",
+      "prodId": "10",
+      "storeName": "Halden Antikvitet",
+      "name": "Unbranded Metal Pizza",
+      "description": "New ABC 13 9370, 13.3, 5th Gen CoreA5-8250U, 8GB RAM, 256GB SSD, power UHD Graphics, OS 10 Home, OS Office A & J 2016",
+      "image": "http://placeimg.com/640/480/food",
+      "pris": "492.00",
+      "type": "sale",
+      "category": "Møbler"
     }
   ],
   "store": [
     {
       "storeId": "1",
-      "storeName": "Upton Group",
-      "description": "Total zero administration framework",
-      "phone": "569-674-3312",
+      "storeName": "Fredrikkstad Antikvitet",
+      "description": "Automated encompassing conglomeration",
+      "phone": "350-703-9268",
       "address": {
-        "streetAddress": "5472 Thompson Bridge",
+        "streetAddress": "715 Bradley Manor",
         "postalCode": "1820"
       }
     },
     {
       "storeId": "2",
-      "storeName": "Larson and Sons",
-      "description": "Synergized mission-critical migration",
-      "phone": "281-230-7375",
+      "storeName": "Halden Antikvitet",
+      "description": "Vision-oriented tangible portal",
+      "phone": "795-401-1503",
       "address": {
-        "streetAddress": "33266 Pouros Forks",
-        "postalCode": "1818"
+        "streetAddress": "42870 Schimmel Flat",
+        "postalCode": "1820"
       }
     }
-  ]
+  ],
+  "categories": ["Møbler", "Kjøkken", "Hobby", "Bøker"]
 }

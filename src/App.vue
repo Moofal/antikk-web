@@ -4,14 +4,13 @@
     <input type="search" placeholder="Søk">
     <nav>
     <router-link v-if="endUser" to="/bruker" class="header-button"><span>Bruker</span></router-link>
-      <router-link v-if="businessUser" to="/business" class="header-button"><span>Bedrift</span></router-link>
+      <router-link v-if="businessUser" to="/business/1" class="header-button"><span>Bedrift</span></router-link>
     <router-link v-if="!businessUser" to="/cart" class="header-button"><span>Handlevogn({{numProdInCart}})</span></router-link>
     <router-link to="/logg-inn" class="header-button"><span>Logg inn</span></router-link>
     </nav>
   </header>
   <hr/>
   <router-view
-    :products="products"
     :addToCart="addToCart"
     :cart="cart"
     :removeItem="removeItem"
@@ -35,7 +34,6 @@ export default {
   },
   data () {
     return {
-      products: [],
       cart: [],
       numProdInCart: 0,
       endUser: false,
@@ -52,15 +50,6 @@ export default {
     if (localStorage.numProdInCart) {
       this.numProdInCart = localStorage.numProdInCart
     }
-  },
-  created () {
-    fetch('http://localhost:3000/products')
-      .then(response => {
-        return response.json()
-      })
-      .then(data => {
-        this.products = data
-      })
   },
   methods: {
     addToCart (id) {

@@ -5,7 +5,7 @@ import Cart from '../views/Cart.vue'
 import LoggInn from '../views/LoggInn.vue'
 import ProductPage from '../views/ProductPage.vue'
 import Business from '../views/Business.vue'
-import RegisterProduct from '../views/RegisterProduct.vue'
+import ManageProduct from '../views/ManageProduct.vue'
 
 const routes = [
   {
@@ -19,7 +19,7 @@ const routes = [
     component: Bruker
   },
   {
-    path: '/business',
+    path: '/business/:id',
     name: 'Business',
     component: Business
   },
@@ -39,9 +39,9 @@ const routes = [
     component: ProductPage
   },
   {
-    path: '/register-product',
-    name: 'RegisterProduct',
-    component: RegisterProduct
+    path: '/manage-product',
+    name: 'ManageProduct',
+    component: ManageProduct
   }
 ]
 

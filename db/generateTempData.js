@@ -15,12 +15,13 @@ module.exports = function () {
         description: faker.commerce.productDescription(),
         image: faker.image.food(),
         pris: faker.commerce.price(),
-        type: _.sample(['action', 'sale'])
+        type: _.sample(['auction', 'sale']),
+        category: _.sample(['Møbler', 'Kjøkken', 'Hobby', 'Bøker'])
       }
     }),
     store: _.times(2, function (n) {
       return {
-        storeId: _.sample(['1', '2']),
+        storeId: (n + 1).toString(),
         storeName: _.sample(['Halden Antikvitet', 'Fredrikkstad Antikvitet']),
         description: faker.company.catchPhrase(),
         phone: faker.phone.phoneNumberFormat(),
