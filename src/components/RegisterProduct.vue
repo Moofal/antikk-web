@@ -28,9 +28,6 @@
         </div>
       </fieldset>
     </form>
-    <div>
-      {{product}}
-    </div>
     <div class="btn-submit">
       <button @click="registerProduct">Registrer produkt</button>
     </div>
@@ -57,15 +54,12 @@ export default {
   },
   methods: {
     async registerProduct () {
-      console.log(this.product)
-      const requestOption = {
+      const product = this.product
+      await fetch('http://localhost:3000/products', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(this.product)
-      }
-      const response = await fetch('http://localhost:3000/products', requestOption)
-      const data = await response.json()
-      this.postId = data.prodId
+        body: JSON.stringify(product),
+        headers: { 'Content-Type': 'application/json' }
+      })
     }
   }
 }

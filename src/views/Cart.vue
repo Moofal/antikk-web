@@ -28,6 +28,7 @@
         </button>
       </div>
     </div>
+    <div v-else>Handlevogn er tom</div>
   </div>
 </template>
 

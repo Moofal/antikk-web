@@ -133,5 +133,10 @@
       }
     }
   ],
-  "categories": ["Møbler", "Kjøkken", "Hobby", "Bøker"]
+  "categories": [
+    "Møbler",
+    "Kjøkken",
+    "Hobby",
+    "Bøker"
+  ]
 }
