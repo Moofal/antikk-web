@@ -28,7 +28,7 @@ export default {
   },
   computed: {
     productUrl () {
-      return '/product/' + this.product.prodId
+      return '/product/' + this.product.id
     },
     businessUrl () {
       return '/business/' + this.product.storeId

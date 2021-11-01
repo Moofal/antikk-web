@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      <router-link to="/manage-product">
+      <router-link :to="addToProductsUrl">
         <button>
           Legg til produkt
         </button>
@@ -9,21 +9,25 @@
       <div>
         {{store}}
       </div>
-      <div v-for="product in products" :key="product.prodId">
-        {{ product }}
-        <router-link to="/manage-product">
-          <button>
-            Rediger produkt
-          </button>
-        </router-link>
+      <div >
+        <ProductCardBusiness
+          v-for="(product, i) in products"
+          :key="i"
+          :product="product"
+        />
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import ProductCardBusiness from '@/components/ProductCardBusiness'
+
 export default {
-  name: 'Bedrift',
+  name: 'Business',
+  components: {
+    ProductCardBusiness
+  },
   data () {
     return {
       storeId: this.$route.params.id,
@@ -31,8 +35,16 @@ export default {
       products: []
     }
   },
+  computed: {
+    addToProductsUrl () {
+      return '/register-product/' + this.storeId
+    },
+    editProductUrl () {
+      return '/edit-product/'
+    }
+  },
   mounted () {
-    fetch('http://localhost:3000/store?storeId=' + this.storeId)
+    fetch('http://localhost:3000/store?id=' + this.storeId)
       .then(response => {
         return response.json()
       })

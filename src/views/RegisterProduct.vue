@@ -7,6 +7,11 @@
         <input v-model="product.name">
         <label>Produkt Informasjon</label>
         <textarea v-model="product.description" aria-rowspan="8" aria-colspan="40"></textarea>
+        <select v-model="product.category">
+          <option v-for="(category, i) in categories" :key="i" v-bind:value="category" >
+            {{category}}
+          </option>
+        </select>
         <label>Salgs Type</label>
         <div>
           <label>Salg</label>
@@ -31,6 +36,7 @@
     <div class="btn-submit">
       <button @click="registerProduct">Registrer produkt</button>
     </div>
+    {{product}}
   </div>
 </template>
 
@@ -39,25 +45,35 @@ export default {
   name: 'RegisterProduct',
   data () {
     return {
+      categories: [],
       product: {
-        storeId: '',
-        prodId: '',
+        id: '',
+        storeId: this.$route.params.id,
         storeName: '',
         name: '',
         description: '',
         image: '',
         price: '',
-        type: ''
-      },
-      postId: null
+        type: '',
+        category: ''
+      }
     }
+  },
+  mounted () {
+    fetch('http://localhost:3000/categories')
+      .then(response => {
+        return response.json()
+      })
+      .then(data => {
+        this.categories = data
+      })
   },
   methods: {
     async registerProduct () {
-      const product = this.product
+      const newProduct = this.product
       await fetch('http://localhost:3000/products', {
         method: 'POST',
-        body: JSON.stringify(product),
+        body: JSON.stringify(newProduct),
         headers: { 'Content-Type': 'application/json' }
       })
     }

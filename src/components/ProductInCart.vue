@@ -22,7 +22,7 @@ export default {
   props: ['product', 'removeItem', 'index'],
   computed: {
     productUrl () {
-      return '/product/' + this.product.prodId
+      return '/product/' + this.product.id
     }
   }
 }

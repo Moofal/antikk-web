@@ -5,7 +5,8 @@ import Cart from '../views/Cart.vue'
 import LoggInn from '../views/LoggInn.vue'
 import ProductPage from '../views/ProductPage.vue'
 import Business from '../views/Business.vue'
-import ManageProduct from '../views/ManageProduct.vue'
+import EditProduct from '../views/EditProduct.vue'
+import RegisterProduct from '../views/RegisterProduct.vue'
 
 const routes = [
   {
@@ -39,9 +40,14 @@ const routes = [
     component: ProductPage
   },
   {
-    path: '/manage-product',
-    name: 'ManageProduct',
-    component: ManageProduct
+    path: '/edit-product/:id',
+    name: 'EditProduct',
+    component: EditProduct
+  },
+  {
+    path: '/register-product/:id',
+    name: 'RegisterProduct',
+    component: RegisterProduct
   }
 ]
 

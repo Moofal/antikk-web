@@ -18,7 +18,7 @@ export default {
     }
   },
   mounted () {
-    fetch('http://localhost:3000/products?prodId=' + this.id)
+    fetch('http://localhost:3000/products?id=' + this.id)
       .then(response => {
         return response.json()
       })
