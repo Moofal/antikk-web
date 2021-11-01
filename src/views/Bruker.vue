@@ -1,5 +1,9 @@
 <template>
-  <div></div>
+  <div>
+    <button>
+      Mine ordre
+    </button>
+  </div>
 </template>
 
 <script>

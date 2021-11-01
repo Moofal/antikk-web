@@ -22,7 +22,7 @@ export default {
   props: ['product', 'removeItem', 'index'],
   computed: {
     productUrl () {
-      return '/product/' + this.product.prodId
+      return '/product/' + this.product.id
     }
   }
 }
@@ -31,6 +31,8 @@ export default {
 <style scoped>
 .card {
   display: flex;
+  flex-wrap: wrap;
+  align-items: center;
 }
 .card-img {
   flex-direction: column;

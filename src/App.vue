@@ -1,15 +1,26 @@
 <template>
   <header>
     <router-link to="/" class="header-button"><h1>Antikk Web</h1></router-link>
-    <input placeholder="Søk">
+    <input type="search" placeholder="Søk">
     <nav>
-    <router-link to="/bruker" class="header-button"><span>Bruker</span></router-link>
-    <router-link to="/cart" class="header-button"><span>Handlevogn({{numProdInCart}})</span></router-link>
+    <router-link v-if="endUser" to="/bruker" class="header-button"><span>Bruker</span></router-link>
+      <router-link v-if="businessUser" to="/business/1" class="header-button"><span>Bedrift</span></router-link>
+    <router-link v-if="!businessUser" to="/cart" class="header-button"><span>Handlevogn({{numProdInCart}})</span></router-link>
     <router-link to="/logg-inn" class="header-button"><span>Logg inn</span></router-link>
     </nav>
   </header>
   <hr/>
-  <router-view :products="products" :addToCart="addToCart" :cart="cart" :removeItem="removeItem"/>
+  <router-view
+    :addToCart="addToCart"
+    :cart="cart"
+    :removeItem="removeItem"
+    :clearCart="clearCart"
+    :seeAsEndUser="seeAsEndUser"
+    :seeAsBusiness="seeAsBusiness"
+    :loggOut="loggOut"
+    :endUser="endUser"
+    :businessUser="businessUser"
+  />
   <Footer />
 </template>
 
@@ -23,9 +34,10 @@ export default {
   },
   data () {
     return {
-      products: [],
       cart: [],
-      numProdInCart: 0
+      numProdInCart: 0,
+      endUser: false,
+      businessUser: false
     }
   },
   mounted () {
@@ -38,15 +50,6 @@ export default {
     if (localStorage.numProdInCart) {
       this.numProdInCart = localStorage.numProdInCart
     }
-  },
-  created () {
-    fetch('http://localhost:3000/products')
-      .then(response => {
-        return response.json()
-      })
-      .then(data => {
-        this.products = data
-      })
   },
   methods: {
     addToCart (id) {
@@ -69,6 +72,23 @@ export default {
       const parsed = JSON.stringify(this.cart)
       localStorage.setItem('cart', parsed)
       localStorage.numProdInCart = this.numProdInCart
+    },
+    clearCart () {
+      this.cart.length = 0
+      this.numProdInCart = 0
+      this.saveChart()
+    },
+    seeAsEndUser () {
+      this.endUser = true
+      this.businessUser = false
+    },
+    seeAsBusiness () {
+      this.businessUser = true
+      this.endUser = false
+    },
+    loggOut () {
+      this.businessUser = false
+      this.endUser = false
     }
   }
 }

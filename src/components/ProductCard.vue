@@ -7,8 +7,11 @@
     </div>
     <div class="card-info">
       <h2>{{ product.name }}</h2>
+      <router-link :to="businessUrl">
+        <h3>{{product.storeName}}</h3>
+      </router-link>
       <p class="description">{{product.description}}</p>
-      <p class="price">{{product.pris}} kr</p>
+      <p class="price">{{product.pris}} kr {{product.category}}</p>
       <AddToCart :addToCart="addToCart" :product="product"/>
     </div>
   </div>
@@ -25,7 +28,10 @@ export default {
   },
   computed: {
     productUrl () {
-      return '/product/' + this.product.prodId
+      return '/product/' + this.product.id
+    },
+    businessUrl () {
+      return '/business/' + this.product.storeId
     }
   }
 }
@@ -34,6 +40,10 @@ export default {
 <style scoped>
 h2 {
   margin: auto;
+}
+h3 {
+  margin: auto;
+  text-decoration: none;
 }
 .description {
   margin: auto;
