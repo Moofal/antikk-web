@@ -7,6 +7,11 @@
         <input v-model="product.name">
         <label>Produkt Informasjon</label>
         <textarea v-model="product.description" aria-rowspan="8" aria-colspan="40"></textarea>
+        <select v-model="product.category">
+          <option v-for="(category, i) in categories" :key="i" v-bind:value="category" >
+            {{category}}
+          </option>
+        </select>
         <label>Salgs Type</label>
         <div>
           <label>Salg</label>
@@ -31,6 +36,7 @@
     <div class="btn-submit">
       <button @click="editProduct">Rediger Produkt</button>
     </div>
+    {{product}}
   </div>
 </template>
 
@@ -39,21 +45,51 @@ export default {
   name: 'EditProduct',
   data () {
     return {
+      categories: [],
       product: {
+        id: '',
+        storeId: this.$route.params.id,
+        storeName: '',
         name: '',
         description: '',
-        type: '',
+        image: '',
         price: '',
-        startingBid: '',
-        stepper: '',
-        endDate: ''
+        type: '',
+        category: ''
       },
-      postId: null
+      postId: this.$route.params.id
     }
+  },
+  mounted () {
+    this.getCategories()
+    this.getProduct()
   },
   methods: {
     editProduct () {
-      console.log(this.product.name, this.product.description, this.product.type, this.product.price, this.product.startingBid)
+      const editedProduct = this.product
+      fetch('http://localhost:3000/products/' + this.postId, {
+        method: 'PUT',
+        body: JSON.stringify(editedProduct),
+        headers: { 'Content-Type': 'application/json' }
+      })
+    },
+    getProduct () {
+      fetch('http://localhost:3000/products?id=' + this.postId)
+        .then(response => {
+          return response.json()
+        })
+        .then(data => {
+          this.product = data[0]
+        })
+    },
+    getCategories () {
+      fetch('http://localhost:3000/categories')
+        .then(response => {
+          return response.json()
+        })
+        .then(data => {
+          this.categories = data
+        })
     }
   }
 }

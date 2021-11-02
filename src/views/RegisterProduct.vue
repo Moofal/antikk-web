@@ -47,7 +47,7 @@ export default {
     return {
       categories: [],
       product: {
-        id: '',
+        id: '13',
         storeId: this.$route.params.id,
         storeName: '',
         name: '',
@@ -60,13 +60,8 @@ export default {
     }
   },
   mounted () {
-    fetch('http://localhost:3000/categories')
-      .then(response => {
-        return response.json()
-      })
-      .then(data => {
-        this.categories = data
-      })
+    this.getCategories()
+    this.getStoreName()
   },
   methods: {
     async registerProduct () {
@@ -76,6 +71,24 @@ export default {
         body: JSON.stringify(newProduct),
         headers: { 'Content-Type': 'application/json' }
       })
+    },
+    getStoreName () {
+      fetch('http://localhost:3000/store?id=' + this.product.storeId)
+        .then(response => {
+          return response.json()
+        })
+        .then(data => {
+          this.product.storeName = data[0].storeName
+        })
+    },
+    getCategories () {
+      fetch('http://localhost:3000/categories')
+        .then(response => {
+          return response.json()
+        })
+        .then(data => {
+          this.categories = data
+        })
     }
   }
 }

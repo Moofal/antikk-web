@@ -1,8 +1,7 @@
 <template>
   <div class="home-page" v-bind="$attrs">
-  <aside>
-    <div class="side-bard">
-      <form>
+    <div>
+      <form class="side-bard">
         <fieldset>
           <legend>Kategorier</legend>
           <div class="options">
@@ -17,18 +16,15 @@
         </fieldset>
       </form>
     </div>
-  </aside>
-  <main>
     <div class="products">
       <ProductCard
         v-for="product in products.slice(0,6)"
-        :key="product.prodId"
+        :key="product.id"
         :product="product"
         class="product-cards"
         :addToCart="addToCart"
       />
     </div>
-  </main>
   </div>
 </template>
 
