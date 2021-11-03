@@ -9,11 +9,13 @@
       <div>
         {{store}}
       </div>
-      <div >
+      <h2>Produktene Dine</h2>
+      <div class="products">
         <ProductCardBusiness
           v-for="(product, i) in products"
           :key="i"
           :product="product"
+          class="product-cards"
         />
       </div>
     </div>
@@ -63,5 +65,18 @@ export default {
 </script>
 
 <style>
-
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 630px;
+  justify-content: center;
+  margin: 0 auto;
+}
+.product-cards {
+  justify-content: center;
+  align-items: center;
+  max-width: 200px;
+  max-height: 450px;
+  margin: 5px;
+}
 </style>

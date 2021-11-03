@@ -34,9 +34,10 @@
       </fieldset>
     </form>
     <div class="btn-submit">
-      <button @click="registerProduct">Registrer produkt</button>
+      <router-link :to="businessUrl">
+        <button @click="registerProduct">Registrer produkt</button>
+      </router-link>
     </div>
-    {{product}}
   </div>
 </template>
 
@@ -62,6 +63,11 @@ export default {
   mounted () {
     this.getCategories()
     this.getStoreName()
+  },
+  computed: {
+    businessUrl () {
+      return '/business/' + this.product.storeId
+    }
   },
   methods: {
     async registerProduct () {

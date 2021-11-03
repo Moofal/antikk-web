@@ -8,7 +8,7 @@
     <div class="card-info">
       <h2>{{ product.name }}</h2>
       <p class="description">{{product.description}}</p>
-      <p class="price">{{product.pris}} kr</p>
+      <p class="price">{{product.price}} kr</p>
       <button @click="removeItem(index)">
         Fjern produkt
       </button>

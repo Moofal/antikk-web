@@ -5,7 +5,7 @@
       <div class="products" v-bind="$attrs">
         <ProductInCart
           v-for="(product, index) in cart"
-          :key="product.prodId"
+          :key="product.id"
           :product="product"
           class="product-cards"
           :index="index"
@@ -52,7 +52,7 @@ export default {
     getTotalPrice () {
       let sum = 0
       for (let i = 0; i < this.cart.length; i++) {
-        sum += parseInt(this.cart[i].pris)
+        sum += parseInt(this.cart[i].price)
       }
       return sum.toFixed(2)
     },

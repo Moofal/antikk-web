@@ -6,7 +6,7 @@
         <label>Produkt Navn</label>
         <input v-model="product.name">
         <label>Produkt Informasjon</label>
-        <textarea v-model="product.description" aria-rowspan="8" aria-colspan="40"></textarea>
+        <textarea v-model="product.description" aria-rowspan="10" aria-colspan="50"></textarea>
         <select v-model="product.category">
           <option v-for="(category, i) in categories" :key="i" v-bind:value="category" >
             {{category}}
@@ -34,9 +34,10 @@
       </fieldset>
     </form>
     <div class="btn-submit">
-      <button @click="editProduct">Rediger Produkt</button>
+      <router-link :to="businessUrl">
+        <button @click="editProduct">Rediger Produkt</button>
+      </router-link>
     </div>
-    {{product}}
   </div>
 </template>
 
@@ -63,6 +64,11 @@ export default {
   mounted () {
     this.getCategories()
     this.getProduct()
+  },
+  computed: {
+    businessUrl () {
+      return '/business/' + this.product.storeId
+    }
   },
   methods: {
     editProduct () {

@@ -5,7 +5,7 @@
         <fieldset>
           <legend>Kategorier</legend>
           <div class="options">
-            <input type="radio" name="category" @click="getProducts()">
+            <input type="radio" name="category" @click="getProducts()" value="" v-model="category" checked>
             <label>Alle Kategorier</label>
             <div v-for="(selected, i) in categories" :key="i">
               <input type="radio" name="category" v-bind:value="selected"
@@ -15,10 +15,19 @@
           </div>
         </fieldset>
       </form>
+      <div class="per-side">
+        <label>Vis </label>
+        <select v-model="limit">
+          <option value="6">6</option>
+          <option value="12">12</option>
+          <option value="24">24</option>
+        </select>
+        <p>per side</p>
+      </div>
     </div>
     <div class="products">
       <ProductCard
-        v-for="product in products.slice(0,6)"
+        v-for="product in products"
         :key="product.id"
         :product="product"
         class="product-cards"
@@ -41,7 +50,8 @@ export default {
     return {
       products: [],
       categories: [],
-      category: ''
+      category: '',
+      limit: '6'
     }
   },
   mounted () {
@@ -58,16 +68,7 @@ export default {
   },
   methods: {
     getProducts () {
-      fetch('http://localhost:3000/products?_limit=6')
-        .then(response => {
-          return response.json()
-        })
-        .then(data => {
-          this.products = data
-        })
-    },
-    changeCategory () {
-      fetch('http://localhost:3000/products?_limit=6&category=' + this.category)
+      fetch('http://localhost:3000/products?_limit=' + this.limit)
         .then(response => {
           return response.json()
         })
@@ -78,13 +79,42 @@ export default {
   },
   watch: {
     category: function () {
-      fetch('http://localhost:3000/products?_limit=6&category=' + this.category)
-        .then(response => {
-          return response.json()
-        })
-        .then(data => {
-          this.products = data
-        })
+      if (this.category !== '') {
+        fetch('http://localhost:3000/products?_limit=' + this.limit + '&category=' + this.category)
+          .then(response => {
+            return response.json()
+          })
+          .then(data => {
+            this.products = data
+          })
+      } else {
+        fetch('http://localhost:3000/products?_limit=' + this.limit)
+          .then(response => {
+            return response.json()
+          })
+          .then(data => {
+            this.products = data
+          })
+      }
+    },
+    limit: function () {
+      if (this.category !== '') {
+        fetch('http://localhost:3000/products?_limit=' + this.limit + '&category=' + this.category)
+          .then(response => {
+            return response.json()
+          })
+          .then(data => {
+            this.products = data
+          })
+      } else {
+        fetch('http://localhost:3000/products?_limit=' + this.limit)
+          .then(response => {
+            return response.json()
+          })
+          .then(data => {
+            this.products = data
+          })
+      }
     }
   }
 }
@@ -95,6 +125,11 @@ export default {
 }
 .side-bard {
   display: flex;
+}
+.per-side {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 }
 .products {
   display: flex;

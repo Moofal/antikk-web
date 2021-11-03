@@ -11,7 +11,7 @@
         <h3>{{product.storeName}}</h3>
       </router-link>
       <p class="description">{{product.description}}</p>
-      <p class="price">{{product.pris}} kr {{product.category}}</p>
+      <p class="price">{{product.price}} kr {{product.category}}</p>
       <AddToCart :addToCart="addToCart" :product="product"/>
     </div>
   </div>
