@@ -4,11 +4,12 @@
       <fieldset class="input">
         <legend>Registrer Produkt</legend>
         <label>Produkt Navn</label>
-        <input v-model="product.name">
+        <input v-model="product.name" placeholder="Navn">
         <label>Produkt Informasjon</label>
         <textarea v-model="product.description" aria-rowspan="10" aria-colspan="50"></textarea>
+        <label>Kategori</label>
         <select v-model="product.category">
-          <option v-for="(category, i) in categories" :key="i" v-bind:value="category" >
+          <option v-for="(category, i) in categories" :key="i" v-bind:value="category">
             {{category}}
           </option>
         </select>
@@ -21,7 +22,7 @@
         </div>
         <div class="input" v-if="product.type === 'sale' ">
           <label>Pris</label>
-          <input v-model="product.price">
+          <input v-model="product.price" placeholder="0">
         </div>
         <div class="input" v-if="product.type === 'auction' ">
           <label>Start Pris</label>
@@ -29,7 +30,7 @@
           <label>Stepper</label>
           <input v-model="product.stepper">
           <label>Når slutter auktionen</label>
-          <input type="datetime-local">
+          <input type="datetime-local" v-model="product.endDate">
         </div>
       </fieldset>
     </form>
@@ -47,21 +48,12 @@ export default {
   data () {
     return {
       categories: [],
-      product: {
-        id: '',
-        storeId: this.$route.params.id,
-        storeName: '',
-        name: '',
-        description: '',
-        image: '',
-        price: '',
-        type: '',
-        category: ''
-      },
+      product: {},
       postId: this.$route.params.id
     }
   },
   mounted () {
+    this.getStoreId()
     this.getCategories()
     this.getProduct()
   },
@@ -71,9 +63,23 @@ export default {
     }
   },
   methods: {
-    editProduct () {
+    cleanSaleType () {
+      if (this.product.type === 'sale') {
+        delete this.product.startingBid
+        delete this.product.stepper
+        delete this.product.endDate
+      }
+      if (this.product.type === 'auction') {
+        delete this.product.price
+      }
+    },
+    getStoreId () {
+      this.product.storeId = this.$route.params.id
+    },
+    async editProduct () {
+      await this.cleanSaleType()
       const editedProduct = this.product
-      fetch('http://localhost:3000/products/' + this.postId, {
+      await fetch('http://localhost:3000/products/' + this.postId, {
         method: 'PUT',
         body: JSON.stringify(editedProduct),
         headers: { 'Content-Type': 'application/json' }

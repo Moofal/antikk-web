@@ -40,9 +40,9 @@
       "name": "Small Soft Towels",
       "description": "The Football Is Good For Training And Recreational Purposes",
       "image": "http://placeimg.com/640/480/food",
-      "price": "379.00",
-      "type": "auction",
-      "category": "Møbler"
+      "type": "sale",
+      "category": "Møbler",
+      "price": "123"
     },
     {
       "id": "5",
@@ -51,7 +51,7 @@
       "name": "Sleek Wooden Soap",
       "description": "The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive",
       "image": "http://placeimg.com/640/480/food",
-      "price": "113.00",
+      "price": "113",
       "type": "sale",
       "category": "Møbler"
     },
@@ -111,37 +111,16 @@
       "category": "Bøker"
     },
     {
-      "id": "11",
+      "id": "14",
       "storeId": "1",
-      "storeName": "",
-      "name": "ples",
-      "description": "funk",
-      "image": "",
-      "price": "11",
-      "type": "sale",
-      "category": "Hobby"
-    },
-    {
-      "id": "12",
-      "storeId": "1",
-      "storeName": "",
-      "name": "Jef",
-      "description": "Gold",
-      "image": "",
-      "price": "13",
-      "type": "sale",
-      "category": "Kjøkken"
-    },
-    {
-      "id": "13",
-      "storeId": "1",
-      "storeName": "",
-      "name": "adfh",
-      "description": "jgs",
-      "image": "",
-      "price": "523",
-      "type": "sale",
-      "category": "Kjøkken"
+      "storeName": "Fredrikkstad Antikvitet",
+      "name": "jef",
+      "description": "ASF",
+      "category": "Kjøkken",
+      "type": "auction",
+      "startingBid": "123",
+      "stepper": "123",
+      "endDate": "2021-11-08T00:21"
     }
   ],
   "store": [
@@ -171,5 +150,13 @@
     "Kjøkken",
     "Hobby",
     "Bøker"
+  ],
+  "users": [
+    {
+      "fname": "Simen",
+      "lname": "Sluttbruker",
+      "email": "simensluttbruker@gmail.com",
+      "phone": "69694201"
+    }
   ]
 }

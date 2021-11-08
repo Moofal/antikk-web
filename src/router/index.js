@@ -7,6 +7,7 @@ import ProductPage from '../views/ProductPage.vue'
 import Business from '../views/Business.vue'
 import EditProduct from '../views/EditProduct.vue'
 import RegisterProduct from '../views/RegisterProduct.vue'
+import OrderHistory from '../views/orderHistory.vue'
 
 const routes = [
   {
@@ -48,6 +49,11 @@ const routes = [
     path: '/register-product/:id',
     name: 'RegisterProduct',
     component: RegisterProduct
+  },
+  {
+    path: '/order-history',
+    name: 'OrderHistory',
+    component: OrderHistory
   }
 ]
 
