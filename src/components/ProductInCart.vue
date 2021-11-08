@@ -9,9 +9,11 @@
       <h2>{{ product.name }}</h2>
       <p class="description">{{product.description}}</p>
       <p class="price">{{product.price}} kr</p>
-      <button @click="removeItem(index)">
-        Fjern produkt
-      </button>
+      <div>
+        <button @click="removeItem(index)">
+          Fjern produkt
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -38,6 +40,7 @@ export default {
   flex-direction: column;
 }
 .card-info {
+  display: flex;
   flex-direction: column;
 }
 </style>

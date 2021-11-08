@@ -9,7 +9,7 @@
       <div>
         {{store}}
       </div>
-      <div v-if="businessUser && storeId==='1'">
+      <div v-if="user === 'businessUser' && storeId==='1'">
         <h2>Produktene Dine</h2>
         <div class="products">
           <ProductCardBusiness
@@ -28,7 +28,7 @@
           :key="i"
           :product="product"
           class="product-cards"
-          :businessUser="businessUser"
+          :user="user"
         />
       </div>
     </div>
@@ -41,7 +41,7 @@ import ProductCard from '@/components/ProductCard'
 
 export default {
   name: 'Business',
-  props: ['businessUser'],
+  props: ['user'],
   components: {
     ProductCard,
     ProductCardBusiness

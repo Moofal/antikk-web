@@ -109,18 +109,6 @@
       "price": "96.00",
       "type": "auction",
       "category": "Bøker"
-    },
-    {
-      "id": "14",
-      "storeId": "1",
-      "storeName": "Fredrikkstad Antikvitet",
-      "name": "jef",
-      "description": "ASF",
-      "category": "Kjøkken",
-      "type": "auction",
-      "startingBid": "123",
-      "stepper": "123",
-      "endDate": "2021-11-08T00:21"
     }
   ],
   "store": [

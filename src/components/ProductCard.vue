@@ -12,7 +12,7 @@
       </router-link>
       <p class="description">{{product.description}}</p>
       <p class="price">{{product.price}} kr {{product.category}}</p>
-      <AddToCart :addToCart="addToCart" :product="product"/>
+      <AddToCart v-if="user !== 'businessUser'" :addToCart="addToCart" :product="product"/>
     </div>
   </div>
 </template>
@@ -22,7 +22,7 @@ import AddToCart from '@/components/AddToCart'
 
 export default {
   name: 'ProductCard',
-  props: ['product', 'addToCart'],
+  props: ['product', 'addToCart', 'user'],
   components: {
     AddToCart
   },

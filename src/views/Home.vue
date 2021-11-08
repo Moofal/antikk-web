@@ -32,6 +32,7 @@
         :product="product"
         class="product-cards"
         :addToCart="addToCart"
+        :user="user"
       />
     </div>
   </div>
@@ -42,7 +43,7 @@ import ProductCard from '@/components/ProductCard'
 
 export default {
   name: 'Home',
-  props: ['addToCart'],
+  props: ['addToCart', 'user', 'search'],
   components: {
     ProductCard
   },
