@@ -9,13 +9,26 @@
       <div>
         {{store}}
       </div>
-      <h2>Produktene Dine</h2>
-      <div class="products">
-        <ProductCardBusiness
+      <div v-if="businessUser && storeId==='1'">
+        <h2>Produktene Dine</h2>
+        <div class="products">
+          <ProductCardBusiness
+            v-for="(product, i) in products"
+            :key="i"
+            :product="product"
+            class="product-cards"
+            :businessUrl="businessUrl"
+            :getProducts="getProducts"
+          />
+        </div>
+      </div>
+      <div v-else>
+        <ProductCard
           v-for="(product, i) in products"
           :key="i"
           :product="product"
           class="product-cards"
+          :businessUser="businessUser"
         />
       </div>
     </div>
@@ -24,10 +37,13 @@
 
 <script>
 import ProductCardBusiness from '@/components/ProductCardBusiness'
+import ProductCard from '@/components/ProductCard'
 
 export default {
   name: 'Business',
+  props: ['businessUser'],
   components: {
+    ProductCard,
     ProductCardBusiness
   },
   data () {
@@ -43,28 +59,39 @@ export default {
     },
     editProductUrl () {
       return '/edit-product/'
+    },
+    businessUrl () {
+      return '/business/' + this.storeId
     }
   },
   mounted () {
-    fetch('http://localhost:3000/store?id=' + this.storeId)
-      .then(response => {
-        return response.json()
-      })
-      .then(data => {
-        this.store = data
-      })
-    fetch('http://localhost:3000/products?storeId=' + this.storeId)
-      .then(response => {
-        return response.json()
-      })
-      .then(data => {
-        this.products = data
-      })
+    this.getStoreInfo()
+    this.getProducts()
+  },
+  methods: {
+    getStoreInfo () {
+      fetch('http://localhost:3000/store?id=' + this.storeId)
+        .then(response => {
+          return response.json()
+        })
+        .then(data => {
+          this.store = data[0]
+        })
+    },
+    getProducts () {
+      fetch('http://localhost:3000/products?storeId=' + this.storeId)
+        .then(response => {
+          return response.json()
+        })
+        .then(data => {
+          this.products = data
+        })
+    }
   }
 }
 </script>
 
-<style>
+<style scoped>
 .products {
   display: flex;
   flex-wrap: wrap;
