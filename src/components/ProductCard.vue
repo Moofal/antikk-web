@@ -8,10 +8,15 @@
           <h3>{{product.storeName}}</h3>
         </router-link>
         <p class="description">{{product.description}}</p>
-        <p class="price">{{product.price}} kr {{product.category}}</p>
+        <div v-if="product.type !== 'auction'">
+          <p class="price">{{product.price}} kr {{product.category}}</p>
+        </div>
+        <div v-else>
+          <p class="price">Start bud: {{product.startingBid}} kr {{product.category}}</p>
+        </div>
       </div>
     </router-link>
-      <AddToCart v-if="user !== 'businessUser'" :addToCart="addToCart" :product="product"/>
+      <AddToCart v-if="user !== 'businessUser' && product.type !== 'auction'" :addToCart="addToCart" :product="product"/>
     </div>
   </div>
 </template>

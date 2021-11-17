@@ -69,55 +69,6 @@ export default {
   },
   methods: {
     getProducts () {
-      fetch('http://localhost:3000/products?_limit=' + this.limit)
-        .then(response => {
-          return response.json()
-        })
-        .then(data => {
-          this.products = data
-        })
-    }
-  },
-  watch: {
-    category: function () {
-      if (this.category !== '') {
-        fetch('http://localhost:3000/products?_limit=' + this.limit + '&category=' + this.category)
-          .then(response => {
-            return response.json()
-          })
-          .then(data => {
-            this.products = data
-          })
-      } else {
-        fetch('http://localhost:3000/products?_limit=' + this.limit)
-          .then(response => {
-            return response.json()
-          })
-          .then(data => {
-            this.products = data
-          })
-      }
-    },
-    limit: function () {
-      if (this.category !== '') {
-        fetch('http://localhost:3000/products?_limit=' + this.limit + '&category=' + this.category)
-          .then(response => {
-            return response.json()
-          })
-          .then(data => {
-            this.products = data
-          })
-      } else {
-        fetch('http://localhost:3000/products?_limit=' + this.limit)
-          .then(response => {
-            return response.json()
-          })
-          .then(data => {
-            this.products = data
-          })
-      }
-    },
-    search: function () {
       if (this.category !== '' && this.search !== '') {
         fetch('http://localhost:3000/products?_limit=' + this.limit +
           '&category=' + this.category + '&q=' + this.search)
@@ -127,9 +78,16 @@ export default {
           .then(data => {
             this.products = data
           })
-      }
-      if (this.category === '' && this.search !== '') {
+      } else if (this.category === '' && this.search !== '') {
         fetch('http://localhost:3000/products?_limit=' + this.limit + '&q=' + this.search)
+          .then(response => {
+            return response.json()
+          })
+          .then(data => {
+            this.products = data
+          })
+      } else if (this.category !== '' && this.search === '') {
+        fetch('http://localhost:3000/products?_limit=' + this.limit + '&category=' + this.category)
           .then(response => {
             return response.json()
           })
@@ -145,6 +103,17 @@ export default {
             this.products = data
           })
       }
+    }
+  },
+  watch: {
+    category: function () {
+      this.getProducts()
+    },
+    limit: function () {
+      this.getProducts()
+    },
+    search: function () {
+      this.getProducts()
     }
   }
 }

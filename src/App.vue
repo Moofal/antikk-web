@@ -96,7 +96,6 @@ export default {
     },
     onSearch () {
       this.search = this.tempSearch
-      console.log(this.search)
     }
   }
 }

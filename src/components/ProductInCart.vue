@@ -1,10 +1,6 @@
 <template>
   <div class="card">
-    <div class="card-img">
-      <router-link :to="productUrl">
-        <img src="../assets/logo.png" alt="Bilde av produkt">
-      </router-link>
-    </div>
+    <router-link :to="productUrl">
     <div class="card-info">
       <h2>{{ product.name }}</h2>
       <p class="description">{{product.description}}</p>
@@ -15,6 +11,7 @@
         </button>
       </div>
     </div>
+    </router-link>
   </div>
 </template>
 
@@ -36,8 +33,9 @@ export default {
   flex-wrap: wrap;
   align-items: center;
 }
-.card-img {
-  flex-direction: column;
+* {
+  text-decoration: none;
+  color: black;
 }
 .card-info {
   display: flex;

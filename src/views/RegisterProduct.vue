@@ -61,7 +61,7 @@ export default {
     return {
       categories: [],
       product: {
-        id: '14'
+        id: '15'
       }
     }
   },
