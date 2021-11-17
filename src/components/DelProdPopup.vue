@@ -6,11 +6,9 @@
         X
       </button>
       <h3>Er du sikker på at du vill slette dette produktet?</h3>
-      <router-link :to="businessUrl">
         <button @click="deleteProduct" class="delete">
           Slett
         </button>
-      </router-link>
     </div>
   </div>
 </template>
@@ -18,7 +16,7 @@
 <script>
 export default {
   name: 'DelProdPopup',
-  props: ['toggleDelPop', 'deleteProduct', 'businessUrl']
+  props: ['toggleDelPop', 'deleteProduct']
 }
 </script>
 

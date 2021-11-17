@@ -1,5 +1,17 @@
 <template>
   <div class="register-page">
+    <nav class="breadcrumb">
+      <span>
+        Her er du:
+      </span>
+      <div>
+        <router-link :to="businessUrl">Bedrift Side</router-link>
+        <span>></span>
+      </div>
+      <div>
+        <span>Registrer Produkt</span>
+      </div>
+    </nav>
     <form class="register-input">
       <fieldset class="input">
         <legend>Registrer Produkt</legend>
@@ -108,6 +120,10 @@ export default {
 </script>
 
 <style scoped>
+.breadcrumb {
+  display: flex;
+  flex-direction: row;
+}
 .input {
   display: flex;
   flex-direction: column;

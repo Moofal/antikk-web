@@ -69,7 +69,17 @@ export default {
     delPop () {
       this.proceedToPay = !this.proceedToPay
     },
-    pay () {
+    async pay () {
+      const newOrder = {}
+      newOrder.id = '1'
+      newOrder.orderNumber = '1'
+      newOrder.products = this.cart
+      newOrder.total = this.getTotalPrice()
+      await fetch('http://localhost:3000/order', {
+        method: 'POST',
+        body: JSON.stringify(newOrder),
+        headers: { 'Content-Type': 'application/json' }
+      })
       this.clearCart()
       this.delPop()
     }

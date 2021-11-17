@@ -1,5 +1,17 @@
 <template>
   <div class="register-page">
+    <nav class="breadcrumb">
+      <span>
+        Her er du:
+      </span>
+      <div>
+        <router-link :to="businessUrl">Bedrift Side</router-link>
+        <span>></span>
+      </div>
+      <div>
+        <span>Registrer Produkt</span>
+      </div>
+    </nav>
     <form class="register-input">
       <fieldset class="input">
         <legend>Registrer Produkt</legend>
@@ -28,7 +40,7 @@
           <label>Start Pris</label>
           <input v-model="product.startingBid">
           <label>Stepper</label>
-          <input v-model="product.stepper">
+          <input v-model="product.bidIncrements">
           <label>Når slutter auktionen</label>
           <input type="datetime-local" v-model="product.endDate">
         </div>
@@ -67,7 +79,7 @@ export default {
     cleanSaleType () {
       if (this.product.type === 'sale') {
         delete this.product.startingBid
-        delete this.product.stepper
+        delete this.product.bidIncrements
         delete this.product.endDate
       }
       if (this.product.type === 'auction') {
@@ -109,6 +121,10 @@ export default {
 </script>
 
 <style scoped>
+.breadcrumb {
+  display: flex;
+  flex-direction: row;
+}
 .input {
   display: flex;
   flex-direction: column;

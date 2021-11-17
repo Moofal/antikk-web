@@ -1,20 +1,37 @@
 <template>
-  <main class="grid-container">
-    <div v-for="(product, i) in product" :key="i">
+  <main class="grid-container" v-for="(product, i) in product" :key="i">
     <h2 class="product-title">{{product.name}}</h2>
-    <img src="https://www.antiquaethodierna.no/users/antiquaethod_mystore_no/images/31659_Liten_kopp_og_sk_l_med_trykt_dekor_1.jpg" alt="image description" width="300"/>
-    <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+    <div class="product-text">
+      <h3>Produkt beskrivelse</h3>
+      <p>{{product.description}}</p>
+    </div>
+    <div v-if="product.type==='sale'" class="product-sale-auction">
+      <p>Salg</p>
+      <div>{{product.pris}}</div>
+      <AddToCart :addToCart="addToCart" :product="product"/>
+    </div>
+    <div >
+      <AuctionWindow v-if="product.type==='auction'" :id="id" :product="product"/>
     </div>
   </main>
 </template>
 
 <script>
+import AddToCart from '../components/AddToCart'
+import AuctionWindow from '../components/AuctionWindow'
 export default {
   name: 'ProductPage',
+  props: ['addToCart'],
+  components: {
+    AddToCart,
+    AuctionWindow
+  },
   data () {
     return {
       id: this.$route.params.id,
-      product: []
+      product: [],
+      showAddToCartWindow: false,
+      showAuctionWindow: true
     }
   },
   mounted () {
@@ -30,10 +47,14 @@ export default {
 </script>
 
 <style scoped>
-  .grid-container{
-    display: grid;
-  }
-  .product-title{
-    grid-area: product-title;
-  }
+.grid-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.product-sale-auction{
+  grid-area: productsaleauction;
+  border-style: solid;
+}
 </style>

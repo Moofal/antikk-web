@@ -4,7 +4,7 @@
       <h2>Min side</h2>
       <div>Inlogget som: {{user.fname}} {{user.lname}}, {{user.email}}, {{user.phone}}</div>
     </div>
-    <router-link to="/order-history">
+    <router-link to="/orders">
       <button>
         Mine ordre
       </button>

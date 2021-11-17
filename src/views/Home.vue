@@ -116,6 +116,35 @@ export default {
             this.products = data
           })
       }
+    },
+    search: function () {
+      if (this.category !== '' && this.search !== '') {
+        fetch('http://localhost:3000/products?_limit=' + this.limit +
+          '&category=' + this.category + '&q=' + this.search)
+          .then(response => {
+            return response.json()
+          })
+          .then(data => {
+            this.products = data
+          })
+      }
+      if (this.category === '' && this.search !== '') {
+        fetch('http://localhost:3000/products?_limit=' + this.limit + '&q=' + this.search)
+          .then(response => {
+            return response.json()
+          })
+          .then(data => {
+            this.products = data
+          })
+      } else {
+        fetch('http://localhost:3000/products?_limit=' + this.limit)
+          .then(response => {
+            return response.json()
+          })
+          .then(data => {
+            this.products = data
+          })
+      }
     }
   }
 }

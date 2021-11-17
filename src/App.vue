@@ -19,6 +19,7 @@
     :seeAsBusiness="seeAsBusiness"
     :loggOut="loggOut"
     :user="user"
+    :search="search"
   />
   <Footer />
 </template>
