@@ -56,13 +56,13 @@ export default {
     }
   },
   mounted () {
-    fetch('http://localhost:3000/categories')
-      .then(response => {
-        return response.json()
-      })
-      .then(data => {
-        this.categories = data
-      })
+    // fetch('http://localhost:3000/categories')
+    //   .then(response => {
+    //     return response.json()
+    //   })
+    //   .then(data => {
+    //     this.categories = data
+    //   })
   },
   created () {
     this.getProducts()
@@ -100,7 +100,8 @@ export default {
             return response.json()
           })
           .then(data => {
-            this.products = data
+            console.log(data)
+            this.products = data.data
           })
       }
     }
