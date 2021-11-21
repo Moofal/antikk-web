@@ -12,7 +12,7 @@
     },
     {
       "id": "2",
-      "storeId": "1",
+      "storeId": "2",
       "storeName": "Halden Antikvitet",
       "type": "sale",
       "name": "Unbranded Rubber Computer",
@@ -22,7 +22,7 @@
     },
     {
       "id": "3",
-      "storeId": "1",
+      "storeId": "2",
       "storeName": "Halden Antikvitet",
       "type": "sale",
       "name": "Handcrafted Steel Chair",
@@ -32,7 +32,7 @@
     },
     {
       "id": "4",
-      "storeId": "1",
+      "storeId": "2",
       "storeName": "Halden Antikvitet",
       "type": "sale",
       "name": "Handmade Fresh Hat",
@@ -42,7 +42,7 @@
     },
     {
       "id": "5",
-      "storeId": "2",
+      "storeId": "1",
       "storeName": "Fredrikkstad Antikvitet",
       "type": "sale",
       "name": "Generic Soft Table",
@@ -62,7 +62,7 @@
     },
     {
       "id": "7",
-      "storeId": "1",
+      "storeId": "2",
       "storeName": "Halden Antikvitet",
       "type": "sale",
       "name": "Ergonomic Soft Bacon",
@@ -72,7 +72,7 @@
     },
     {
       "id": "8",
-      "storeId": "2",
+      "storeId": "1",
       "storeName": "Fredrikkstad Antikvitet",
       "type": "sale",
       "name": "Awesome Rubber Mouse",
@@ -92,7 +92,7 @@
     },
     {
       "id": "10",
-      "storeId": "2",
+      "storeId": "1",
       "storeName": "Fredrikkstad Antikvitet",
       "type": "sale",
       "name": "Practical Steel Car",
@@ -102,7 +102,7 @@
     },
     {
       "id": "11",
-      "storeId": "2",
+      "storeId": "1",
       "storeName": "Fredrikkstad Antikvitet",
       "type": "auction",
       "name": "Sleek Wooden Gloves",
@@ -114,7 +114,7 @@
     },
     {
       "id": "12",
-      "storeId": "2",
+      "storeId": "1",
       "storeName": "Fredrikkstad Antikvitet",
       "type": "auction",
       "name": "Awesome Granite Pants",
@@ -150,7 +150,7 @@
     },
     {
       "id": "15",
-      "storeId": "1",
+      "storeId": "2",
       "storeName": "Halden Antikvitet",
       "type": "auction",
       "name": "Tasty Cotton Ball",
@@ -162,7 +162,7 @@
     },
     {
       "id": "16",
-      "storeId": "1",
+      "storeId": "2",
       "storeName": "Halden Antikvitet",
       "type": "auction",
       "name": "Licensed Plastic Sausages",
@@ -186,7 +186,7 @@
     },
     {
       "id": "18",
-      "storeId": "1",
+      "storeId": "2",
       "storeName": "Halden Antikvitet",
       "type": "auction",
       "name": "Handmade Metal Bacon",
@@ -297,6 +297,53 @@
         }
       ],
       "total": "1380.00"
+    },
+    {
+      "id": "2",
+      "orderNumber": "2",
+      "products": [
+        {
+          "id": "1",
+          "storeId": "2",
+          "storeName": "Halden Antikvitet",
+          "type": "sale",
+          "name": "Sleek Plastic Shoes",
+          "description": "New range of formal shirts are designed keeping you in mind. With fits and styling that will make you stand apart",
+          "category": "Møbler",
+          "price": "552.00"
+        },
+        {
+          "id": "2",
+          "storeId": "2",
+          "storeName": "Halden Antikvitet",
+          "type": "sale",
+          "name": "Unbranded Rubber Computer",
+          "description": "Carbonite web goalkeeper gloves are ergonomically designed to give easy fit",
+          "category": "Bøker",
+          "price": "615.00"
+        },
+        {
+          "id": "3",
+          "storeId": "2",
+          "storeName": "Halden Antikvitet",
+          "type": "sale",
+          "name": "Handcrafted Steel Chair",
+          "description": "The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive",
+          "category": "Møbler",
+          "price": "790.00"
+        },
+        {
+          "id": "4",
+          "storeId": "2",
+          "storeName": "Halden Antikvitet",
+          "type": "sale",
+          "name": "Handmade Fresh Hat",
+          "description": "The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive",
+          "category": "Bøker",
+          "price": "917.00"
+        }
+      ],
+      "total": "2874.00"
     }
   ]
 }

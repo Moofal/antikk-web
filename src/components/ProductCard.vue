@@ -49,9 +49,11 @@ export default {
 h2 {
   margin: auto;
 }
+h3:hover {
+  text-decoration: underline;
+}
 h3 {
   margin: auto;
-  text-decoration: none;
 }
 .description {
   margin: auto;

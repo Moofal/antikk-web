@@ -1,17 +1,19 @@
 <template>
   <div class="card">
-    <router-link :to="productUrl">
     <div class="card-info">
-      <h2>{{ product.name }}</h2>
-      <p class="description">{{product.description}}</p>
-      <p class="price">{{product.price}} kr</p>
+      <router-link :to="productUrl">
+      <div>
+        <h2>{{ product.name }}</h2>
+        <p class="description">{{product.description}}</p>
+        <p class="price">{{product.price}} kr</p>
+      </div>
+    </router-link>
       <div>
         <button @click="removeItem(index)">
           Fjern produkt
         </button>
       </div>
     </div>
-    </router-link>
   </div>
 </template>
 

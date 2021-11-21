@@ -71,8 +71,8 @@ export default {
     },
     async pay () {
       const newOrder = {}
-      newOrder.id = '1'
-      newOrder.orderNumber = '1'
+      newOrder.id = '2'
+      newOrder.orderNumber = '2'
       newOrder.products = this.cart
       newOrder.total = this.getTotalPrice()
       await fetch('http://localhost:3000/order', {

@@ -95,7 +95,7 @@ export default {
             this.products = data
           })
       } else {
-        fetch('http://localhost:3000/products?_limit=' + this.limit)
+        fetch('http://localhost:9090/products?_limit=' + this.limit)
           .then(response => {
             return response.json()
           })
