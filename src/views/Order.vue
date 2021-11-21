@@ -64,7 +64,7 @@ export default {
   },
   methods: {
     getOrder () {
-      fetch('http://localhost:3000/order/?id=' + 5)
+      fetch('http://localhost:3000/order/?id=' + this.orderId)
         .then(async response => {
           const data = await response.json()
 

@@ -12,7 +12,7 @@
             {{store.address.postalCode}}
           </div>
         </div>
-        <div v-if="user === 'businessUser' && storeId==='1'">
+        <div v-if="user === 'businessUser'">
           <h2>Ordre</h2>
           <router-link to="/orders">
             <button>
@@ -106,6 +106,7 @@ export default {
           return response.json()
         })
         .then(data => {
+          console.log(data)
           this.products = data
           this.loaded = true
         })
