@@ -1,6 +1,6 @@
 <template>
   <button @click="addToCart(product.id)">
-    Legg til
+    Legg i handlevogn
   </button>
 </template>
 

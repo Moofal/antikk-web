@@ -1,11 +1,11 @@
 <template>
   <div class="cart">
     <h1>Handlevogn</h1>
-    <CartPopup v-if="proceedToPay" :togglePaymentPopup="togglePaymentPopup" :pay="pay"/>
+    <CartPopup v-if="proceedToPay" :togglePaymentPopup="delPop" :pay="pay"/>
       <div class="products" v-bind="$attrs">
         <ProductInCart
           v-for="(product, index) in cart"
-          :key="product.prodId"
+          :key="product.id"
           :product="product"
           class="product-cards"
           :index="index"
@@ -21,7 +21,7 @@
           <li>{{getTotalPrice()}}</li>
         </ul>
       </div>
-      <p v-if="!endUser">Du må være en bruker for å kunne handle</p>
+      <p v-if="user !=='endUser'">Du må være en bruker for å kunne handle</p>
       <div class="btn-proceed">
         <button @click="proceed">
           GÅ TIL KASSEN
@@ -42,7 +42,7 @@ export default {
     ProductInCart,
     CartPopup
   },
-  props: ['cart', 'removeItem', 'clearCart', 'endUser'],
+  props: ['cart', 'removeItem', 'clearCart', 'user'],
   data () {
     return {
       proceedToPay: false
@@ -52,7 +52,7 @@ export default {
     getTotalPrice () {
       let sum = 0
       for (let i = 0; i < this.cart.length; i++) {
-        sum += parseInt(this.cart[i].pris)
+        sum += parseInt(this.cart[i].price)
       }
       return sum.toFixed(2)
     },
@@ -62,16 +62,26 @@ export default {
       }
     },
     proceed () {
-      if (this.endUser) {
-        this.togglePaymentPopup()
+      if (this.user === 'endUser') {
+        this.delPop()
       }
     },
-    togglePaymentPopup () {
+    delPop () {
       this.proceedToPay = !this.proceedToPay
     },
-    pay () {
+    async pay () {
+      const newOrder = {}
+      newOrder.id = '2'
+      newOrder.orderNumber = '2'
+      newOrder.products = this.cart
+      newOrder.total = this.getTotalPrice()
+      await fetch('http://localhost:3000/order', {
+        method: 'POST',
+        body: JSON.stringify(newOrder),
+        headers: { 'Content-Type': 'application/json' }
+      })
       this.clearCart()
-      this.togglePaymentPopup()
+      this.delPop()
     }
   }
 }

@@ -1,11 +1,11 @@
 <template>
   <header>
     <router-link to="/" class="header-button"><h1>Antikk Web</h1></router-link>
-    <input type="search" placeholder="Søk">
+    <input type="search" v-on:keydown.enter="onSearch" v-model="tempSearch" placeholder="Søk">
     <nav>
-    <router-link v-if="endUser" to="/bruker" class="header-button"><span>Bruker</span></router-link>
-      <router-link v-if="businessUser" to="/business/1" class="header-button"><span>Bedrift</span></router-link>
-    <router-link v-if="!businessUser" to="/cart" class="header-button"><span>Handlevogn({{numProdInCart}})</span></router-link>
+    <router-link v-if="user === 'endUser'" to="/bruker" class="header-button"><span>Bruker</span></router-link>
+      <router-link v-if="user === 'businessUser'" to="/business/1" class="header-button"><span>Bedrift</span></router-link>
+    <router-link v-if="user !== 'businessUser'" to="/cart" class="header-button"><span>Handlevogn({{numProdInCart}})</span></router-link>
     <router-link to="/logg-inn" class="header-button"><span>Logg inn</span></router-link>
     </nav>
   </header>
@@ -18,8 +18,8 @@
     :seeAsEndUser="seeAsEndUser"
     :seeAsBusiness="seeAsBusiness"
     :loggOut="loggOut"
-    :endUser="endUser"
-    :businessUser="businessUser"
+    :user="user"
+    :search="search"
   />
   <Footer />
 </template>
@@ -36,8 +36,9 @@ export default {
     return {
       cart: [],
       numProdInCart: 0,
-      endUser: false,
-      businessUser: false
+      user: '',
+      tempSearch: '',
+      search: ''
     }
   },
   mounted () {
@@ -50,10 +51,13 @@ export default {
     if (localStorage.numProdInCart) {
       this.numProdInCart = localStorage.numProdInCart
     }
+    if (localStorage.user) {
+      this.user = localStorage.user
+    }
   },
   methods: {
     addToCart (id) {
-      fetch('http://localhost:3000/products?prodId=' + id)
+      fetch('http://localhost:3000/products?id=' + id)
         .then(response => {
           return response.json()
         })
@@ -79,16 +83,19 @@ export default {
       this.saveChart()
     },
     seeAsEndUser () {
-      this.endUser = true
-      this.businessUser = false
+      this.user = 'endUser'
+      localStorage.user = this.user
     },
     seeAsBusiness () {
-      this.businessUser = true
-      this.endUser = false
+      this.user = 'businessUser'
+      localStorage.user = this.user
     },
     loggOut () {
-      this.businessUser = false
-      this.endUser = false
+      this.user = ''
+      localStorage.user = this.user
+    },
+    onSearch () {
+      this.search = this.tempSearch
     }
   }
 }
