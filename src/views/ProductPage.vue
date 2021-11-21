@@ -40,12 +40,13 @@ export default {
     }
   },
   mounted () {
-    fetch('http://localhost:3000/products?id=' + this.id)
+    fetch('http://localhost:9090/client/product/' + this.id + '/details')
       .then(response => {
         return response.json()
       })
       .then(data => {
-        this.product.push(data[0])
+        console.log(data)
+        this.product.push(data.data)
       })
   }
 }
