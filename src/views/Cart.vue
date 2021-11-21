@@ -35,6 +35,7 @@
 <script>
 import CartPopup from '@/components/CartPopup'
 import ProductInCart from '@/components/ProductInCart'
+import url from '../httpRoutes'
 
 export default {
   name: 'Cart',
@@ -75,7 +76,7 @@ export default {
       newOrder.orderNumber = '2'
       newOrder.products = this.cart
       newOrder.total = this.getTotalPrice()
-      await fetch('http://localhost:3000/order', {
+      await fetch(url.orders, {
         method: 'POST',
         body: JSON.stringify(newOrder),
         headers: { 'Content-Type': 'application/json' }

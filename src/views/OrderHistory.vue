@@ -34,6 +34,8 @@
 </template>
 
 <script>
+// import url from '../httpRoutes'
+
 import UserOrder from '@/components/UserOrder'
 export default {
   name: 'OrderHistory',
