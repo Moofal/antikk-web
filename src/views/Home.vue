@@ -40,6 +40,7 @@
 
 <script>
 import ProductCard from '@/components/ProductCard'
+import url from '../httpRoutes'
 
 export default {
   name: 'Home',
@@ -56,37 +57,23 @@ export default {
     }
   },
   mounted () {
-    fetch('http://localhost:3000/categories')
-      .then(response => {
-        return response.json()
-      })
-      .then(data => {
-        this.categories = data
-      })
+    this.getCategories()
   },
   created () {
     this.getProducts()
   },
   methods: {
+    getCategories () {
+      fetch(url.categories)
+        .then(response => {
+          return response.json()
+        })
+        .then(data => {
+          this.categories = data
+        })
+    },
     getProducts () {
-      if (this.category !== '' && this.search !== '') {
-        fetch('http://localhost:3000/products?_limit=' + this.limit +
-          '&category=' + this.category + '&q=' + this.search)
-          .then(response => {
-            return response.json()
-          })
-          .then(data => {
-            this.products = data
-          })
-      } else if (this.category === '' && this.search !== '') {
-        fetch('http://localhost:3000/products?_limit=' + this.limit + '&q=' + this.search)
-          .then(response => {
-            return response.json()
-          })
-          .then(data => {
-            this.products = data
-          })
-      } else if (this.category !== '' && this.search === '') {
+      if (this.category !== '') {
         fetch('http://localhost:3000/products?_limit=' + this.limit + '&category=' + this.category)
           .then(response => {
             return response.json()
@@ -95,7 +82,7 @@ export default {
             this.products = data
           })
       } else {
-        fetch('http://localhost:9090/products?_limit=' + this.limit)
+        fetch(url.productLimit + this.limit)
           .then(response => {
             return response.json()
           })

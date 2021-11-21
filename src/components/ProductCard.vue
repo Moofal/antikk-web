@@ -16,7 +16,11 @@
         </div>
       </div>
     </router-link>
-      <AddToCart v-if="user !== 'businessUser' && product.type !== 'auction'" :addToCart="addToCart" :product="product"/>
+      <AddToCart
+        v-if="user !== 'businessUser'
+        && product.type !== 'auction'"
+        :addToCart="addToCart"
+        :product="product"/>
     </div>
   </div>
 </template>

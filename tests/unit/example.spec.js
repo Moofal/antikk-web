@@ -1,12 +1,8 @@
-import { shallowMount } from '@vue/test-utils'
-import HelloWorld from '@/views/Home.vue'
+import { mount } from '@vue/test-utils'
+import Home from '@/views/Home.vue'
 
-describe('Home.vue', () => {
-  it('renders props.msg when passed', () => {
-    const msg = 'new message'
-    const wrapper = shallowMount(HelloWorld, {
-      props: { msg }
-    })
-    expect(wrapper.text()).toMatch(msg)
-  })
+test('renders products', () => {
+  const wrapper = mount(Home)
+  const products = wrapper.vm.products
+  console.log(products)
 })

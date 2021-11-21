@@ -24,6 +24,8 @@
 <script>
 import AddToCart from '../components/AddToCart'
 import AuctionWindow from '../components/AuctionWindow'
+import url from '../httpRoutes'
+
 export default {
   name: 'ProductPage',
   props: ['addToCart'],
@@ -40,7 +42,7 @@ export default {
     }
   },
   mounted () {
-    fetch('http://localhost:3000/products?id=' + this.id)
+    fetch(url.productId + this.id)
       .then(response => {
         return response.json()
       })

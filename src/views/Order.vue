@@ -38,16 +38,22 @@
     </div>
     <p>Total pris: {{order.total}} kr</p>
   </div>
+  <div v-if="!loaded">
+    {{errorMessage}}
+  </div>
 </template>
 
 <script>
+import url from '../httpRoutes'
+
 export default {
   name: 'Order',
   data () {
     return {
       orderId: this.$route.params.id,
       order: [],
-      loaded: false
+      loaded: false,
+      errorMessage: null
     }
   },
   mounted () {
@@ -60,13 +66,23 @@ export default {
   },
   methods: {
     getOrder () {
-      fetch('http://localhost:3000/order/?id=' + this.orderId)
-        .then(response => {
-          return response.json()
-        })
-        .then(data => {
-          this.order = data[0]
+      fetch(url.orderId + this.orderId)
+        .then(async response => {
+          const data = await response.json()
+
+          // check for error response
+          if (!response.ok) {
+            // get error message from body or default to response statusText
+            const error = (data && data.message) || response.statusText
+            return Promise.reject(error)
+          }
+
+          this.order = data
           this.loaded = true
+        })
+        .catch(error => {
+          this.errorMessage = error
+          console.error('There was an error!', error)
         })
     }
   }

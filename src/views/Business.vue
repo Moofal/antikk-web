@@ -12,7 +12,7 @@
             {{store.address.postalCode}}
           </div>
         </div>
-        <div v-if="user === 'businessUser' && storeId==='1'">
+        <div v-if="user === 'businessUser'">
           <h2>Ordre</h2>
           <router-link to="/orders">
             <button>
@@ -21,7 +21,7 @@
           </router-link>
         </div>
       </div>
-      <div v-if="user === 'businessUser' && storeId==='1'">
+      <div v-if="user === 'businessUser'">
         <h2 class="product-title">Produktene Dine</h2>
         <router-link :to="addToProductsUrl"  class="add-prod-btn">
           <button>
@@ -59,6 +59,7 @@
 <script>
 import ProductCardBusiness from '@/components/ProductCardBusiness'
 import ProductCard from '@/components/ProductCard'
+import url from '../httpRoutes'
 
 export default {
   name: 'Business',
@@ -92,7 +93,7 @@ export default {
   },
   methods: {
     getStoreInfo () {
-      fetch('http://localhost:3000/store?id=' + this.storeId)
+      fetch(url.storeId + this.storeId)
         .then(response => {
           return response.json()
         })
@@ -101,7 +102,7 @@ export default {
         })
     },
     getProducts () {
-      fetch('http://localhost:3000/products?storeId=' + this.storeId)
+      fetch(url.productsStoreId + this.storeId)
         .then(response => {
           return response.json()
         })

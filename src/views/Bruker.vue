@@ -13,6 +13,7 @@
 </template>
 
 <script>
+import url from '../httpRoutes'
 export default {
   name: 'Bruker',
   data () {
@@ -25,7 +26,7 @@ export default {
   },
   methods: {
     getUser () {
-      fetch('http://localhost:3000/users/?_fname=Simen')
+      fetch(url.userSimen)
         .then(response => {
           return response.json()
         })
