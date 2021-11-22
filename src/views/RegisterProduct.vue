@@ -94,7 +94,7 @@ export default {
     async registerProduct () {
       await this.cleanSaleType()
       const newProduct = this.product
-      await fetch(url.putProduct, {
+      await fetch(url.productAction, {
         method: 'POST',
         body: JSON.stringify(newProduct),
         headers: { 'Content-Type': 'application/json' }

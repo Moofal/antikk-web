@@ -25,6 +25,8 @@
 
 <script>
 import DelProdPopup from '@/components/DelProdPopup'
+import url from '../httpRoutes'
+
 export default {
   name: 'ProductCardBusiness',
   props: ['product', 'businessUrl'],
@@ -49,7 +51,7 @@ export default {
       this.delPop = !this.delPop
     },
     async deleteProduct () {
-      await fetch('http://localhost:3000/products/' + this.product.id, {
+      await fetch(url.productAction + this.product.id, {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' }
       })

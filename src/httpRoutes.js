@@ -7,7 +7,7 @@ const url = {
   storeId: 'http://localhost:3000/store?id=',
   productsStoreId: 'http://localhost:3000/products?storeId=',
   orders: 'http://localhost:3000/order',
-  putProduct: 'http://localhost:3000/products/',
+  productAction: 'http://localhost:3000/products/',
   orderId: 'http://localhost:3000/order/?id='
 }
 

@@ -93,7 +93,7 @@ export default {
     async editProduct () {
       await this.cleanSaleType()
       const editedProduct = this.product
-      await fetch(url.putProduct + this.postId, {
+      await fetch(url.productAction + this.postId, {
         method: 'PUT',
         body: JSON.stringify(editedProduct),
         headers: { 'Content-Type': 'application/json' }
