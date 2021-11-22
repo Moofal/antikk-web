@@ -2,6 +2,7 @@
   <div v-if="loaded">
     <div class="business-home">
       <div class="row">
+<<<<<<< HEAD
 <!--        <div>-->
 <!--          <h2>{{store.storeName}}</h2>-->
 <!--          <p>{{store.description}}</p>-->
@@ -12,6 +13,18 @@
 <!--            {{store.address.postalCode}}-->
 <!--          </div>-->
 <!--        </div>-->
+=======
+        <div>
+          <h2>{{store.storeName}}</h2>
+          <p>{{store.description}}</p>
+          Tel: {{store.phone}}
+          <h3>Adresse</h3>
+          <div>
+            {{store.address.streetAddress}}
+            {{store.address.postalCode}}
+          </div>
+        </div>
+>>>>>>> main
         <div v-if="user === 'businessUser'">
           <h2>Ordre</h2>
           <router-link to="/orders">
@@ -21,7 +34,7 @@
           </router-link>
         </div>
       </div>
-      <div v-if="user === 'businessUser' && storeId==='1'">
+      <div v-if="user === 'businessUser'">
         <h2 class="product-title">Produktene Dine</h2>
         <router-link :to="addToProductsUrl"  class="add-prod-btn">
           <button>
@@ -59,6 +72,7 @@
 <script>
 import ProductCardBusiness from '@/components/ProductCardBusiness'
 import ProductCard from '@/components/ProductCard'
+import url from '../httpRoutes'
 
 export default {
   name: 'Business',
@@ -92,7 +106,7 @@ export default {
   },
   methods: {
     getStoreInfo () {
-      fetch('http://localhost:3000/store?id=' + this.storeId)
+      fetch(url.storeId + this.storeId)
         .then(response => {
           return response.json()
         })

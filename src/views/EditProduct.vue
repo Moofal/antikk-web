@@ -55,6 +55,8 @@
 </template>
 
 <script>
+import url from '../httpRoutes'
+
 export default {
   name: 'EditProduct',
   data () {
@@ -91,14 +93,14 @@ export default {
     async editProduct () {
       await this.cleanSaleType()
       const editedProduct = this.product
-      await fetch('http://localhost:3000/products/' + this.postId, {
+      await fetch(url.putProduct + this.postId, {
         method: 'PUT',
         body: JSON.stringify(editedProduct),
         headers: { 'Content-Type': 'application/json' }
       })
     },
     getProduct () {
-      fetch('http://localhost:3000/products?id=' + this.postId)
+      fetch(url.productId + this.postId)
         .then(response => {
           return response.json()
         })
@@ -107,7 +109,7 @@ export default {
         })
     },
     getCategories () {
-      fetch('http://localhost:3000/categories')
+      fetch(url.categories)
         .then(response => {
           return response.json()
         })

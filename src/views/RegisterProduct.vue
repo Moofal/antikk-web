@@ -55,13 +55,15 @@
 </template>
 
 <script>
+import url from '../httpRoutes'
+
 export default {
   name: 'RegisterProduct',
   data () {
     return {
       categories: [],
       product: {
-        id: '15'
+        id: '21'
       }
     }
   },
@@ -92,14 +94,14 @@ export default {
     async registerProduct () {
       await this.cleanSaleType()
       const newProduct = this.product
-      await fetch('http://localhost:3000/products', {
+      await fetch(url.putProduct, {
         method: 'POST',
         body: JSON.stringify(newProduct),
         headers: { 'Content-Type': 'application/json' }
       })
     },
     getStoreName () {
-      fetch('http://localhost:3000/store?id=' + this.product.storeId)
+      fetch(url.storeId + this.product.storeId)
         .then(response => {
           return response.json()
         })
@@ -108,7 +110,7 @@ export default {
         })
     },
     getCategories () {
-      fetch('http://localhost:3000/categories')
+      fetch(url.categories)
         .then(response => {
           return response.json()
         })
