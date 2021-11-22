@@ -2,7 +2,6 @@
   <div v-if="loaded">
     <div class="business-home">
       <div class="row">
-<<<<<<< HEAD
 <!--        <div>-->
 <!--          <h2>{{store.storeName}}</h2>-->
 <!--          <p>{{store.description}}</p>-->
@@ -13,18 +12,6 @@
 <!--            {{store.address.postalCode}}-->
 <!--          </div>-->
 <!--        </div>-->
-=======
-        <div>
-          <h2>{{store.storeName}}</h2>
-          <p>{{store.description}}</p>
-          Tel: {{store.phone}}
-          <h3>Adresse</h3>
-          <div>
-            {{store.address.streetAddress}}
-            {{store.address.postalCode}}
-          </div>
-        </div>
->>>>>>> main
         <div v-if="user === 'businessUser'">
           <h2>Ordre</h2>
           <router-link to="/orders">
