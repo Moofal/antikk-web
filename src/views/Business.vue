@@ -2,17 +2,17 @@
   <div v-if="loaded">
     <div class="business-home">
       <div class="row">
-        <div>
-          <h2>{{store.storeName}}</h2>
-          <p>{{store.description}}</p>
-          Tel: {{store.phone}}
-          <h3>Adresse</h3>
-          <div>
-            {{store.address.streetAddress}}
-            {{store.address.postalCode}}
-          </div>
-        </div>
-        <div v-if="user === 'businessUser' && storeId==='1'">
+<!--        <div>-->
+<!--          <h2>{{store.storeName}}</h2>-->
+<!--          <p>{{store.description}}</p>-->
+<!--          Tel: {{store.phone}}-->
+<!--          <h3>Adresse</h3>-->
+<!--          <div>-->
+<!--            {{store.address.streetAddress}}-->
+<!--            {{store.address.postalCode}}-->
+<!--          </div>-->
+<!--        </div>-->
+        <div v-if="user === 'businessUser'">
           <h2>Ordre</h2>
           <router-link to="/orders">
             <button>
@@ -87,7 +87,7 @@ export default {
     }
   },
   mounted () {
-    this.getStoreInfo()
+    // this.getStoreInfo()
     this.getProducts()
   },
   methods: {
@@ -101,12 +101,12 @@ export default {
         })
     },
     getProducts () {
-      fetch('http://localhost:3000/products?storeId=' + this.storeId)
+      fetch('http://localhost:9090/client/store/6273b508-b5eb-4972-b55b-a52ac8a9ae45/products')
         .then(response => {
           return response.json()
         })
         .then(data => {
-          this.products = data
+          this.products = data.data
           this.loaded = true
         })
     }
