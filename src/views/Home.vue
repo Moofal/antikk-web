@@ -57,13 +57,13 @@ export default {
     }
   },
   mounted () {
-    // fetch('http://localhost:3000/categories')
-    //   .then(response => {
-    //     return response.json()
-    //   })
-    //   .then(data => {
-    //     this.categories = data
-    //   })
+    fetch(url.categories)
+      .then(response => {
+        return response.json()
+      })
+      .then(data => {
+        this.categories = data.data
+      })
   },
   created () {
     this.getProducts()
@@ -75,17 +75,17 @@ export default {
           return response.json()
         })
         .then(data => {
-          this.categories = data
+          this.categories = data.data
         })
     },
     getProducts () {
       if (this.category !== '') {
-        fetch('http://localhost:3000/products?_limit=' + this.limit + '&category=' + this.category)
+        fetch(url.productLimit + this.limit + '&category=' + this.category)
           .then(response => {
             return response.json()
           })
           .then(data => {
-            this.products = data
+            this.products = data.data
           })
       } else {
         fetch(url.productLimit + this.limit)
