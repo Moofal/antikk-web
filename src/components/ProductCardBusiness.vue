@@ -10,7 +10,12 @@
       <h2>{{ product.name }}</h2>
       <h3>{{product.storeName}}</h3>
       <p class="description">{{product.description}}</p>
-      <p class="price">{{product.price}} kr {{product.category}}</p>
+      <div v-if="product.type !== 'auction'">
+        <p class="price">{{product.price}} kr {{product.category}}</p>
+      </div>
+      <div v-else>
+        <p class="price">Start bud: {{product.startingBid}} kr {{product.category}}</p>
+      </div>
       <router-link :to="editProductUrl">
         <button>
           Rediger produkt

@@ -1,56 +1,57 @@
 <template>
-  <div v-if="loaded">
-    <div class="business-home">
-      <div class="row">
+  <div class="business-home">
+    <div class="row">
+      <div v-if="storeLoaded">
+        <h2>{{store.storeName}}</h2>
+        <p>{{store.description}}</p>
+        Tel: {{store.phone}}
+        <h3>Adresse</h3>
         <div>
-          <h2>{{store.storeName}}</h2>
-          <p>{{store.description}}</p>
-          Tel: {{store.phone}}
-          <h3>Adresse</h3>
-          <div>
-            {{store.address.streetAddress}}
-            {{store.address.postalCode}}
-          </div>
-        </div>
-        <div v-if="user === 'businessUser'">
-          <h2>Ordre</h2>
-          <router-link to="/orders">
-            <button>
-              Mine ordre
-            </button>
-          </router-link>
-        </div>
-      </div>
-      <div v-if="user === 'businessUser'">
-        <h2 class="product-title">Produktene Dine</h2>
-        <router-link :to="addToProductsUrl"  class="add-prod-btn">
-          <button>
-            Legg til produkt
-          </button>
-        </router-link>
-        <div class="products">
-          <ProductCardBusiness
-            v-for="(product, i) in products"
-            :key="i"
-            :product="product"
-            class="product-cards"
-            :businessUrl="businessUrl"
-            :getProducts="getProducts"
-          />
+          {{store.address.streetAddress}}
+          {{store.address.postalCode}}
         </div>
       </div>
       <div v-else>
-        <h2 class="product-title">Produkter</h2>
-        <div class="products">
-          <ProductCard
-            v-for="(product, i) in products"
-            :key="i"
-            :product="product"
-            class="product-cards"
-            :user="user"
-            :addToCart="addToCart"
-          />
-        </div>
+        {{storeErrorMessage}}
+      </div>
+      <div v-if="user === 'businessUser'">
+        <h2>Ordre</h2>
+        <router-link to="/orders">
+          <button>
+            Mine ordre
+          </button>
+        </router-link>
+      </div>
+    </div>
+    <div v-if="user === 'businessUser'">
+      <h2 class="product-title">Produktene Dine</h2>
+      <router-link :to="addToProductsUrl"  class="add-prod-btn">
+        <button>
+          Legg til produkt
+        </button>
+      </router-link>
+      <div class="products">
+        <ProductCardBusiness
+          v-for="(product, i) in products"
+          :key="i"
+          :product="product"
+          class="product-cards"
+          :businessUrl="businessUrl"
+          :getProducts="getProducts"
+        />
+      </div>
+    </div>
+    <div v-else>
+      <h2 class="product-title">Produkter</h2>
+      <div class="products">
+        <ProductCard
+          v-for="(product, i) in products"
+          :key="i"
+          :product="product"
+          class="product-cards"
+          :user="user"
+          :addToCart="addToCart"
+        />
       </div>
     </div>
   </div>
@@ -73,7 +74,10 @@ export default {
       storeId: this.$route.params.id,
       store: [],
       products: [],
-      loaded: false
+      storeLoaded: false,
+      productsLoaded: false,
+      storeErrorMessage: null,
+      productsErrorMessage: null
     }
   },
   computed: {
@@ -94,21 +98,34 @@ export default {
   methods: {
     getStoreInfo () {
       fetch(url.storeId + this.storeId)
-        .then(response => {
-          return response.json()
-        })
-        .then(data => {
+        .then(async response => {
+          const data = await response.json()
+          if (!response.ok) {
+            const error = (data && data.message) || response.statusText
+            return Promise.reject(error)
+          }
           this.store = data[0]
+          this.storeLoaded = true
+        })
+        .catch(error => {
+          this.storeErrorMessage = error
+          console.error('There was an error!', error)
         })
     },
     getProducts () {
       fetch(url.productsStoreId + this.storeId)
-        .then(response => {
-          return response.json()
-        })
-        .then(data => {
+        .then(async response => {
+          const data = await response.json()
+          if (!response.ok) {
+            const error = (data && data.message) || response.statusText
+            return Promise.reject(error)
+          }
           this.products = data
-          this.loaded = true
+          this.productsLoaded = true
+        })
+        .catch(error => {
+          this.productsErrorMessage = error
+          console.error('There was an error!', error)
         })
     }
   }

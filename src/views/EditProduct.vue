@@ -1,5 +1,5 @@
 <template>
-  <div class="register-page">
+  <div v-if="productLoaded" class="register-page">
     <nav class="breadcrumb">
       <span>
         Her er du:
@@ -20,11 +20,14 @@
         <label>Produkt Informasjon</label>
         <textarea v-model="product.description" aria-rowspan="10" aria-colspan="50"></textarea>
         <label>Kategori</label>
-        <select v-model="product.category">
-          <option v-for="(category, i) in categories" :key="i" v-bind:value="category">
-            {{category}}
+        <select v-if="categoriesLoaded" v-model="product.category">
+          <option v-for="(category, i) in categories" :key="i" v-bind:value="category.category">
+            {{category.category}}
           </option>
         </select>
+        <div v-else>
+          {{categoriesErrorMessage}}
+        </div>
         <label>Salgs Type</label>
         <div>
           <label>Salg</label>
@@ -52,6 +55,9 @@
       </router-link>
     </div>
   </div>
+  <div v-else>
+    {{productErrorMessage}}
+  </div>
 </template>
 
 <script>
@@ -63,7 +69,12 @@ export default {
     return {
       categories: [],
       product: {},
-      postId: this.$route.params.id
+      postId: this.$route.params.id,
+      categoriesLoaded: false,
+      categoriesErrorMessage: null,
+      productLoaded: false,
+      productErrorMessage: null,
+      editProductErrorMessage: null
     }
   },
   mounted () {
@@ -98,23 +109,48 @@ export default {
         body: JSON.stringify(editedProduct),
         headers: { 'Content-Type': 'application/json' }
       })
+        .then(async response => {
+          const data = await response.json()
+          if (!response.ok) {
+            const error = (data && data.message) || response.status
+            return Promise.reject(error)
+          }
+        })
+        .catch(error => {
+          this.editProductErrorMessage = error
+          console.error('There was an error!', error)
+        })
     },
     getProduct () {
       fetch(url.productId + this.postId)
-        .then(response => {
-          return response.json()
-        })
-        .then(data => {
+        .then(async response => {
+          const data = await response.json()
+          if (!response.ok) {
+            const error = (data && data.message) || response.statusText
+            return Promise.reject(error)
+          }
           this.product = data[0]
+          this.productLoaded = true
+        })
+        .catch(error => {
+          this.productErrorMessage = error
+          console.error('There was an error!', error)
         })
     },
     getCategories () {
       fetch(url.categories)
-        .then(response => {
-          return response.json()
-        })
-        .then(data => {
+        .then(async response => {
+          const data = await response.json()
+          if (!response.ok) {
+            const error = (data && data.message) || response.statusText
+            return Promise.reject(error)
+          }
           this.categories = data
+          this.categoriesLoaded = true
+        })
+        .catch(error => {
+          this.categoriesErrorMessage = error
+          console.error('There was an error!', error)
         })
     }
   }

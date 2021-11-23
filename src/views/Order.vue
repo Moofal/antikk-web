@@ -1,5 +1,5 @@
 <template>
-  <div v-if="loaded">
+  <div v-if="orderLoaded">
     <nav class="breadcrumb">
       <span>
         Her er du:
@@ -38,8 +38,8 @@
     </div>
     <p>Total pris: {{order.total}} kr</p>
   </div>
-  <div v-if="!loaded">
-    {{errorMessage}}
+  <div v-if="!orderLoaded">
+    {{orderErrorMessage}}
   </div>
 </template>
 
@@ -52,8 +52,8 @@ export default {
     return {
       orderId: this.$route.params.id,
       order: [],
-      loaded: false,
-      errorMessage: null
+      orderLoaded: false,
+      orderErrorMessage: null
     }
   },
   mounted () {
@@ -69,19 +69,15 @@ export default {
       fetch(url.orderId + this.orderId)
         .then(async response => {
           const data = await response.json()
-
-          // check for error response
           if (!response.ok) {
-            // get error message from body or default to response statusText
             const error = (data && data.message) || response.statusText
             return Promise.reject(error)
           }
-
-          this.order = data
-          this.loaded = true
+          this.order = data[0]
+          this.orderLoaded = true
         })
         .catch(error => {
-          this.errorMessage = error
+          this.orderErrorMessage = error
           console.error('There was an error!', error)
         })
     }

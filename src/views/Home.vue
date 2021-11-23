@@ -4,14 +4,17 @@
       <form class="side-bard">
         <fieldset>
           <legend>Kategorier</legend>
-          <div class="options">
+          <div v-if="categoriesLoaded" class="options">
             <input type="radio" name="category" @click="getProducts()" value="" v-model="category" checked>
             <label>Alle Kategorier</label>
             <div v-for="(selected, i) in categories" :key="i">
-              <input type="radio" name="category" v-bind:value="selected"
+              <input type="radio" name="category" v-bind:value="selected.category"
                      v-model="category">
-              <label>{{ selected }}</label>
+              <label>{{ selected.category }}</label>
             </div>
+          </div>
+          <div v-if="!categoriesLoaded">
+            {{categoriesErrorMessage}}
           </div>
         </fieldset>
       </form>
@@ -25,7 +28,7 @@
         <p>per side</p>
       </div>
     </div>
-    <div class="products">
+    <div v-if="productsLoaded" class="products">
       <ProductCard
         v-for="product in products"
         :key="product.id"
@@ -34,6 +37,9 @@
         :addToCart="addToCart"
         :user="user"
       />
+    </div>
+    <div v-if="!productsLoaded" class="products">
+      {{productsErrorMessage}}
     </div>
   </div>
 </template>
@@ -44,7 +50,7 @@ import url from '../httpRoutes'
 
 export default {
   name: 'Home',
-  props: ['addToCart', 'user', 'search'],
+  props: ['addToCart', 'user'],
   components: {
     ProductCard
   },
@@ -53,41 +59,64 @@ export default {
       products: [],
       categories: [],
       category: '',
-      limit: '6'
+      limit: '6',
+      categoriesErrorMessage: null,
+      productsErrorMessage: null,
+      categoriesLoaded: false,
+      productsLoaded: false
     }
   },
   mounted () {
     this.getCategories()
-  },
-  created () {
     this.getProducts()
   },
   methods: {
     getCategories () {
       fetch(url.categories)
-        .then(response => {
-          return response.json()
-        })
-        .then(data => {
+        .then(async response => {
+          const data = await response.json()
+          if (!response.ok) {
+            const error = (data && data.message) || response.statusText
+            return Promise.reject(error)
+          }
           this.categories = data
+          this.categoriesLoaded = true
+        })
+        .catch(error => {
+          this.categoriesErrorMessage = error
+          console.error('There was an error!', error)
         })
     },
     getProducts () {
       if (this.category !== '') {
-        fetch('http://localhost:3000/products?_limit=' + this.limit + '&category=' + this.category)
-          .then(response => {
-            return response.json()
-          })
-          .then(data => {
+        fetch(url.productLimit + this.limit + '&category=' + this.category)
+          .then(async response => {
+            const data = await response.json()
+            if (!response.ok) {
+              const error = (data && data.message) || response.statusText
+              return Promise.reject(error)
+            }
             this.products = data
+            this.productsLoaded = true
+          })
+          .catch(error => {
+            this.productsErrorMessage = error
+            console.error('There was an error!', error)
           })
       } else {
         fetch(url.productLimit + this.limit)
-          .then(response => {
-            return response.json()
-          })
-          .then(data => {
+          .then(async response => {
+            const data = await response.json()
+            if (!response.ok) {
+              const error = (data && data.message) || response.statusText
+              return Promise.reject(error)
+            }
             this.products = data
+            this.productsLoaded = true
+          })
+          .catch(error => {
+            this.productsErrorMessage = error
+            console.error('There was an error!', error)
           })
       }
     }

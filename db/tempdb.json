@@ -244,10 +244,18 @@
     }
   ],
   "categories": [
-    "Møbler",
-    "Kjøkken",
-    "Hobby",
-    "Bøker"
+    {
+      "category": "Møbler"
+    },
+    {
+      "category": "Kjøkken"
+    },
+    {
+      "category": "Hobby"
+    },
+    {
+      "category": "Bøker"
+    }
   ],
   "users": [
     {
@@ -344,6 +352,43 @@
         }
       ],
       "total": "2874.00"
+    },
+    {
+      "id": "3",
+      "orderNumber": "3",
+      "products": [
+        {
+          "id": "2",
+          "storeId": "2",
+          "storeName": "Halden Antikvitet",
+          "type": "sale",
+          "name": "Unbranded Rubber Computer",
+          "description": "Carbonite web goalkeeper gloves are ergonomically designed to give easy fit",
+          "category": "Bøker",
+          "price": "615.00"
+        },
+        {
+          "id": "3",
+          "storeId": "2",
+          "storeName": "Halden Antikvitet",
+          "type": "sale",
+          "name": "Handcrafted Steel Chair",
+          "description": "The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive",
+          "category": "Møbler",
+          "price": "790.00"
+        },
+        {
+          "id": "4",
+          "storeId": "2",
+          "storeName": "Halden Antikvitet",
+          "type": "sale",
+          "name": "Handmade Fresh Hat",
+          "description": "The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive",
+          "category": "Bøker",
+          "price": "917.00"
+        }
+      ],
+      "total": "2322.00"
     }
   ]
 }
