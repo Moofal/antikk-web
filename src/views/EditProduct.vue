@@ -21,8 +21,8 @@
         <textarea v-model="product.description" aria-rowspan="10" aria-colspan="50"></textarea>
         <label>Kategori</label>
         <select v-if="categoriesLoaded" v-model="product.category">
-          <option v-for="(category, i) in categories" :key="i" v-bind:value="category.category">
-            {{category.category}}
+          <option v-for="(category, i) in categories" :key="i" v-bind:value="category">
+            {{category}}
           </option>
         </select>
         <div v-else>

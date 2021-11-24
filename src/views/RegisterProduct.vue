@@ -16,33 +16,33 @@
       <fieldset class="input">
         <legend>Registrer Produkt</legend>
         <label>Produkt Navn</label>
-        <input v-model="product.name" placeholder="Navn">
+        <input v-model="product.name" placeholder="Navn" class="name">
         <label>Produkt Informasjon</label>
         <textarea v-model="product.description" aria-rowspan="10" aria-colspan="50"></textarea>
         <label>Kategori</label>
         <select v-model="product.category">
-          <option v-for="(category, i) in categories" :key="i" v-bind:value="category.category">
-            {{category.category}}
+          <option v-for="(category, i) in categories" :key="i" v-bind:value="category">
+            {{category}}
           </option>
         </select>
         <label>Salgs Type</label>
         <div>
           <label>Salg</label>
-          <input type="radio" name="type" value="sale" v-model="product.type">
+          <input type="radio" name="type" value="sale" v-model="product.type" class="sale">
           <label>Auktion</label>
-          <input type="radio" name="type" value="auction" v-model="product.type">
+          <input type="radio" name="type" value="auction" v-model="product.type" class="auction">
         </div>
         <div class="input" v-if="product.type === 'sale' ">
           <label>Pris</label>
-          <input v-model="product.price" placeholder="0">
+          <input v-model="product.price" placeholder="0" class="price">
         </div>
         <div class="input" v-if="product.type === 'auction' ">
           <label>Start Pris</label>
-          <input v-model="product.startingBid">
+          <input v-model="product.startingBid" class="startingBid">
           <label>Stepper</label>
-          <input v-model="product.bidIncrements">
+          <input v-model="product.bidIncrements" class="bidIncrements">
           <label>Når slutter auktionen</label>
-          <input type="datetime-local" v-model="product.endDate">
+          <input type="datetime-local" v-model="product.endDate" class="endDate">
         </div>
       </fieldset>
     </form>
@@ -72,7 +72,6 @@ export default {
   mounted () {
     this.getStoreId()
     this.getCategories()
-    this.getStoreName()
   },
   computed: {
     businessUrl () {

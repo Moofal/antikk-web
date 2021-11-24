@@ -8,9 +8,9 @@
             <input type="radio" name="category" @click="getProducts()" value="" v-model="category" checked>
             <label>Alle Kategorier</label>
             <div v-for="(selected, i) in categories" :key="i">
-              <input type="radio" name="category" v-bind:value="selected.category"
+              <input type="radio" name="category" v-bind:value="selected"
                      v-model="category">
-              <label>{{ selected.category }}</label>
+              <label>{{ selected }}</label>
             </div>
           </div>
           <div v-if="!categoriesLoaded">
