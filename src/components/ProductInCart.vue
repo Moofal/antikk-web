@@ -5,7 +5,7 @@
       <div>
         <h2>{{ product.name }}</h2>
         <p class="description">{{product.description}}</p>
-        <p class="price">{{product.price}} kr</p>
+        <p class="price">{{product.price}} kr {{product.category}}</p>
       </div>
     </router-link>
       <div>

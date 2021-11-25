@@ -3,6 +3,7 @@
     <h1>Handlevogn</h1>
     <CartPopup v-if="proceedToPay" :togglePaymentPopup="delPop" :pay="pay"/>
       <div class="products" v-bind="$attrs">
+        {{errorMessage}}
         <ProductInCart
           v-for="(product, index) in cart"
           :key="product.id"
@@ -35,7 +36,7 @@
 <script>
 import CartPopup from '@/components/CartPopup'
 import ProductInCart from '@/components/ProductInCart'
-import url from '../httpRoutes'
+import { url } from '@/httpRoutes'
 
 export default {
   name: 'Cart',
@@ -46,7 +47,8 @@ export default {
   props: ['cart', 'removeItem', 'clearCart', 'user'],
   data () {
     return {
-      proceedToPay: false
+      proceedToPay: false,
+      errorMessage: null
     }
   },
   methods: {
@@ -72,8 +74,8 @@ export default {
     },
     async pay () {
       const newOrder = {}
-      newOrder.id = '2'
-      newOrder.orderNumber = '2'
+      newOrder.id = '3'
+      newOrder.orderNumber = '3'
       newOrder.products = this.cart
       newOrder.total = this.getTotalPrice()
       await fetch(url.orders, {
@@ -81,6 +83,17 @@ export default {
         body: JSON.stringify(newOrder),
         headers: { 'Content-Type': 'application/json' }
       })
+        .then(async response => {
+          const data = await response.json()
+          if (!response.ok) {
+            const error = (data && data.message) || response.status
+            return Promise.reject(error)
+          }
+        })
+        .catch(error => {
+          this.errorMessage = error
+          console.error('There was an error!', error)
+        })
       this.clearCart()
       this.delPop()
     }

@@ -1,5 +1,5 @@
 <template>
-  <div class="register-page">
+  <div v-if="loaded" class="register-page">
     <nav class="breadcrumb">
       <span>
         Her er du:
@@ -16,7 +16,7 @@
       <fieldset class="input">
         <legend>Registrer Produkt</legend>
         <label>Produkt Navn</label>
-        <input v-model="product.name" placeholder="Navn">
+        <input v-model="product.name" placeholder="Navn" class="name">
         <label>Produkt Informasjon</label>
         <textarea v-model="product.description" aria-rowspan="10" aria-colspan="50"></textarea>
         <label>Kategori</label>
@@ -28,21 +28,21 @@
         <label>Salgs Type</label>
         <div>
           <label>Salg</label>
-          <input type="radio" name="type" value="sale" v-model="product.type">
+          <input type="radio" name="type" value="sale" v-model="product.type" class="sale">
           <label>Auktion</label>
-          <input type="radio" name="type" value="auction" v-model="product.type">
+          <input type="radio" name="type" value="auction" v-model="product.type" class="auction">
         </div>
         <div class="input" v-if="product.type === 'sale' ">
           <label>Pris</label>
-          <input v-model="product.price" placeholder="0">
+          <input v-model="product.price" placeholder="0" class="price">
         </div>
         <div class="input" v-if="product.type === 'auction' ">
           <label>Start Pris</label>
-          <input v-model="product.startingBid">
+          <input v-model="product.startingBid" class="startingBid">
           <label>Stepper</label>
-          <input v-model="product.bidIncrements">
+          <input v-model="product.bidIncrements" class="bidIncrements">
           <label>Når slutter auktionen</label>
-          <input type="datetime-local" v-model="product.endDate">
+          <input type="datetime-local" v-model="product.endDate" class="endDate">
         </div>
       </fieldset>
     </form>
@@ -55,7 +55,7 @@
 </template>
 
 <script>
-import url from '../httpRoutes'
+import { url } from '@/httpRoutes'
 
 export default {
   name: 'RegisterProduct',
@@ -63,19 +63,21 @@ export default {
     return {
       categories: [],
       product: {
-        id: '21'
-      }
+        id: '21',
+        storeId: '',
+        type: '',
+        name: '',
+        description: '',
+        category: ''
+      },
+      categoriesLoaded: false,
+      categoriesErrorMessage: null,
+      loaded: false
     }
   },
   mounted () {
     this.getStoreId()
     this.getCategories()
-    this.getStoreName()
-  },
-  computed: {
-    businessUrl () {
-      return '/business/' + this.product.storeId
-    }
   },
   methods: {
     cleanSaleType () {
@@ -90,33 +92,47 @@ export default {
     },
     getStoreId () {
       this.product.storeId = this.$route.params.id
+      this.loaded = true
     },
     async registerProduct () {
       await this.cleanSaleType()
       const newProduct = this.product
-      await fetch(url.putProduct, {
+      await fetch(url.postProduct, {
         method: 'POST',
         body: JSON.stringify(newProduct),
         headers: { 'Content-Type': 'application/json' }
+      }).then(async response => {
+        const data = await response.json()
+        if (!response.ok) {
+          const error = (data && data.message) || response.status
+          return Promise.reject(error)
+        }
       })
-    },
-    getStoreName () {
-      fetch(url.storeId + this.product.storeId)
-        .then(response => {
-          return response.json()
-        })
-        .then(data => {
-          this.product.storeName = data[0].storeName
+        .catch(error => {
+          this.putProductErrorMessage = error
+          console.error('There was an error!', error)
         })
     },
     getCategories () {
       fetch(url.categories)
-        .then(response => {
-          return response.json()
-        })
-        .then(data => {
+        .then(async response => {
+          const data = await response.json()
+          if (!response.ok) {
+            const error = (data && data.message) || response.statusText
+            return Promise.reject(error)
+          }
           this.categories = data
+          this.categoriesLoaded = true
         })
+        .catch(error => {
+          this.categoriesErrorMessage = error
+          console.error('There was an error!', error)
+        })
+    }
+  },
+  computed: {
+    businessUrl () {
+      return '/business/' + this.product.storeId
     }
   }
 }

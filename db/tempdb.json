@@ -44,11 +44,13 @@
       "id": "5",
       "storeId": "1",
       "storeName": "Fredrikkstad Antikvitet",
-      "type": "sale",
-      "name": "Generic Soft Table",
-      "description": "Boston's most advanced compression wear technology increases muscle oxygenation, stabilizes active muscles",
-      "category": "Kjøkken",
-      "price": "320.00"
+      "type": "auction",
+      "name": "Generic Table",
+      "description": "Boston's most compression wear technology increases muscle oxygenation, stabilizes active muscles",
+      "category": "Møbler",
+      "startingBid": "1000",
+      "bidIncrements": "100",
+      "endDate": "2021-12-12T14:09"
     },
     {
       "id": "6",
@@ -58,7 +60,7 @@
       "name": "Fantastic Plastic Hat",
       "description": "Boston's most advanced compression wear technology increases muscle oxygenation, stabilizes active muscles",
       "category": "Kjøkken",
-      "price": "127.00"
+      "price": "130.00"
     },
     {
       "id": "7",
@@ -344,6 +346,43 @@
         }
       ],
       "total": "2874.00"
+    },
+    {
+      "id": "3",
+      "orderNumber": "3",
+      "products": [
+        {
+          "id": "2",
+          "storeId": "2",
+          "storeName": "Halden Antikvitet",
+          "type": "sale",
+          "name": "Unbranded Rubber Computer",
+          "description": "Carbonite web goalkeeper gloves are ergonomically designed to give easy fit",
+          "category": "Bøker",
+          "price": "615.00"
+        },
+        {
+          "id": "3",
+          "storeId": "2",
+          "storeName": "Halden Antikvitet",
+          "type": "sale",
+          "name": "Handcrafted Steel Chair",
+          "description": "The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive",
+          "category": "Møbler",
+          "price": "790.00"
+        },
+        {
+          "id": "4",
+          "storeId": "2",
+          "storeName": "Halden Antikvitet",
+          "type": "sale",
+          "name": "Handmade Fresh Hat",
+          "description": "The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive",
+          "category": "Bøker",
+          "price": "917.00"
+        }
+      ],
+      "total": "2322.00"
     }
   ]
 }

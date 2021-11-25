@@ -1,5 +1,5 @@
 <template>
-  <div class="register-page">
+  <div v-if="productLoaded" class="register-page">
     <nav class="breadcrumb">
       <span>
         Her er du:
@@ -16,33 +16,36 @@
       <fieldset class="input">
         <legend>Registrer Produkt</legend>
         <label>Produkt Navn</label>
-        <input v-model="product.name" placeholder="Navn">
+        <input v-model="product.name" placeholder="Navn"  class="name">
         <label>Produkt Informasjon</label>
         <textarea v-model="product.description" aria-rowspan="10" aria-colspan="50"></textarea>
         <label>Kategori</label>
-        <select v-model="product.category">
+        <select v-if="categoriesLoaded" v-model="product.category">
           <option v-for="(category, i) in categories" :key="i" v-bind:value="category">
             {{category}}
           </option>
         </select>
+        <div v-else>
+          {{categoriesErrorMessage}}
+        </div>
         <label>Salgs Type</label>
         <div>
           <label>Salg</label>
-          <input type="radio" name="type" value="sale" v-model="product.type">
+          <input type="radio" name="type" value="sale" v-model="product.type" class="sale">
           <label>Auktion</label>
-          <input type="radio" name="type" value="auction" v-model="product.type">
+          <input type="radio" name="type" value="auction" v-model="product.type" class="auction">
         </div>
         <div class="input" v-if="product.type === 'sale' ">
           <label>Pris</label>
-          <input v-model="product.price" placeholder="0">
+          <input v-model="product.price" placeholder="0" class="price">
         </div>
         <div class="input" v-if="product.type === 'auction' ">
           <label>Start Pris</label>
-          <input v-model="product.startingBid">
+          <input v-model="product.startingBid" class="startingBid">
           <label>Stepper</label>
-          <input v-model="product.stepper">
+          <input v-model="product.bidIncrements" class="bidIncrements">
           <label>Når slutter auktionen</label>
-          <input type="datetime-local" v-model="product.endDate">
+          <input type="datetime-local" v-model="product.endDate" class="endDate">
         </div>
       </fieldset>
     </form>
@@ -52,10 +55,13 @@
       </router-link>
     </div>
   </div>
+  <div v-else>
+    {{productErrorMessage}}
+  </div>
 </template>
 
 <script>
-import url from '../httpRoutes'
+import { getProductById, productAction, url } from '@/httpRoutes'
 
 export default {
   name: 'EditProduct',
@@ -63,59 +69,85 @@ export default {
     return {
       categories: [],
       product: {},
-      postId: this.$route.params.id
+      postId: this.$route.params.id,
+      categoriesLoaded: false,
+      categoriesErrorMessage: null,
+      productLoaded: false,
+      productErrorMessage: null,
+      editProductErrorMessage: null
     }
   },
   mounted () {
-    this.getStoreId()
     this.getCategories()
     this.getProduct()
-  },
-  computed: {
-    businessUrl () {
-      return '/business/' + this.product.storeId
-    }
   },
   methods: {
     cleanSaleType () {
       if (this.product.type === 'sale') {
         delete this.product.startingBid
-        delete this.product.stepper
+        delete this.product.bidIncrements
         delete this.product.endDate
       }
       if (this.product.type === 'auction') {
         delete this.product.price
       }
     },
-    getStoreId () {
-      this.product.storeId = this.$route.params.id
-    },
     async editProduct () {
       await this.cleanSaleType()
       const editedProduct = this.product
-      await fetch(url.putProduct + this.postId, {
+      await fetch(productAction(this.postId), {
         method: 'PUT',
         body: JSON.stringify(editedProduct),
         headers: { 'Content-Type': 'application/json' }
       })
+        .then(async response => {
+          const data = await response.json()
+          if (!response.ok) {
+            const error = (data && data.message) || response.status
+            return Promise.reject(error)
+          }
+        })
+        .catch(error => {
+          this.editProductErrorMessage = error
+          console.error('There was an error!', error)
+        })
     },
     getProduct () {
-      fetch(url.productId + this.postId)
-        .then(response => {
-          return response.json()
-        })
-        .then(data => {
+      fetch(getProductById(this.postId))
+        .then(async response => {
+          const data = await response.json()
+          if (!response.ok) {
+            const error = (data && data.message) || response.statusText
+            return Promise.reject(error)
+          }
           this.product = data[0]
+          this.productLoaded = true
+        })
+        .catch(error => {
+          this.productErrorMessage = error
+          console.error('There was an error!', error)
         })
     },
     getCategories () {
       fetch(url.categories)
-        .then(response => {
-          return response.json()
-        })
-        .then(data => {
+        .then(async response => {
+          const data = await response.json()
+          if (!response.ok) {
+            const error = (data && data.message) || response.statusText
+            return Promise.reject(error)
+          }
           this.categories = data
+          this.categoriesLoaded = true
         })
+        .catch(error => {
+          this.categoriesErrorMessage = error
+          console.error('There was an error!', error)
+        })
+    }
+  },
+  computed: {
+    businessUrl () {
+      return '/business/' + this.product.storeId
     }
   }
 }
