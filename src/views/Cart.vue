@@ -36,7 +36,7 @@
 <script>
 import CartPopup from '@/components/CartPopup'
 import ProductInCart from '@/components/ProductInCart'
-import url from '../httpRoutes'
+import { url } from '@/httpRoutes'
 
 export default {
   name: 'Cart',

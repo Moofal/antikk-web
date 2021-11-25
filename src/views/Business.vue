@@ -60,7 +60,7 @@
 <script>
 import ProductCardBusiness from '@/components/ProductCardBusiness'
 import ProductCard from '@/components/ProductCard'
-import url from '../httpRoutes'
+import { url } from '@/httpRoutes'
 
 export default {
   name: 'Business',

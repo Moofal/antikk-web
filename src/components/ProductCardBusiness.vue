@@ -30,7 +30,7 @@
 
 <script>
 import DelProdPopup from '@/components/DelProdPopup'
-import url from '../httpRoutes'
+import { url } from '@/httpRoutes'
 
 export default {
   name: 'ProductCardBusiness',

@@ -31,7 +31,7 @@
 <script>
 import AddToCart from '../components/AddToCart'
 import AuctionWindow from '../components/AuctionWindow'
-import url from '../httpRoutes'
+import { url } from '@/httpRoutes'
 
 export default {
   name: 'ProductPage',

@@ -36,7 +36,7 @@ test('register a product', async () => {
   )
   const mockRoute = {
     params: {
-      id: 1
+      id: '1'
     }
   }
   const wrapper = mount(RegisterProduct, {
@@ -54,7 +54,7 @@ test('register a product', async () => {
   await prodDesc.setValue('The Nagasaki Lander is the trademarked')
   expect(wrapper.find('textarea').element.value).toBe('The Nagasaki Lander is the trademarked')
   const options = wrapper.find('select').findAll('option')
-  await options.at(0).setSelected()
+  await options.at(2).setSelected()
   const type = wrapper.find('input[type="radio"].auction')
   await type.setChecked()
   expect(type.element.checked).toBeTruthy()
@@ -72,4 +72,15 @@ test('register a product', async () => {
   expect(wrapper.vm.product.endDate).toBe('2021-11-18T04:04:31.090Z')
   await wrapper.find('button').trigger('click')
   expect(fetch.mock.calls.length).toEqual(2)
+  expect(fetch.mock.calls[1][1].body).toEqual(JSON.stringify({
+    id: '21',
+    storeId: '1',
+    type: 'auction',
+    name: 'Fantastic Frozen Towels',
+    description: 'The Nagasaki Lander is the trademarked',
+    category: 'Hobby',
+    startingBid: '620.00',
+    bidIncrements: '60',
+    endDate: '2021-11-18T04:04:31.090Z'
+  }))
 })

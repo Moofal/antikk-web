@@ -55,7 +55,7 @@
 </template>
 
 <script>
-import url from '../httpRoutes'
+import { url } from '@/httpRoutes'
 
 export default {
   name: 'RegisterProduct',
@@ -63,7 +63,12 @@ export default {
     return {
       categories: [],
       product: {
-        id: '21'
+        id: '21',
+        storeId: '',
+        type: '',
+        name: '',
+        description: '',
+        category: ''
       },
       categoriesLoaded: false,
       categoriesErrorMessage: null

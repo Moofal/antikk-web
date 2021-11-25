@@ -219,6 +219,17 @@
       "startingBid": "620.00",
       "bidIncrements": "60",
       "endDate": "2021-11-18T04:04:31.090Z"
+    },
+    {
+      "id": "21",
+      "storeId": "1",
+      "name": "sgf",
+      "description": "kgfly",
+      "category": "Hobby",
+      "type": "auction",
+      "startingBid": "105",
+      "bidIncrements": "4",
+      "endDate": "2021-11-25T18:27"
     }
   ],
   "store": [

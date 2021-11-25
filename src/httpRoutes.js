@@ -11,4 +11,8 @@ const url = {
   orderId: 'http://localhost:3000/order/?id='
 }
 
-export default url
+function getProductLimit (limit) {
+  return 'http://localhost:3000/products?_limit=' + limit
+}
+
+export { url, getProductLimit }

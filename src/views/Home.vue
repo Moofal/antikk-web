@@ -46,7 +46,7 @@
 
 <script>
 import ProductCard from '@/components/ProductCard'
-import url from '../httpRoutes'
+import { url, getProductLimit } from '@/httpRoutes'
 
 export default {
   name: 'Home',
@@ -104,7 +104,7 @@ export default {
             console.error('There was an error!', error)
           })
       } else {
-        fetch(url.productLimit + this.limit)
+        fetch(getProductLimit(this.limit))
           .then(async response => {
             const data = await response.json()
             if (!response.ok) {
