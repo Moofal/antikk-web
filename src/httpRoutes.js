@@ -8,7 +8,10 @@ const url = {
   productsStoreId: 'http://localhost:9090/client/store/',
   orders: 'http://localhost:3000/order',
   putProduct: 'http://localhost:3000/products/',
-  orderId: 'http://localhost:3000/order/?id='
+  orderId: 'http://localhost:3000/order/?id=',
+
+  addNewProduct: 'http://localhost:9090/business/store/product/add',
+  addNewAuction: '#'
 }
 
 export default url
