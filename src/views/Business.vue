@@ -2,16 +2,16 @@
   <div v-if="loaded">
     <div class="business-home">
       <div class="row">
-<!--        <div>-->
-<!--          <h2>{{store.storeName}}</h2>-->
-<!--          <p>{{store.description}}</p>-->
-<!--          Tel: {{store.phone}}-->
-<!--          <h3>Adresse</h3>-->
-<!--          <div>-->
-<!--            {{store.address.streetAddress}}-->
-<!--            {{store.address.postalCode}}-->
-<!--          </div>-->
-<!--        </div>-->
+        <div>
+          <h2>{{store.storeName}}</h2>
+          <p>{{store.description}}</p>
+          Tel: {{store.phone}}
+          <h3>Adresse</h3>
+          <div>
+            {{store.address.streetAddress}}
+            {{store.address.postalCode}}
+          </div>
+        </div>
         <div v-if="user === 'businessUser'">
           <h2>Ordre</h2>
           <router-link to="/orders">
@@ -88,21 +88,22 @@ export default {
     }
   },
   mounted () {
-    // this.getStoreInfo()
+    this.getStoreInfo()
     this.getProducts()
   },
   methods: {
     getStoreInfo () {
-      fetch(url.storeId + this.storeId)
+      fetch(url.storeId + this.storeId + '/details')
         .then(response => {
           return response.json()
         })
         .then(data => {
-          this.store = data[0]
+          this.store = data.data
+          this.loaded = true
         })
     },
     getProducts () {
-      fetch('http://localhost:9090/client/store/6273b508-b5eb-4972-b55b-a52ac8a9ae45/products')
+      fetch(url.productsStoreId + this.storeId + '/products')
         .then(response => {
           return response.json()
         })
