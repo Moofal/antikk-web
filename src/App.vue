@@ -4,7 +4,7 @@
     <input type="search" v-on:keydown.enter="onSearch" v-model="tempSearch" placeholder="Søk">
     <nav>
     <router-link v-if="user === 'endUser'" to="/bruker" class="header-button"><span>Bruker</span></router-link>
-      <router-link v-if="user === 'businessUser'" to="/business/1" class="header-button"><span>Bedrift</span></router-link>
+      <router-link v-if="user === 'businessUser'" to="/business/6273b508-b5eb-4972-b55b-a52ac8a9ae45" class="header-button"><span>Bedrift</span></router-link>
     <router-link v-if="user !== 'businessUser'" to="/cart" class="header-button"><span>Handlevogn({{numProdInCart}})</span></router-link>
     <router-link to="/logg-inn" class="header-button"><span>Logg inn</span></router-link>
     </nav>
