@@ -30,7 +30,7 @@
 
 <script>
 import DelProdPopup from '@/components/DelProdPopup'
-import { url } from '@/httpRoutes'
+import { productAction } from '@/httpRoutes'
 
 export default {
   name: 'ProductCardBusiness',
@@ -56,7 +56,7 @@ export default {
       this.delPop = !this.delPop
     },
     async deleteProduct () {
-      await fetch(url.productAction + this.product.id, {
+      await fetch(productAction(this.product.id), {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' }
       })

@@ -46,7 +46,7 @@
 
 <script>
 import ProductCard from '@/components/ProductCard'
-import { url, getProductLimit } from '@/httpRoutes'
+import { url, getProductLimit, getProductLimitCategory } from '@/httpRoutes'
 
 export default {
   name: 'Home',
@@ -89,7 +89,7 @@ export default {
     },
     getProducts () {
       if (this.category !== '') {
-        fetch(url.productLimit + this.limit + '&category=' + this.category)
+        fetch(getProductLimitCategory(this.limit, this.category))
           .then(async response => {
             const data = await response.json()
             if (!response.ok) {

@@ -61,7 +61,7 @@
 </template>
 
 <script>
-import { url } from '@/httpRoutes'
+import { getProductById, productAction, url } from '@/httpRoutes'
 
 export default {
   name: 'EditProduct',
@@ -95,7 +95,7 @@ export default {
     async editProduct () {
       await this.cleanSaleType()
       const editedProduct = this.product
-      await fetch(url.productAction + this.postId, {
+      await fetch(productAction(this.postId), {
         method: 'PUT',
         body: JSON.stringify(editedProduct),
         headers: { 'Content-Type': 'application/json' }
@@ -113,7 +113,7 @@ export default {
         })
     },
     getProduct () {
-      fetch(url.productId + this.postId)
+      fetch(getProductById(this.postId))
         .then(async response => {
           const data = await response.json()
           if (!response.ok) {

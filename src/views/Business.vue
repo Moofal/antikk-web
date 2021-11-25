@@ -60,7 +60,7 @@
 <script>
 import ProductCardBusiness from '@/components/ProductCardBusiness'
 import ProductCard from '@/components/ProductCard'
-import { url } from '@/httpRoutes'
+import { getStoreId, url } from '@/httpRoutes'
 
 export default {
   name: 'Business',
@@ -97,7 +97,7 @@ export default {
   },
   methods: {
     getStoreInfo () {
-      fetch(url.storeId + this.storeId)
+      fetch(getStoreId(this.storeId))
         .then(async response => {
           const data = await response.json()
           if (!response.ok) {

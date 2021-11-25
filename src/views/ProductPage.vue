@@ -31,7 +31,7 @@
 <script>
 import AddToCart from '../components/AddToCart'
 import AuctionWindow from '../components/AuctionWindow'
-import { url } from '@/httpRoutes'
+import { getProductById } from '@/httpRoutes'
 
 export default {
   name: 'ProductPage',
@@ -51,7 +51,7 @@ export default {
     }
   },
   mounted () {
-    fetch(url.productId + this.id)
+    fetch(getProductById(this.id))
       .then(async response => {
         const data = await response.json()
         if (!response.ok) {
