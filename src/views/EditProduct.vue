@@ -100,12 +100,12 @@ export default {
       })
     },
     getProduct () {
-      fetch(url.productId + this.postId)
+      fetch(url.getProductDetails(this.postId))
         .then(response => {
           return response.json()
         })
         .then(data => {
-          this.product = data[0]
+          this.product = data.data
         })
     },
     getCategories () {
@@ -114,7 +114,7 @@ export default {
           return response.json()
         })
         .then(data => {
-          this.categories = data
+          this.categories = data.data
         })
     }
   }
