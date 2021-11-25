@@ -1,5 +1,5 @@
 <template>
-  <div class="register-page">
+  <div v-if="loaded" class="register-page">
     <nav class="breadcrumb">
       <span>
         Her er du:
@@ -71,7 +71,8 @@ export default {
         category: ''
       },
       categoriesLoaded: false,
-      categoriesErrorMessage: null
+      categoriesErrorMessage: null,
+      loaded: false
     }
   },
   mounted () {
@@ -91,6 +92,7 @@ export default {
     },
     getStoreId () {
       this.product.storeId = this.$route.params.id
+      this.loaded = true
     },
     async registerProduct () {
       await this.cleanSaleType()
@@ -108,22 +110,6 @@ export default {
       })
         .catch(error => {
           this.putProductErrorMessage = error
-          console.error('There was an error!', error)
-        })
-    },
-    getStoreName () {
-      fetch(url.storeId + this.product.storeId)
-        .then(async response => {
-          const data = await response.json()
-          if (!response.ok) {
-            const error = (data && data.message) || response.statusText
-            return Promise.reject(error)
-          }
-          this.product.storeName = data[0].storeName
-          this.productLoaded = true
-        })
-        .catch(error => {
-          this.productErrorMessage = error
           console.error('There was an error!', error)
         })
     },
