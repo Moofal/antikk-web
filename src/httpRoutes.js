@@ -11,7 +11,9 @@ const url = {
   orderId: 'http://localhost:3000/order/?id=',
 
   addNewProduct: 'http://localhost:9090/business/store/product/add',
-  addNewAuction: '#'
+  addNewAuction: '#',
+
+  getProductDetails: 'http://localhost:9090/client/product/'
 }
 
 export default url
