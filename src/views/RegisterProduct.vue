@@ -80,6 +80,8 @@ export default {
   methods: {
     cleanSaleType () {
       if (this.product.type === 'sale') {
+        delete this.product.id
+
         delete this.product.startingBid
         delete this.product.bidIncrements
         delete this.product.endDate
@@ -93,20 +95,24 @@ export default {
     },
     async registerProduct () {
       await this.cleanSaleType()
+      console.log(this.product)
+      const reqUrl = (this.product.type === 'sale') ? url.addNewProduct : url.addNewAuction
       const newProduct = this.product
-      await fetch(url.putProduct, {
+
+      await fetch(reqUrl, {
         method: 'POST',
+        mode: 'no-cors',
         body: JSON.stringify(newProduct),
         headers: { 'Content-Type': 'application/json' }
       })
     },
     getStoreName () {
-      fetch(url.storeId + this.product.storeId)
+      fetch('http://localhost:9090/store/8bfac56a-f6bd-424f-a28e-037792ded027/details')
         .then(response => {
           return response.json()
         })
         .then(data => {
-          this.product.storeName = data[0].storeName
+          this.product.storeName = data.data.storeName
         })
     },
     getCategories () {
@@ -115,7 +121,7 @@ export default {
           return response.json()
         })
         .then(data => {
-          this.categories = data
+          this.categories = data.data
         })
     }
   }
