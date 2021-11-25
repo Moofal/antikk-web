@@ -1,12 +1,13 @@
 import { flushPromises, mount } from '@vue/test-utils'
 import RegisterProduct from '@/views/RegisterProduct.vue'
+import router from '@/router'
 require('jest-fetch-mock').enableMocks()
 
 beforeEach(() => {
   fetch.resetMocks()
 })
 
-test('register a product', async () => {
+test('register a auction product', async () => {
   fetch.mockResponses(
     [
       JSON.stringify(
@@ -43,7 +44,8 @@ test('register a product', async () => {
     global: {
       mocks: {
         $route: mockRoute
-      }
+      },
+      plugins: [router]
     }
   })
   await flushPromises()
@@ -53,8 +55,8 @@ test('register a product', async () => {
   const prodDesc = wrapper.find('textarea')
   await prodDesc.setValue('The Nagasaki Lander is the trademarked')
   expect(wrapper.find('textarea').element.value).toBe('The Nagasaki Lander is the trademarked')
-  const options = wrapper.find('select').findAll('option')
-  await options.at(2).setSelected()
+  const category = wrapper.find('select').findAll('option')
+  await category.at(2).setSelected()
   const type = wrapper.find('input[type="radio"].auction')
   await type.setChecked()
   expect(type.element.checked).toBeTruthy()

@@ -78,11 +78,6 @@ export default {
     this.getStoreId()
     this.getCategories()
   },
-  computed: {
-    businessUrl () {
-      return '/business/' + this.product.storeId
-    }
-  },
   methods: {
     cleanSaleType () {
       if (this.product.type === 'sale') {
@@ -147,6 +142,11 @@ export default {
           this.categoriesErrorMessage = error
           console.error('There was an error!', error)
         })
+    }
+  },
+  computed: {
+    businessUrl () {
+      return '/business/' + this.product.storeId
     }
   }
 }
