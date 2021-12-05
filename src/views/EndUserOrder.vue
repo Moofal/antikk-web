@@ -61,7 +61,7 @@ export default {
   },
   computed: {
     orderHistoryId () {
-      return '/order-history/' + this.order.userId
+      return '/order-history/' + this.order.clientId
     }
   },
   methods: {

@@ -27,7 +27,7 @@ export default {
   props: ['orders', 'order', 'i'],
   computed: {
     orderLink () {
-      return '/orders/' + this.order.id
+      return '/endUser-order/' + this.order.id
     }
   }
 }
