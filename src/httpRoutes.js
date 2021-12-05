@@ -1,24 +1,47 @@
-const host = 'http://localhost'
-const port = ':9090'
-
 const url = {
-  productLimit: 'http://localhost:9090/products?_limit=',
-  productLimitCategory: '',
   categories: 'http://localhost:9090/product/categories',
-  productId: 'http://localhost:3000/products?id=',
   userSimen: 'http://localhost:3000/users/?_fname=Simen',
-  storeId: 'http://localhost:9090/store/',
-  productsStoreId: 'http://localhost:9090/client/store/',
+  productsStoreId: 'http://localhost:3000/products?storeId=',
   orders: 'http://localhost:3000/order',
-  putProduct: 'http://localhost:3000/products/',
-  orderId: 'http://localhost:3000/order/?id=',
-
-  addNewProduct: 'http://localhost:9090/business/store/product/add',
-  addNewAuction: '#',
-
-  getProductDetails: function (storeID) {
-    return host + port + '/client/product/' + storeID + '/details'
-  }
+  postProduct: 'http://localhost:9090/business/store/product/add',
+  postAuction: '#'
 }
 
-export default url
+function getProductLimit (limit) {
+  return 'http://localhost:9090/products?_limit=' + limit + '&category=""'
+}
+
+function getProductLimitCategory (limit, category) {
+  return 'http://localhost:9090/products?_limit=' + limit + '&category=' + category
+}
+
+function getProductsByStoreID (id) {
+  return 'http://localhost:9090/client/store/' + id + '/products'
+}
+
+function getProductById (id) {
+  return 'http://localhost:9090/client/product/' + id + '/details'
+}
+
+function productAction (id) {
+  return 'http://localhost:3000/products/' + id
+}
+
+function getStoreId (id) {
+  return 'http://localhost:9090/store/' + id + '/details'
+}
+
+function getOrder (id) {
+  return 'http://localhost:3000/order/?id=' + id
+}
+
+export {
+  url,
+  getProductLimit,
+  getProductLimitCategory,
+  getProductById,
+  productAction,
+  getStoreId,
+  getOrder,
+  getProductsByStoreID
+}

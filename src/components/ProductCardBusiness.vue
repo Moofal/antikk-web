@@ -10,7 +10,12 @@
       <h2>{{ product.name }}</h2>
       <h3>{{product.storeName}}</h3>
       <p class="description">{{product.description}}</p>
-      <p class="price">{{product.price}} kr {{product.category}}</p>
+      <div v-if="product.type !== 'auction'">
+        <p class="price">{{product.price}} kr {{product.category}}</p>
+      </div>
+      <div v-else>
+        <p class="price">Start bud: {{product.startingBid}} kr {{product.category}}</p>
+      </div>
       <router-link :to="editProductUrl">
         <button>
           Rediger produkt
@@ -25,6 +30,8 @@
 
 <script>
 import DelProdPopup from '@/components/DelProdPopup'
+import { productAction } from '@/httpRoutes'
+
 export default {
   name: 'ProductCardBusiness',
   props: ['product', 'businessUrl'],
@@ -49,7 +56,7 @@ export default {
       this.delPop = !this.delPop
     },
     async deleteProduct () {
-      await fetch('http://localhost:3000/products/' + this.product.id, {
+      await fetch(productAction(this.product.id), {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' }
       })
