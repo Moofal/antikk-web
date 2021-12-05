@@ -34,9 +34,8 @@
 </template>
 
 <script>
-// import url from '../httpRoutes'
-
 import UserOrder from '@/components/UserOrder'
+import { getUserOrders } from '@/httpRoutes'
 export default {
   name: 'OrderHistory',
   components: { UserOrder },
@@ -44,17 +43,24 @@ export default {
     return {
       orders: [],
       products: [],
-      loaded: false
+      loaded: false,
+      id: this.$route.params.id
     }
   },
   mounted () {
-    fetch('http://localhost:3000/order/?id=1')
-      .then(response => {
-        return response.json()
-      })
-      .then(data => {
+    fetch(getUserOrders(this.id))
+      .then(async response => {
+        const data = await response.json()
+        if (!response.ok) {
+          const error = (data && data.message) || response.statusText
+          return Promise.reject(error)
+        }
         this.orders = data
         this.loaded = true
+      })
+      .catch(error => {
+        this.userErrorMessage = error
+        console.error('There was an error!', error)
       })
   }
 }

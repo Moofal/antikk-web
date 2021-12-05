@@ -7,8 +7,9 @@ import ProductPage from '../views/ProductPage.vue'
 import Business from '../views/Business.vue'
 import EditProduct from '../views/EditProduct.vue'
 import RegisterProduct from '../views/RegisterProduct.vue'
-import OrderHistory from '../views/OrderHistory.vue'
+import OrderHistory from '../views/UserOrderHistory.vue'
 import Order from '../views/Order'
+import BusinessOrders from '@/views/BusinessOrders'
 
 const routes = [
   {
@@ -52,9 +53,14 @@ const routes = [
     component: RegisterProduct
   },
   {
-    path: '/orders',
+    path: '/order-history/:id',
     name: 'OrderHistory',
     component: OrderHistory
+  },
+  {
+    path: '/business-orders/:id',
+    name: 'BusinessOrders',
+    component: BusinessOrders
   },
   {
     path: '/orders/:id',

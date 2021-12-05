@@ -5,11 +5,11 @@
         Her er du:
       </span>
       <div>
-        <router-link to="bruker">Bruker</router-link>
+        <router-link to="/bruker">Bruker</router-link>
         <span>></span>
       </div>
       <div>
-        <router-link to="/orders">Ordreoversikt</router-link>
+        <router-link :to="orderHistoryId">Ordreoversikt</router-link>
         <span>></span>
       </div>
       <div>
@@ -60,8 +60,8 @@ export default {
     this.getOrder()
   },
   computed: {
-    productUrl () {
-      return '//'
+    orderHistoryId () {
+      return '/order-history/' + this.order.userId
     }
   },
   methods: {

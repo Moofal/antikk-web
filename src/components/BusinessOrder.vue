@@ -23,7 +23,7 @@
 
 <script>
 export default {
-  name: 'UserOrder',
+  name: 'BusinessOrder',
   props: ['orders', 'order', 'i'],
   computed: {
     orderLink () {
