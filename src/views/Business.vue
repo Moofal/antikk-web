@@ -91,7 +91,7 @@ export default {
       return '/business/' + this.storeId
     },
     ordersUrl () {
-      return '/business-orders/' + this.storeId
+      return '/business-order-history/' + this.storeId
     }
   },
   mounted () {

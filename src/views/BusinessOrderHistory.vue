@@ -5,7 +5,7 @@
         Her er du:
       </span>
       <div>
-        <router-link to="/bruker">Bruker</router-link>
+        <router-link :to="businessUrl">Bedrift</router-link>
         <span>></span>
       </div>
       <div>
@@ -17,7 +17,7 @@
       <ul class="header">
         <li>Bestilt</li>
         <li>Ordrenummer</li>
-        <li>Selger</li>
+        <li>Kunde</li>
         <li>Varer</li>
       </ul>
       <section v-if="loaded">
@@ -26,7 +26,7 @@
           :key="i"
           class="order"
         >
-          <UserOrder :order="order" :orders="orders" :i="i"/>
+          <BusinessOrder :order="order" :orders="orders" :i="i"/>
         </table>
       </section>
     </div>
@@ -34,11 +34,11 @@
 </template>
 
 <script>
-import UserOrder from '@/components/UserOrder'
-import { getUserOrders } from '@/httpRoutes'
+import BusinessOrder from '@/components/BusinessOrders'
+import { getBusinessOrders } from '@/httpRoutes'
 export default {
-  name: 'OrderHistory',
-  components: { UserOrder },
+  name: 'BusinessOrders',
+  components: { BusinessOrder },
   data () {
     return {
       orders: [],
@@ -47,8 +47,13 @@ export default {
       id: this.$route.params.id
     }
   },
+  computed: {
+    businessUrl () {
+      return '/business/' + this.id
+    }
+  },
   mounted () {
-    fetch(getUserOrders(this.id))
+    fetch(getBusinessOrders(this.id))
       .then(async response => {
         const data = await response.json()
         if (!response.ok) {

@@ -5,7 +5,7 @@
         Her er du:
       </span>
       <div>
-        <router-link to="/bruker">Bruker</router-link>
+        <router-link :to="businessId">Bedrift</router-link>
         <span>></span>
       </div>
       <div>
@@ -34,7 +34,7 @@
             </div>
           </div>
         </router-link>
-        </div>
+      </div>
     </div>
     <p>Total pris: {{order.total}} kr</p>
   </div>
@@ -47,7 +47,7 @@
 import { getOrder } from '@/httpRoutes'
 
 export default {
-  name: 'Order',
+  name: 'BusinessOrder',
   data () {
     return {
       orderId: this.$route.params.id,
@@ -61,7 +61,10 @@ export default {
   },
   computed: {
     orderHistoryId () {
-      return '/order-history/' + this.order.userId
+      return '/business-order-history/' + this.order.storeId
+    },
+    businessId () {
+      return '/business/' + this.order.storeId
     }
   },
   methods: {
