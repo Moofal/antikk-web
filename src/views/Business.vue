@@ -100,7 +100,10 @@ export default {
   },
   methods: {
     getStoreInfo () {
-      fetch(getStoreId(this.storeId))
+      fetch(getStoreId(this.storeId), {
+        mode: 'cors',
+        credentials: 'include'
+      })
         .then(async response => {
           const data = await response.json()
           if (!response.ok) {
