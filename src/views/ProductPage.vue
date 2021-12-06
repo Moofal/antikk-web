@@ -51,7 +51,10 @@ export default {
     }
   },
   mounted () {
-    fetch(getProductById(this.id))
+    fetch(getProductById(this.id), {
+      mode: 'cors',
+      credentials: 'include'
+    })
       .then(async response => {
         const data = await response.json()
         if (!response.ok) {
