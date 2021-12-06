@@ -1,7 +1,7 @@
 <template>
   <div>
     <button @click="seeAsBusiness">
-      Logg in som Fredrikstad Antikvitet
+      Logg in som bedrift
     </button>
     <button @click="seeAsEndUser">
       Logg in som slutt bruker
