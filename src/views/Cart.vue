@@ -2,17 +2,17 @@
   <div class="cart">
     <h1>Handlevogn</h1>
     <CartPopup v-if="proceedToPay" :togglePaymentPopup="delPop" :pay="pay"/>
-      <div class="products" v-bind="$attrs">
-        {{errorMessage}}
-        <ProductInCart
-          v-for="(product, index) in cart"
-          :key="product.id"
-          :product="product"
-          class="product-cards"
-          :index="index"
-          :removeItem="removeItem"
-        />
-      </div>
+    <div v-if="cartLoaded" class="products" v-bind="$attrs">
+      {{errorMessage}}
+      <ProductInCart
+        v-for="(product, index) in cart"
+        :key="product.id"
+        :product="product"
+        class="product-cards"
+        :index="index"
+        :removeItem="removeItem"
+      />
+    </div>
     <div v-if="showCartFooter()" class="cart-footer">
       <div class="total-price">
         <ul class="price-left">
@@ -45,18 +45,41 @@ export default {
     ProductInCart,
     CartPopup
   },
-  props: ['cart', 'removeItem', 'clearCart', 'user'],
+  props: ['removeItem', 'clearCart', 'user'],
   data () {
     return {
       proceedToPay: false,
       errorMessage: null,
-      orders: []
+      orders: [],
+      cart: [],
+      cartLoaded: false
     }
   },
   mounted () {
     this.howManyOrders()
+    this.getCart()
   },
   methods: {
+    getCart () {
+      fetch('http://localhost:9090/client/cart', {
+        mode: 'cors',
+        credentials: 'include'
+      })
+        .then(async response => {
+          const data = await response.json()
+          if (!response.ok) {
+            const error = (data && data.message) || response.statusText
+            return Promise.reject(error)
+          }
+          console.log(data)
+          this.cart = data.data.products
+          this.cartLoaded = true
+        })
+        .catch(error => {
+          this.categoriesErrorMessage = error
+          console.error('There was an error!', error)
+        })
+    },
     howManyOrders () {
       let newStoreId
       for (let i = 0; i < this.cart.length; i++) {
