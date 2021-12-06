@@ -4,6 +4,9 @@
       <div class="product-info">
         <h2 class="product-title">{{product.name}}</h2>
         <div class="product-text">
+          <router-link :to="businessUrl">
+            <h3 class="store-name">{{product.storeName}}</h3>
+          </router-link>
           <h3>Produkt beskrivelse</h3>
           <p class="product-description">{{product.description}}</p>
         </div>
@@ -44,6 +47,7 @@ export default {
     return {
       id: this.$route.params.id,
       product: [],
+      storeId: '',
       showAddToCartWindow: false,
       showAuctionWindow: true,
       productErrorMessage: null,
@@ -51,25 +55,46 @@ export default {
     }
   },
   mounted () {
-    fetch(getProductById(this.id))
-      .then(async response => {
-        const data = await response.json()
-        if (!response.ok) {
-          const error = (data && data.message) || response.statusText
-          return Promise.reject(error)
-        }
-        this.product.push(data[0])
-        this.productLoaded = true
-      })
-      .catch(error => {
-        this.productErrorMessage = error
-        console.error('There was an error!', error)
-      })
+    this.getProductInfo()
+  },
+  computed: {
+    businessUrl () {
+      return '/business/' + this.storeId
+    }
+  },
+  methods: {
+    getProductInfo () {
+      fetch(getProductById(this.id))
+        .then(async response => {
+          const data = await response.json()
+          if (!response.ok) {
+            const error = (data && data.message) || response.statusText
+            return Promise.reject(error)
+          }
+          this.product.push(data[0])
+          this.storeId = data[0].storeId
+          this.productLoaded = true
+        })
+        .catch(error => {
+          this.productErrorMessage = error
+          console.error('There was an error!', error)
+        })
+    }
   }
 }
 </script>
 
 <style scoped>
+* {
+  text-decoration: none;
+  color: black;
+}
+.store-name:hover {
+  text-decoration: underline;
+}
+h3 {
+  margin: auto;
+}
 .product-description {
   size: 100px;
 }

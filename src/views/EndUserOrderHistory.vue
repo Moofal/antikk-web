@@ -20,7 +20,7 @@
         <li>Selger</li>
         <li>Varer</li>
       </ul>
-      <section v-if="loaded">
+      <section v-if="loaded && user === 'endUser'">
         <table
           v-for="(order, i) in orders"
           :key="i"
@@ -39,6 +39,7 @@ import { getUserOrders } from '@/httpRoutes'
 export default {
   name: 'OrderHistory',
   components: { UserOrder },
+  props: ['user'],
   data () {
     return {
       orders: [],

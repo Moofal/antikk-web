@@ -1,5 +1,5 @@
 <template>
-  <div v-if="orderLoaded">
+  <div v-if="orderLoaded && user === 'endUser'">
     <nav class="breadcrumb">
       <span>
         Her er du:
@@ -48,6 +48,7 @@ import { getOrder } from '@/httpRoutes'
 
 export default {
   name: 'Order',
+  props: ['user'],
   data () {
     return {
       orderId: this.$route.params.id,

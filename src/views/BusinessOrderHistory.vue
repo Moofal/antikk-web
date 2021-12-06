@@ -20,7 +20,7 @@
         <li>Kunde</li>
         <li>Varer</li>
       </ul>
-      <section v-if="loaded">
+      <section v-if="loaded && user === 'businessUser'">
         <table
           v-for="(order, i) in orders"
           :key="i"
@@ -39,6 +39,7 @@ import { getBusinessOrders } from '@/httpRoutes'
 export default {
   name: 'BusinessOrders',
   components: { BusinessOrder },
+  props: ['user'],
   data () {
     return {
       orders: [],
