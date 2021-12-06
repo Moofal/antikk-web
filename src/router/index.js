@@ -1,14 +1,16 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
-import Bruker from '../views/Bruker.vue'
+import EndUser from '../views/EndUser.vue'
 import Cart from '../views/Cart.vue'
 import LoggInn from '../views/LoggInn.vue'
 import ProductPage from '../views/ProductPage.vue'
 import Business from '../views/Business.vue'
 import EditProduct from '../views/EditProduct.vue'
 import RegisterProduct from '../views/RegisterProduct.vue'
-import OrderHistory from '../views/OrderHistory.vue'
-import Order from '../views/Order'
+import OrderHistory from '../views/EndUserOrderHistory.vue'
+import EndUserOrder from '../views/EndUserOrder'
+import BusinessOrderHistory from '@/views/BusinessOrderHistory'
+import BusinessOrder from '@/views/BusinessOrder'
 
 const routes = [
   {
@@ -17,9 +19,9 @@ const routes = [
     component: Home
   },
   {
-    path: '/bruker',
-    name: 'Bruker',
-    component: Bruker
+    path: '/end-user',
+    name: 'EndUser',
+    component: EndUser
   },
   {
     path: '/business/:id',
@@ -52,14 +54,24 @@ const routes = [
     component: RegisterProduct
   },
   {
-    path: '/orders',
+    path: '/order-history/:id',
     name: 'OrderHistory',
     component: OrderHistory
   },
   {
-    path: '/orders/:id',
-    name: 'Order',
-    component: Order
+    path: '/business-order-history/:id',
+    name: 'BusinessOrderHistory',
+    component: BusinessOrderHistory
+  },
+  {
+    path: '/endUser-order/:id',
+    name: 'EndUserOrder',
+    component: EndUserOrder
+  },
+  {
+    path: '/business-order/:id',
+    name: 'BusinessOrder',
+    component: BusinessOrder
   }
 ]
 

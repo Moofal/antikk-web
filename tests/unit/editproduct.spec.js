@@ -7,7 +7,7 @@ beforeEach(() => {
   fetch.resetMocks()
 })
 
-test('edit a auction product to be a sale one', async () => {
+test('test edit a auction product to be a sale one', async () => {
   fetch.mockResponses(
     [
       JSON.stringify(

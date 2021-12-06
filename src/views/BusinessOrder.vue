@@ -5,11 +5,11 @@
         Her er du:
       </span>
       <div>
-        <router-link to="bruker">Bruker</router-link>
+        <router-link :to="businessId">Bedrift</router-link>
         <span>></span>
       </div>
       <div>
-        <router-link to="/orders">Ordreoversikt</router-link>
+        <router-link :to="orderHistoryId">Ordreoversikt</router-link>
         <span>></span>
       </div>
       <div>
@@ -34,7 +34,7 @@
             </div>
           </div>
         </router-link>
-        </div>
+      </div>
     </div>
     <p>Total pris: {{order.total}} kr</p>
   </div>
@@ -47,7 +47,7 @@
 import { getOrder } from '@/httpRoutes'
 
 export default {
-  name: 'Order',
+  name: 'BusinessOrder',
   data () {
     return {
       orderId: this.$route.params.id,
@@ -60,8 +60,11 @@ export default {
     this.getOrder()
   },
   computed: {
-    productUrl () {
-      return '//'
+    orderHistoryId () {
+      return '/business-order-history/' + this.order.storeId
+    },
+    businessId () {
+      return '/business/' + this.order.storeId
     }
   },
   methods: {

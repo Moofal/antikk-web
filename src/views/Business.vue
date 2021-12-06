@@ -16,7 +16,7 @@
       </div>
       <div v-if="user === 'businessUser'">
         <h2>Ordre</h2>
-        <router-link to="/orders">
+        <router-link :to="ordersUrl">
           <button>
             Mine ordre
           </button>
@@ -89,6 +89,9 @@ export default {
     },
     businessUrl () {
       return '/business/' + this.storeId
+    },
+    ordersUrl () {
+      return '/business-order-history/' + this.storeId
     }
   },
   mounted () {

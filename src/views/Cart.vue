@@ -30,6 +30,7 @@
       </div>
     </div>
     <div v-else>Handlevogn er tom</div>
+    {{orders}}
   </div>
 </template>
 
@@ -48,10 +49,23 @@ export default {
   data () {
     return {
       proceedToPay: false,
-      errorMessage: null
+      errorMessage: null,
+      orders: []
     }
   },
+  mounted () {
+    this.howManyOrders()
+  },
   methods: {
+    howManyOrders () {
+      let newStoreId
+      for (let i = 0; i < this.cart.length; i++) {
+        newStoreId = this.cart[i].storeId
+        if (!this.orders.includes(newStoreId)) {
+          this.orders.push(newStoreId)
+        }
+      }
+    },
     getTotalPrice () {
       let sum = 0
       for (let i = 0; i < this.cart.length; i++) {
@@ -73,27 +87,37 @@ export default {
       this.proceedToPay = !this.proceedToPay
     },
     async pay () {
-      const newOrder = {}
-      newOrder.id = '3'
-      newOrder.orderNumber = '3'
-      newOrder.products = this.cart
-      newOrder.total = this.getTotalPrice()
-      await fetch(url.orders, {
-        method: 'POST',
-        body: JSON.stringify(newOrder),
-        headers: { 'Content-Type': 'application/json' }
-      })
-        .then(async response => {
-          const data = await response.json()
-          if (!response.ok) {
-            const error = (data && data.message) || response.status
-            return Promise.reject(error)
+      for (let i = 0; i < this.orders.length; i++) {
+        const newOrder = {}
+        newOrder.id = i + 1
+        newOrder.number = '1'
+        newOrder.storeId = this.orders[i]
+        newOrder.clientId = 'cce2bc90-b912-4ef1-9272-f962f94f0d7f'
+        newOrder.products = []
+        newOrder.total = 0
+        for (let j = 0; j < this.cart.length; j++) {
+          if (this.cart[j].storeId === this.orders[i]) {
+            newOrder.products.push(this.cart[j])
+            newOrder.total += parseInt(this.cart[j].price)
           }
+        }
+        await fetch(url.orders, {
+          method: 'POST',
+          body: JSON.stringify(newOrder),
+          headers: { 'Content-Type': 'application/json' }
         })
-        .catch(error => {
-          this.errorMessage = error
-          console.error('There was an error!', error)
-        })
+          .then(async response => {
+            const data = await response.json()
+            if (!response.ok) {
+              const error = (data && data.message) || response.status
+              return Promise.reject(error)
+            }
+          })
+          .catch(error => {
+            this.errorMessage = error
+            console.error('There was an error!', error)
+          })
+      }
       this.clearCart()
       this.delPop()
     }
