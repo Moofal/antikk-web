@@ -1,5 +1,7 @@
-import { flushPromises, shallowMount } from '@vue/test-utils'
+import { flushPromises, mount } from '@vue/test-utils'
 import Home from '@/views/Home.vue'
+import router from '@/router'
+import ProductCard from '@/components/ProductCard'
 require('jest-fetch-mock').enableMocks()
 
 describe('testing api', () => {
@@ -86,8 +88,14 @@ describe('testing api', () => {
         })
       ]
     )
-    shallowMount(Home)
+    const wrapper = mount(Home, {
+      global: {
+        plugins: [router]
+      }
+    })
     await flushPromises()
+    const product = wrapper.findAllComponents(ProductCard)
+    expect(product).toHaveLength(1)
     expect(fetch.mock.calls.length).toEqual(2)
   })
 })

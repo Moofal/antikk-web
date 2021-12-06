@@ -30,7 +30,6 @@
       </div>
     </div>
     <div v-else>Handlevogn er tom</div>
-    {{orders}}
   </div>
 </template>
 

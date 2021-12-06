@@ -1,7 +1,7 @@
 <template>
   <header>
     <router-link to="/" class="header-button"><h1>Antikk Web</h1></router-link>
-    <input type="search" v-on:keydown.enter="onSearch" v-model="tempSearch" placeholder="Søk">
+    <!-- <input type="search" v-on:keydown.enter="onSearch" v-model="tempSearch" placeholder="Søk"> -->
     <nav>
     <router-link v-if="user === 'endUser'" to="/end-user" class="header-button"><span>Bruker</span></router-link>
       <router-link v-if="user === 'businessUser'" to="/business/1" class="header-button"><span>Bedrift</span></router-link>
