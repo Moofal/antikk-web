@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import { url } from '@/httpRoutes'
+// import { url } from '@/httpRoutes'
 export default {
   name: 'Bruker',
   data () {
@@ -36,14 +36,17 @@ export default {
   },
   methods: {
     getUser () {
-      fetch(url.userSimen)
+      fetch('http://localhost:9090/user/details', {
+        mode: 'cors',
+        credentials: 'include'
+      })
         .then(async response => {
           const data = await response.json()
           if (!response.ok) {
             const error = (data && data.message) || response.statusText
             return Promise.reject(error)
           }
-          this.user = data[0]
+          this.user = data.data
           this.userLoaded = true
         })
         .catch(error => {
