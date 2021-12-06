@@ -4,7 +4,7 @@
       <h2>Min side</h2>
       <div>Inlogget som: {{user.fname}} {{user.lname}}, {{user.email}}, {{user.phone}}</div>
     </div>
-    <router-link to="/orders">
+    <router-link :to="orderHistoryId">
       <button>
         Mine ordre
       </button>
@@ -28,6 +28,11 @@ export default {
   },
   mounted () {
     this.getUser()
+  },
+  computed: {
+    orderHistoryId () {
+      return '/order-history/' + this.user.id
+    }
   },
   methods: {
     getUser () {

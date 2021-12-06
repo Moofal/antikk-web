@@ -35,13 +35,16 @@ function getOrder (id) {
   return 'http://localhost:3000/order/?id=' + id
 }
 
-export {
-  url,
-  getProductLimit,
-  getProductLimitCategory,
-  getProductById,
-  productAction,
-  getStoreId,
-  getOrder,
-  getProductsByStoreID
+function getUserOrders (id) {
+  return 'http://localhost:3000/order/?userId=' + id
+}
+
+function getBusinessOrders (id) {
+  return 'http://localhost:3000/order/?storeId=' + id
+}
+
+export
+{
+  url, getBusinessOrders, getUserOrders, getProductLimit, getProductLimitCategory, getProductById,
+  productAction, getStoreId, getOrder, getProductsByStoreID
 }

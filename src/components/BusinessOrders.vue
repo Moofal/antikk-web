@@ -9,7 +9,7 @@
         <a class="item">{{order.number}}</a>
       </td>
       <td class="table">
-        <a class="item">{{}}</a>
+        <a class="item">{{order.address}}</a>
       </td>
       <td>
         <ul v-for="product in orders[i].products" :key="product.id">
@@ -23,11 +23,11 @@
 
 <script>
 export default {
-  name: 'UserOrder',
+  name: 'BusinessOrder',
   props: ['orders', 'order', 'i'],
   computed: {
     orderLink () {
-      return '/endUser-order/' + this.order.id
+      return '/business-order/' + this.order.id
     }
   }
 }
