@@ -88,8 +88,14 @@ export default {
         })
     },
     getProducts () {
-      fetch(getProductLimitCategory(this.limit, this.category))
+      fetch(getProductLimitCategory(this.limit, this.category), {
+        mode: 'cors',
+        credentials: 'include'
+      })
         .then(async response => {
+          response.headers.forEach((val, key) => {
+            console.log(key, val)
+          })
           const data = await response.json()
           if (!response.ok) {
             const error = (data && data.message) || response.statusText
