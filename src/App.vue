@@ -57,15 +57,8 @@ export default {
   },
   methods: {
     addToCart (id) {
-      fetch('http://localhost:3000/products?id=' + id)
-        .then(response => {
-          return response.json()
-        })
-        .then(data => {
-          this.cart.push(data[0])
-          this.numProdInCart++
-          this.saveChart()
-        })
+      this.numProdInCart++
+      this.saveChart()
     },
     removeItem (index) {
       this.cart.splice(index, 1)
