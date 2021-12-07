@@ -35,7 +35,7 @@
 
 <script>
 import UserOrder from '@/components/UserOrder'
-import { getUserOrders } from '@/httpRoutes'
+// import { getUserOrders } from '@/httpRoutes'
 export default {
   name: 'OrderHistory',
   components: { UserOrder },
@@ -48,14 +48,19 @@ export default {
     }
   },
   mounted () {
-    fetch(getUserOrders(this.id))
+    // fetch(getUserOrders(this.id))
+    fetch('http://localhost:9090/user/orders', {
+      mode: 'cors',
+      credentials: 'include'
+    })
       .then(async response => {
         const data = await response.json()
         if (!response.ok) {
           const error = (data && data.message) || response.statusText
           return Promise.reject(error)
         }
-        this.orders = data
+        console.log(data)
+        this.orders = data.data
         this.loaded = true
       })
       .catch(error => {
