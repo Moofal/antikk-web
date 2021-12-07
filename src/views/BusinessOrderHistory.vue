@@ -35,7 +35,6 @@
 
 <script>
 import BusinessOrder from '@/components/BusinessOrders'
-// import { getBusinessOrders } from '@/httpRoutes'
 export default {
   name: 'BusinessOrders',
   components: { BusinessOrder },
@@ -53,7 +52,6 @@ export default {
     }
   },
   mounted () {
-    // fetch(getBusinessOrders(this.id))
     fetch('http://localhost:9090/business/orders', {
       mode: 'cors',
       credentials: 'include'

@@ -16,7 +16,6 @@
 </template>
 
 <script>
-// import { url } from '@/httpRoutes'
 export default {
   name: 'Bruker',
   data () {

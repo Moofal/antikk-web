@@ -30,7 +30,6 @@
 
 <script>
 import DelProdPopup from '@/components/DelProdPopup'
-// import { productAction } from '@/httpRoutes'
 
 export default {
   name: 'ProductCardBusiness',
@@ -56,14 +55,13 @@ export default {
       this.delPop = !this.delPop
     },
     async deleteProduct () {
-      // await fetch(productAction(this.product.id), {
       await fetch('http://localhost:9090/business/store/' + this.product.id + '/delete', {
         method: 'GET',
         mode: 'cors',
         credentials: 'include'
-        // headers: { 'Content-Type': 'application/json' }
       })
       await this.toggleDelPop()
+      location.reload()
     }
   }
 }

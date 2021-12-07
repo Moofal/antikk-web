@@ -35,7 +35,6 @@
 
 <script>
 import UserOrder from '@/components/UserOrder'
-// import { getUserOrders } from '@/httpRoutes'
 export default {
   name: 'OrderHistory',
   components: { UserOrder },
@@ -48,7 +47,6 @@ export default {
     }
   },
   mounted () {
-    // fetch(getUserOrders(this.id))
     fetch('http://localhost:9090/user/orders', {
       mode: 'cors',
       credentials: 'include'

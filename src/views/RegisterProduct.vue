@@ -41,7 +41,7 @@
           <input v-model="product.startingBid" class="startingBid">
           <label>Stepper</label>
           <input v-model="product.bidIncrements" class="bidIncrements">
-          <label>Når slutter auktionen</label>
+          <label>Når slutter auktionen (minst 10 dager fra nå)</label>
           <input type="date" v-model="product.endDate" class="endDate">
         </div>
       </fieldset>
@@ -106,7 +106,6 @@ export default {
         mode: 'cors',
         credentials: 'include',
         body: JSON.stringify(newProduct)
-        // headers: { 'Content-Type': 'application/json' }
       }).then(async response => {
         const data = await response.json()
         if (!response.ok) {
@@ -114,19 +113,6 @@ export default {
           return Promise.reject(error)
         }
       })
-    },
-    getStoreName () {
-      fetch('http://localhost:9090/store/8bfac56a-f6bd-424f-a28e-037792ded027/details')
-        .then(response => {
-          return response.json()
-        })
-        .then(data => {
-          this.product.storeName = data.data.storeName
-        })
-        .catch(error => {
-          this.putProductErrorMessage = error
-          console.error('There was an error!', error)
-        })
     },
     getCategories () {
       fetch(url.categories)

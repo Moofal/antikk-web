@@ -9,9 +9,6 @@
       </div>
     </router-link>
       <div>
-        <button @click="removeItem(index)">
-          Fjern produkt
-        </button>
       </div>
     </div>
   </div>

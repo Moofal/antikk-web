@@ -44,7 +44,6 @@
 </template>
 
 <script>
-// import { getOrder } from '@/httpRoutes'
 
 export default {
   name: 'Order',
@@ -66,7 +65,6 @@ export default {
   },
   methods: {
     getOrder () {
-      // fetch(getOrder(this.orderId))
       fetch('http://localhost:9090/user/orders/' + this.orderId + '/details', {
         mode: 'cors',
         credentials: 'include'

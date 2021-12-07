@@ -61,7 +61,6 @@
 </template>
 
 <script>
-// import { getProductById, productAction, url } from '@/httpRoutes'
 import { getProductById, url } from '@/httpRoutes'
 
 export default {
@@ -96,8 +95,6 @@ export default {
     async editProduct () {
       await this.cleanSaleType()
       const editedProduct = this.product
-      // await fetch(productAction(this.postId), {
-      // await fetch(productAction(this.postId), {
       await fetch('http://localhost:9090/business/store/product/' + this.postId + '/update', {
         method: 'POST',
         mode: 'cors',
