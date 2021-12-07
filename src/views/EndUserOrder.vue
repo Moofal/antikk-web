@@ -44,7 +44,7 @@
 </template>
 
 <script>
-import { getOrder } from '@/httpRoutes'
+// import { getOrder } from '@/httpRoutes'
 
 export default {
   name: 'Order',
@@ -66,14 +66,19 @@ export default {
   },
   methods: {
     getOrder () {
-      fetch(getOrder(this.orderId))
+      // fetch(getOrder(this.orderId))
+      fetch('http://localhost:9090/user/orders/' + this.orderId + '/details', {
+        mode: 'cors',
+        credentials: 'include'
+      })
         .then(async response => {
           const data = await response.json()
           if (!response.ok) {
             const error = (data && data.message) || response.statusText
             return Promise.reject(error)
           }
-          this.order = data[0]
+          console.log(data)
+          this.order = data.data
           this.orderLoaded = true
         })
         .catch(error => {
