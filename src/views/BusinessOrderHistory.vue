@@ -35,7 +35,7 @@
 
 <script>
 import BusinessOrder from '@/components/BusinessOrders'
-import { getBusinessOrders } from '@/httpRoutes'
+// import { getBusinessOrders } from '@/httpRoutes'
 export default {
   name: 'BusinessOrders',
   components: { BusinessOrder },
@@ -53,14 +53,18 @@ export default {
     }
   },
   mounted () {
-    fetch(getBusinessOrders(this.id))
+    // fetch(getBusinessOrders(this.id))
+    fetch('http://localhost:9090/business/orders', {
+      mode: 'cors',
+      credentials: 'include'
+    })
       .then(async response => {
         const data = await response.json()
         if (!response.ok) {
           const error = (data && data.message) || response.statusText
           return Promise.reject(error)
         }
-        this.orders = data
+        this.orders = data.data
         this.loaded = true
       })
       .catch(error => {
