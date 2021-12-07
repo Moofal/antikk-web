@@ -42,7 +42,7 @@
           <label>Stepper</label>
           <input v-model="product.bidIncrements" class="bidIncrements">
           <label>Når slutter auktionen</label>
-          <input type="datetime-local" v-model="product.endDate" class="endDate">
+          <input type="date" v-model="product.endDate" class="endDate">
         </div>
       </fieldset>
     </form>
@@ -103,10 +103,10 @@ export default {
       const newProduct = this.product
       await fetch(reqUrl, {
         method: 'POST',
-        mode: 'no-cors',
+        mode: 'cors',
         credentials: 'include',
-        body: JSON.stringify(newProduct),
-        headers: { 'Content-Type': 'application/json' }
+        body: JSON.stringify(newProduct)
+        // headers: { 'Content-Type': 'application/json' }
       }).then(async response => {
         const data = await response.json()
         if (!response.ok) {

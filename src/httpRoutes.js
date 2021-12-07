@@ -4,7 +4,7 @@ const url = {
   productsStoreId: 'http://localhost:3000/products?storeId=',
   orders: 'http://localhost:3000/order',
   postProduct: 'http://localhost:9090/business/store/product/add',
-  postAuction: '#'
+  postAuction: 'http://localhost:9090/business/store/auction/add'
 }
 
 function getProductLimit (limit) {
