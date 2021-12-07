@@ -30,7 +30,7 @@ test('test edit a auction product to be a sale one', async () => {
           category: 'Hobby',
           startingBid: '620.00',
           bidIncrements: '60',
-          endDate: '2021-11-18T04:04:31.090Z'
+          endDate: '2021-12-30'
         }]
       )
     ],

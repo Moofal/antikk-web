@@ -45,7 +45,7 @@
           <label>Stepper</label>
           <input v-model="product.bidIncrements" class="bidIncrements">
           <label>Når slutter auktionen</label>
-          <input type="datetime-local" v-model="product.endDate" class="endDate">
+          <input type="date" v-model="product.endDate" class="endDate">
         </div>
       </fieldset>
     </form>
