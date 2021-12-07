@@ -104,6 +104,7 @@ export default {
       await fetch(reqUrl, {
         method: 'POST',
         mode: 'no-cors',
+        credentials: 'include',
         body: JSON.stringify(newProduct),
         headers: { 'Content-Type': 'application/json' }
       }).then(async response => {
