@@ -110,7 +110,7 @@ export default {
       this.proceedToPay = !this.proceedToPay
     },
     async pay () {
-      fetch('http://localhost:9090/client/new-order', {
+      await fetch('http://localhost:9090/client/new-order', {
         method: 'POST',
         mode: 'cors',
         credentials: 'include'
@@ -118,38 +118,7 @@ export default {
         .then(async data => {
           console.log(data.json())
         })
-      // for (let i = 0; i < this.orders.length; i++) {
-      //   const newOrder = {}
-      //   newOrder.id = i + 1
-      //   newOrder.number = '1'
-      //   newOrder.storeId = this.orders[i]
-      //   newOrder.clientId = 'cce2bc90-b912-4ef1-9272-f962f94f0d7f'
-      //   newOrder.products = []
-      //   newOrder.total = 0
-      //   for (let j = 0; j < this.cart.length; j++) {
-      //     if (this.cart[j].storeId === this.orders[i]) {
-      //       newOrder.products.push(this.cart[j])
-      //       newOrder.total += parseInt(this.cart[j].price)
-      //     }
-      //   }
-        // await fetch(url.orders, {
-        //   method: 'POST',
-        //   body: JSON.stringify(newOrder),
-        //   headers: { 'Content-Type': 'application/json' }
-        // })
-        //   .then(async response => {
-        //     const data = await response.json()
-        //     if (!response.ok) {
-        //       const error = (data && data.message) || response.status
-        //       return Promise.reject(error)
-        //     }
-        //   })
-        //   .catch(error => {
-        //     this.errorMessage = error
-        //     console.error('There was an error!', error)
-        //   })
-      // }
-      this.clearCart()
+      await this.getCart()
       this.delPop()
     }
   }
