@@ -30,7 +30,7 @@ test('test register a auction product', async () => {
           category: 'Hobby',
           startingBid: '620.00',
           bidIncrements: '60',
-          endDate: '2021-11-18T04:04:31.090Z'
+          endDate: '2021-12-30'
         }
       )
     ]
@@ -67,10 +67,10 @@ test('test register a auction product', async () => {
   expect(wrapper.find('input.bidIncrements').element.value).toBe('60')
   await wrapper.setData({
     product: {
-      endDate: '2021-11-18T04:04:31.090Z'
+      endDate: '2021-12-30'
     }
   })
-  expect(wrapper.vm.product.endDate).toBe('2021-11-18T04:04:31.090Z')
+  expect(wrapper.vm.product.endDate).toBe('2021-12-30')
   await wrapper.find('button').trigger('click')
   expect(fetch.mock.calls.length).toEqual(2)
   expect(fetch.mock.calls[1][1].body).toEqual(JSON.stringify({
@@ -82,6 +82,6 @@ test('test register a auction product', async () => {
     category: 'Hobby',
     startingBid: '620.00',
     bidIncrements: '60',
-    endDate: '2021-11-18T04:04:31.090Z'
+    endDate: '2021-12-30'
   }))
 })
