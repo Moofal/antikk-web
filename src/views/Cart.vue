@@ -117,8 +117,8 @@ export default {
       })
         .then(async data => {
           console.log(data.json())
+          this.cart = []
         })
-      await this.getCart()
       this.delPop()
     }
   }
